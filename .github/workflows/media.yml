@@ -1,0 +1,30 @@
+name: Preuzmi medije sa Wixa
+
+on:
+  push:
+    branches: [main]
+    paths: [content.json, scripts/fetch_media.py, .github/workflows/media.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preuzmi slike i videe
+        run: python3 scripts/fetch_media.py
+      - name: Spremi u repozitorij
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/media
+          if git diff --cached --quiet; then
+            echo "Nema novih datoteka."
+          else
+            du -sh site/media
+            git commit -m "Medije preuzete sa Wixa"
+            git push
+          fi
