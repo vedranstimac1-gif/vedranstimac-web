@@ -25,6 +25,14 @@ ICONS = {
     "instagram": '<path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 4.6c2.4 0 2.7 0 3.6.1 2.4.1 3.6 1.3 3.7 3.7.1.9.1 1.2.1 3.6s0 2.7-.1 3.6c-.1 2.4-1.3 3.6-3.7 3.7-.9.1-1.2.1-3.6.1s-2.7 0-3.6-.1c-2.4-.1-3.6-1.3-3.7-3.7-.1-.9-.1-1.2-.1-3.6s0-2.7.1-3.6c.1-2.4 1.3-3.6 3.7-3.7.9-.1 1.2-.1 3.6-.1z" fill="none" stroke="#fff" stroke-width="1.6"/>',
 }
 
+def analytics():
+    """Cloudflare Web Analytics (bez kolačića). Token se upisuje u content.json -> site.cf_analytics_token."""
+    t = S.get("cf_analytics_token")
+    if not t:
+        return ""
+    return ("\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" "
+            f"data-cf-beacon='{{\"token\": \"{e(t)}\"}}'></script>")
+
 def page(path, title, body, desc=None, cls=""):
     desc = desc or S["description"]
     full_title = f"{title} | {S['title']}" if title else f"Vedran Štimac | {S['title']}"
@@ -89,7 +97,7 @@ def page(path, title, body, desc=None, cls=""):
   <p>{S['copyright']}</p>
   <ul class="social">{social}</ul>
 </footer>
-<script src="/site.js" defer></script>
+<script src="/site.js" defer></script>{analytics()}
 </body>
 </html>
 """
