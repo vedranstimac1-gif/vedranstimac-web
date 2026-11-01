@@ -10,6 +10,7 @@ SITE = os.path.join(ROOT, "site")
 C = json.load(open(os.path.join(ROOT, "content.json"), encoding="utf-8"))
 S = C["site"]
 DOMAIN = "https://www.vedranstimac.com"
+MURAL_PATHS = {"/" + m["slug"] for m in C["street_art"] if isinstance(m, dict)}
 
 def web(wid):
     stem = wid.split("~")[0] if "~" in wid else os.path.splitext(wid)[0]
@@ -35,7 +36,7 @@ def page(path, title, body, desc=None, cls=""):
     def nav(href, label):
         cur = ' aria-current="page"' if path == href else ""
         return f'<li><a href="{href}"{cur}>{label}</a></li>'
-    work_cur = ' class="current"' if path in ("/illustrations", "/street-art") else ""
+    work_cur = ' class="current"' if path in ("/illustrations", "/street-art") or path in MURAL_PATHS else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -94,26 +95,40 @@ def page(path, title, body, desc=None, cls=""):
 """
 
 def gallery(items, kind):
-    # Stavka: [naziv, natpis, slika] ili {"name","caption","images":[...],"text"}
+    """Ilustracije: [naziv, natpis, slika] -> klik otvara sliku.
+    Murali: {"slug","name","caption","thumb","images","text"} -> klik vodi na stranicu murala."""
     out = []
     for it in items:
         if isinstance(it, dict):
-            name, caption, imgs, text = it["name"], it["caption"], it["images"], it.get("text", "")
+            name, caption = it["name"], it["caption"]
+            link = f'<a href="/{it["slug"]}">'
+            img = it.get("thumb") or it["images"][0]
         else:
-            name, caption, imgs, text = it[0], it[1], [it[2]], ""
-        cap = f"{e(name)} — {e(caption)}"
-        d = f' data-desc="{e(text)}"' if text else ""
-        extra = "".join(
-            f'<a href="{orig(w)}" class="lb" data-caption="{cap}"{d} hidden>'
-            f'<img src="{web(w)}" alt="{e(name)}" loading="lazy"></a>' for w in imgs[1:])
-        more = f'<span class="count">+{len(imgs) - 1} photo</span>' if len(imgs) > 1 else ""
+            name, caption, img = it
+            link = f'<a href="{orig(img)}" class="lb" data-caption="{e(name)} — {e(caption)}">'
         out.append(
-            f'<figure class="item">'
-            f'<a href="{orig(imgs[0])}" class="lb" data-caption="{cap}"{d}>'
-            f'<img src="{web(imgs[0])}" alt="{e(name)}" loading="lazy" decoding="async">{more}</a>{extra}'
+            f'<figure class="item">{link}'
+            f'<img src="{web(img)}" alt="{e(name)}" loading="lazy" decoding="async"></a>'
             f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span></figcaption>'
             f'</figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
+
+def mural_page(m):
+    photos = "".join(
+        f'<a href="{orig(w)}" class="lb" data-caption="{e(m["name"])} — {e(m["caption"])}">'
+        f'<img src="{web(w)}" alt="{e(m["name"])}" loading="lazy" decoding="async"></a>'
+        for w in m["images"])
+    text = "".join(f"<p>{e(p)}</p>" for p in m["text"])
+    return f"""
+<section class="mural">
+  <div class="mural-photos n{len(m['images'])}">{photos}</div>
+  <div class="mural-text">
+    <h1>{e(m['name'])}</h1>
+    {text}
+    <p class="place">{e(m['caption'])}</p>
+    <p class="back"><a href="/street-art">← Street art</a></p>
+  </div>
+</section>"""
 
 def write(rel, html):
     p = os.path.join(SITE, rel)
@@ -168,6 +183,18 @@ write("street-art/index.html", page("/street-art", "STREET ART", f"""
 <section class="work">
   {gallery(C['street_art'], 'murals')}
 </section>""", desc="Murals and street art by Vedran Štimac (PoliteBastART)."))
+
+# STRANICE MURALA (iste adrese kao na Wixu, npr. /julije-knifer)
+for m in C["street_art"]:
+    if isinstance(m, dict):
+        write(f"{m['slug']}/index.html", page("/" + m["slug"], m["name"], mural_page(m),
+              desc=m["text"][0][:155] if m.get("text") else None))
+
+# SITEMAP
+urls = ["/", "/about", "/illustrations", "/street-art", "/contact"] + sorted(MURAL_PATHS)
+open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    + "".join(f"  <url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 
 # CONTACT
 write("contact/index.html", page("/contact", "CONTACT", f"""

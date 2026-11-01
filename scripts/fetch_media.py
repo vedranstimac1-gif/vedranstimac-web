@@ -35,7 +35,13 @@ def get(url, dest):
 
 jobs = []
 images = [C["media"]["about_portrait"], C["media"]["about_mural"], C["media"]["og"]]
-images += [x[2] for x in C["illustrations"]] + [x[2] for x in C["street_art"] if isinstance(x, list)]
+images += [x[2] for x in C["illustrations"]]
+for x in C["street_art"]:
+    if isinstance(x, list):
+        images.append(x[2])
+    else:
+        images += [x.get("thumb")] + x["images"]
+images = [i for i in dict.fromkeys(images) if i]
 for wid in images:
     if "~mv2" not in wid:
         continue  # nije sa Wixa (dodano kasnije, već je u repozitoriju)
