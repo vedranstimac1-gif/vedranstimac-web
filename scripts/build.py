@@ -12,7 +12,8 @@ S = C["site"]
 DOMAIN = "https://www.vedranstimac.com"
 
 def web(wid):
-    return "/media/web/" + wid.split("~")[0] + ".jpg"
+    stem = wid.split("~")[0] if "~" in wid else os.path.splitext(wid)[0]
+    return "/media/web/" + stem + ".jpg"
 
 def orig(wid):
     return "/media/orig/" + wid
@@ -93,13 +94,24 @@ def page(path, title, body, desc=None, cls=""):
 """
 
 def gallery(items, kind):
+    # Stavka: [naziv, natpis, slika] ili {"name","caption","images":[...],"text"}
     out = []
-    for name, caption, wid in items:
+    for it in items:
+        if isinstance(it, dict):
+            name, caption, imgs, text = it["name"], it["caption"], it["images"], it.get("text", "")
+        else:
+            name, caption, imgs, text = it[0], it[1], [it[2]], ""
+        cap = f"{e(name)} — {e(caption)}"
+        extra = "".join(
+            f'<a href="{orig(w)}" class="lb" data-caption="{cap}" hidden>'
+            f'<img src="{web(w)}" alt="{e(name)}" loading="lazy"></a>' for w in imgs[1:])
+        more = f'<span class="count">+{len(imgs) - 1} photo</span>' if len(imgs) > 1 else ""
+        desc = f'<p class="desc">{e(text)}</p>' if text else ""
         out.append(
             f'<figure class="item">'
-            f'<a href="{orig(wid)}" class="lb" data-caption="{e(name)} — {e(caption)}">'
-            f'<img src="{web(wid)}" alt="{e(name)}" loading="lazy" decoding="async"></a>'
-            f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span></figcaption>'
+            f'<a href="{orig(imgs[0])}" class="lb" data-caption="{cap}">'
+            f'<img src="{web(imgs[0])}" alt="{e(name)}" loading="lazy" decoding="async">{more}</a>{extra}'
+            f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span>{desc}</figcaption>'
             f'</figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
 

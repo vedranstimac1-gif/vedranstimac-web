@@ -62,6 +62,12 @@
     ["Vladimir Nabokov", "2015, Ink on paper; Digitally colored", "068c28_588992f539d3485f93be61ea22522a4f~mv2.jpg"]
   ],
   "street_art": [
+    {
+      "name": "Mural \"Imagine the Better World\"",
+      "caption": "Pula, Croatia (2025)",
+      "images": ["imagine-the-better-world-1.jpg", "imagine-the-better-world-2.jpg"],
+      "text": "Painted on the façade of Vidikovac Primary School in Pula, the mural shows a pupil striding forward towards a better future, one shaped by peace, solidarity and prosperity. Holding the globe close and setting a white dove free, the figure carries the world with care into the time ahead."
+    },
     ["Mural of Julije Knifer", "Zagreb, Croatia (2021)", "068c28_b0434e3764854b63bda0e60ea745d8d2~mv2.jpg"],
     ["Mural of Antonio Gauchito Gil", "Zagreb, Croatia (2021)", "068c28_84b3c9eba7f04bb0aebecb54ce54385f~mv2.jpg"],
     ["Mural of \"Latinoamerica Lucha\"", "Buenos Aires, Argentina (2019)", "068c28_d6202317c0d2458c85d4e027f461d19a~mv2.jpg"],

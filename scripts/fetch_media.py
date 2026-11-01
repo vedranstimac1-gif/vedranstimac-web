@@ -35,8 +35,10 @@ def get(url, dest):
 
 jobs = []
 images = [C["media"]["about_portrait"], C["media"]["about_mural"], C["media"]["og"]]
-images += [x[2] for x in C["illustrations"]] + [x[2] for x in C["street_art"]]
+images += [x[2] for x in C["illustrations"]] + [x[2] for x in C["street_art"] if isinstance(x, list)]
 for wid in images:
+    if "~mv2" not in wid:
+        continue  # nije sa Wixa (dodano kasnije, već je u repozitoriju)
     jobs.append((IMG + wid, os.path.join(MEDIA, "orig", wid)))
     if not wid.endswith(".gif"):
         stem = wid.split("~")[0]
