@@ -12,15 +12,18 @@
   box.className = 'lightbox';
   box.innerHTML = '<button class="lb-close" aria-label="Close">×</button>' +
     '<button class="lb-prev" aria-label="Previous">‹</button>' +
-    '<img alt=""><p></p>' +
+    '<img alt=""><p></p><p class="lb-desc"></p>' +
     '<button class="lb-next" aria-label="Next">›</button>';
   document.body.appendChild(box);
-  var img = box.querySelector('img'), cap = box.querySelector('p'), i = 0;
+  var img = box.querySelector('img'), cap = box.querySelector('p'),
+      desc = box.querySelector('.lb-desc'), i = 0;
   function show(n) {
     i = (n + links.length) % links.length;
     img.src = links[i].href;
     img.alt = links[i].querySelector('img').alt;
     cap.textContent = links[i].getAttribute('data-caption');
+    desc.textContent = links[i].getAttribute('data-desc') || '';
+    desc.hidden = !desc.textContent;
     box.classList.add('open');
   }
   function close() { box.classList.remove('open'); img.removeAttribute('src'); }

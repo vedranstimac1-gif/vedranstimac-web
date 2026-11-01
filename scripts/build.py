@@ -102,16 +102,16 @@ def gallery(items, kind):
         else:
             name, caption, imgs, text = it[0], it[1], [it[2]], ""
         cap = f"{e(name)} — {e(caption)}"
+        d = f' data-desc="{e(text)}"' if text else ""
         extra = "".join(
-            f'<a href="{orig(w)}" class="lb" data-caption="{cap}" hidden>'
+            f'<a href="{orig(w)}" class="lb" data-caption="{cap}"{d} hidden>'
             f'<img src="{web(w)}" alt="{e(name)}" loading="lazy"></a>' for w in imgs[1:])
         more = f'<span class="count">+{len(imgs) - 1} photo</span>' if len(imgs) > 1 else ""
-        desc = f'<p class="desc">{e(text)}</p>' if text else ""
         out.append(
             f'<figure class="item">'
-            f'<a href="{orig(imgs[0])}" class="lb" data-caption="{cap}">'
+            f'<a href="{orig(imgs[0])}" class="lb" data-caption="{cap}"{d}>'
             f'<img src="{web(imgs[0])}" alt="{e(name)}" loading="lazy" decoding="async">{more}</a>{extra}'
-            f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span>{desc}</figcaption>'
+            f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span></figcaption>'
             f'</figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
 
