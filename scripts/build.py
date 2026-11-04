@@ -196,7 +196,7 @@ def mural_page(m):
 
 def ill_page(it, prev, nxt):
     src = ill_img(it)
-    text = "".join(f"<p>{e(p)}</p>" for p in it["text"])
+    text = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if S.get("show_illustration_text") else ""
     buy = (f'<p class="buy"><a class="btn" href="{it["etsy"]}" target="_blank" rel="noopener">Buy print on Etsy</a></p>'
            if it.get("etsy") else
            f'<p class="buy-note">Prints of other portraits are available in the <a href="{S["shop"]}" target="_blank" rel="noopener">Etsy shop</a>.</p>')
@@ -267,12 +267,16 @@ for i, it in enumerate(IL):
     art = {"@type": "VisualArtwork", "name": f"Portrait of {it['name']}", "artform": "Illustration",
            "artMedium": it["caption"][6:], "dateCreated": year, "url": DOMAIN + "/" + it["slug"],
            "creator": {"@id": DOMAIN + "/#vedran"}, "about": {"@type": "Person", "name": it["name"]},
-           "image": DOMAIN + ill_img(it), "description": " ".join(it["text"])}
+           "image": DOMAIN + ill_img(it)}
+    if S.get("show_illustration_text"):
+        art["description"] = " ".join(it["text"])
     if it.get("etsy"):
         art["offers"] = {"@type": "Offer", "url": it["etsy"], "availability": "https://schema.org/InStock"}
     write(f"{it['slug']}/index.html", page("/" + it["slug"], f"{it['name']} – Portrait Illustration | Vedran Štimac",
           ill_page(it, IL[i - 1], IL[(i + 1) % len(IL)]),
-          desc=short(f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][-1]),
+          desc=(short(f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][-1])
+                if S.get("show_illustration_text") else
+                f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. {it['caption'][6:]}. From the series Room of Portraits."),
           image=ill_img(it), ld=[art]))
 
 # STREET ART
