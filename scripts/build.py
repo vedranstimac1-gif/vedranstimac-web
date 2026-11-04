@@ -14,14 +14,7 @@ MURAL_PATHS = {"/" + m["slug"] for m in C["street_art"] if isinstance(m, dict)}
 ILL_PATHS = {"/" + m["slug"] for m in C["illustrations"] if isinstance(m, dict)}
 
 def ill_img(it):
-    """Slika ilustracije s opisnim imenom datoteke (bolje za Google slike)."""
-    import shutil
-    name = f"{it['slug']}-portrait-illustration-vedran-stimac.jpg"
-    dst = os.path.join(SITE, "media", "illustrations", name)
-    if not os.path.exists(dst):
-        os.makedirs(os.path.dirname(dst), exist_ok=True)
-        shutil.copyfile(os.path.join(SITE, web(it["image"]).lstrip("/")), dst)
-    return "/media/illustrations/" + name
+    return web(it["image"])
 
 def web(wid):
     stem = wid.split("~")[0] if "~" in wid else os.path.splitext(wid)[0]
@@ -52,7 +45,7 @@ PERSON = {
     "jobTitle": "Illustrator and muralist",
     "description": "Croatian illustrator, muralist and street artist from Pula, based in Zagreb.",
     "url": DOMAIN + "/",
-    "image": DOMAIN + "/media/web/068c28_e11b793a722f4617a98d37fa5b3d1205.jpg",
+    "image": DOMAIN + "/media/web/" + os.path.splitext(C["media"]["about_portrait"])[0] + ".jpg",
     "email": "mailto:" + S["email"],
     "birthPlace": {"@type": "Place", "name": "Pula, Croatia"},
     "homeLocation": {"@type": "Place", "name": "Zagreb, Croatia"},
