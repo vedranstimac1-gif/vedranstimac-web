@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-"""Generira statične HTML stranice u site/ iz content.json.
+"""Generira statične HTML stranice u site/ iz content.json, na engleskom (/) i hrvatskom (/hr/).
 Sadržaj se mijenja u content.json, zatim: python3 scripts/build.py
+
+Hrvatska verzija je skrivena (noindex, bez prekidača jezika, nije u sitemapu)
+dok se u content.json ne postavi site.hr_public = true.
 """
 import json, os, re
 from html import escape as e
@@ -9,19 +12,78 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 C = json.load(open(os.path.join(ROOT, "content.json"), encoding="utf-8"))
 S = C["site"]
+M = C["media"]
 DOMAIN = "https://www.vedranstimac.com"
-MURAL_PATHS = {"/" + m["slug"] for m in C["street_art"] if isinstance(m, dict)}
-ILL_PATHS = {"/" + m["slug"] for m in C["illustrations"] if isinstance(m, dict)}
+HR_PUBLIC = bool(S.get("hr_public"))
+LANGS = ("en", "hr")
 
-def ill_img(it):
-    return web(it["image"])
+# ---------- adrese ----------
+PATHS = {
+    "home":          {"en": "/",              "hr": "/hr/"},
+    "about":         {"en": "/about",         "hr": "/hr/o-meni"},
+    "illustrations": {"en": "/illustrations", "hr": "/hr/ilustracije"},
+    "street-art":    {"en": "/street-art",    "hr": "/hr/murali"},
+    "contact":       {"en": "/contact",       "hr": "/hr/kontakt"},
+}
+for x in C["street_art"] + C["illustrations"]:
+    PATHS[x["slug"]] = {"en": "/" + x["slug"], "hr": "/hr/" + x["slug"]}
+MURALS = {m["slug"] for m in C["street_art"]}
+ILLS = {i["slug"] for i in C["illustrations"]}
 
+def P(key, lang):
+    return PATHS[key][lang]
+
+# ---------- tekstovi sučelja ----------
+T = {
+    "en": {
+        "tagline": S["tagline"], "home": "HOME", "about": "ABOUT", "work": "WORK",
+        "illustrations": "ILLUSTRATIONS", "street-art": "STREET ART", "contact": "CONTACT", "shop": "SHOP",
+        "menu": "Menu", "about_h": "ABOUT", "exh_h": "EXHIBITIONS", "ill_h": "ILLUSTRATIONS", "street_h": "STREET ART",
+        "contact_h": "HAVE A PROJECT<br>IN MIND?", "studio": "studio",
+        "series": "Portrait illustration · Room of Portraits", "all_ill": "All illustrations",
+        "back_murals": "← Street art", "buy": "Buy print on Etsy",
+        "buy_note": 'Prints of other portraits are available in the <a href="{shop}" target="_blank" rel="noopener">Etsy shop</a>.',
+        "photo": "photo", "of": "of", "portrait_of": "Portrait illustration of {n} by Vedran Štimac (PoliteBastART)",
+        "mural_alt": "{n}, {c} – mural by Vedran Štimac", "me_alt": "Picture of Vedran", "me_mural_alt": "Vedran painting a mural",
+        "locale": "en_US",
+    },
+    "hr": {
+        "tagline": "Ilustracije i murali Vedrana Štimca", "home": "POČETNA", "about": "O MENI", "work": "RADOVI",
+        "illustrations": "ILUSTRACIJE", "street-art": "MURALI", "contact": "KONTAKT", "shop": "SHOP",
+        "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "MURALI",
+        "contact_h": "IMATE PROJEKT<br>NA UMU?", "studio": "atelijer",
+        "series": "Portretna ilustracija · Room of Portraits", "all_ill": "Sve ilustracije",
+        "back_murals": "← Murali", "buy": "Kupite print na Etsyju",
+        "buy_note": 'Printovi ostalih portreta dostupni su u <a href="{shop}" target="_blank" rel="noopener">Etsy trgovini</a>.',
+        "photo": "fotografija", "of": "od", "portrait_of": "Portretna ilustracija – {n}, autor Vedran Štimac (PoliteBastART)",
+        "mural_alt": "{n}, {c} – mural, Vedran Štimac", "me_alt": "Vedran Štimac", "me_mural_alt": "Vedran slika mural",
+        "locale": "hr_HR",
+    },
+}
+
+# ---------- pomoćno ----------
 def web(wid):
     stem = wid.split("~")[0] if "~" in wid else os.path.splitext(wid)[0]
     return "/media/web/" + stem + ".jpg"
 
 def orig(wid):
     return "/media/orig/" + wid
+
+def L(item, field, lang):
+    """Polje na traženom jeziku (hrvatsko iz item['hr'] ako postoji)."""
+    if lang == "hr" and field in item.get("hr", {}):
+        return item["hr"][field]
+    return item[field]
+
+def place_year(caption):
+    """'Pula, Croatia (2025)' -> ('Pula', 'Croatia', '2025')"""
+    m = re.match(r"\s*([^,]+),\s*([^(]+?)\s*\((\d{4})\)", caption)
+    return (m.group(1).strip(), m.group(2).strip(), m.group(3)) if m else (caption, "", "")
+
+def short(text, n=155):
+    if len(text) <= n:
+        return text
+    return text[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
 
 ICONS = {
     "behance": '<path d="M9.2 11.6c.6-.3 1-.9 1-1.7 0-1.6-1.2-2.1-2.7-2.1H4v8.4h3.6c1.6 0 3-.7 3-2.4 0-1.1-.5-1.9-1.4-2.2zM5.6 9.1h1.6c.6 0 1.2.2 1.2.9s-.4.9-1 .9H5.6V9.1zm1.8 5.8H5.6v-2.3h1.8c.8 0 1.2.3 1.2 1.2 0 .8-.6 1.1-1.2 1.1zm8-4.9c-1.9 0-3.1 1.3-3.1 3.1 0 1.9 1.2 3.1 3.1 3.1 1.4 0 2.4-.7 2.8-2h-1.5c-.2.5-.7.8-1.3.8-.9 0-1.4-.5-1.5-1.5H18.4c.1-2-1-3.5-3-3.5zm-1.5 2.5c.1-.8.6-1.3 1.4-1.3.8 0 1.2.5 1.3 1.3h-2.7zm-.2-3.9h3.4v.9h-3.4z"/>',
@@ -30,7 +92,7 @@ ICONS = {
 }
 
 def analytics():
-    """Cloudflare Web Analytics (bez kolačića). Token se upisuje u content.json -> site.cf_analytics_token."""
+    """Cloudflare Web Analytics (bez kolačića). Token: content.json -> site.cf_analytics_token."""
     t = S.get("cf_analytics_token")
     if not t:
         return ""
@@ -45,7 +107,7 @@ PERSON = {
     "jobTitle": "Illustrator and muralist",
     "description": "Croatian illustrator, muralist and street artist from Pula, based in Zagreb.",
     "url": DOMAIN + "/",
-    "image": DOMAIN + "/media/web/" + os.path.splitext(C["media"]["about_portrait"])[0] + ".jpg",
+    "image": DOMAIN + web(M["about_portrait"]),
     "email": "mailto:" + S["email"],
     "birthPlace": {"@type": "Place", "name": "Pula, Croatia"},
     "homeLocation": {"@type": "Place", "name": "Zagreb, Croatia"},
@@ -53,19 +115,10 @@ PERSON = {
     "sameAs": [S["social"]["instagram"], S["social"]["behance"], S["social"]["facebook"], S["shop"]],
 }
 
-def place_year(caption):
-    """'Pula, Croatia (2025)' -> ('Pula', 'Croatia', '2025')"""
-    m = re.match(r"\s*([^,]+),\s*([^(]+?)\s*\((\d{4})\)", caption)
-    return (m.group(1).strip(), m.group(2).strip(), m.group(3)) if m else (caption, "", "")
-
-def short(text, n=155):
-    if len(text) <= n:
-        return text
-    return text[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
-
-def page(path, title, body, desc=None, cls="", image=None, ld=None):
-    desc = desc or S["description"]
-    full_title = title
+# ---------- okvir stranice ----------
+def page(key, lang, title, body, desc, cls="", image=None, ld=None):
+    t = T[lang]
+    path = P(key, lang)
     url = DOMAIN + path
     image = DOMAIN + (image or "/media/share.jpg")
     graph = [PERSON, {"@type": "WebSite", "@id": DOMAIN + "/#site", "url": DOMAIN + "/",
@@ -76,27 +129,40 @@ def page(path, title, body, desc=None, cls="", image=None, ld=None):
         f'<li><a href="{S["social"][k]}" target="_blank" rel="noopener" aria-label="{k.title()}">'
         f'<svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[k]}</svg></a></li>'
         for k in ("behance", "facebook", "instagram"))
-    def nav(href, label):
-        cur = ' aria-current="page"' if path == href else ""
-        return f'<li><a href="{href}"{cur}>{label}</a></li>'
-    work_cur = ' class="current"' if path in ("/illustrations", "/street-art") or path in MURAL_PATHS or path in ILL_PATHS else ""
+
+    def nav(k):
+        cur = ' aria-current="page"' if key == k else ""
+        return f'<li><a href="{P(k, lang)}"{cur}>{t[k]}</a></li>'
+    work_cur = ' class="current"' if key in ("illustrations", "street-art") or key in MURALS or key in ILLS else ""
+
+    other = "hr" if lang == "en" else "en"
+    if HR_PUBLIC:
+        alt = "".join(f'\n<link rel="alternate" hreflang="{l}" href="{DOMAIN}{P(key, l)}">' for l in LANGS)
+        alt += f'\n<link rel="alternate" hreflang="x-default" href="{DOMAIN}{P(key, "en")}">'
+        switch = (f'<li class="lang"><a href="{P(key, other)}" hreflang="{other}" lang="{other}">'
+                  f'{other.upper()}</a></li>')
+        robots = ""
+    else:
+        alt, switch = "", ""
+        robots = '\n<meta name="robots" content="noindex, nofollow">' if lang == "hr" else ""
+
     return f"""<!doctype html>
-<html lang="en">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(full_title)}</title>
-<meta name="description" content="{e(desc)}">
-<link rel="canonical" href="{url}">
-<meta property="og:title" content="{e(full_title)}">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">{robots}
+<link rel="canonical" href="{url}">{alt}
+<meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
 <meta property="og:site_name" content="{S['title']}">
 <meta property="og:image" content="{image}">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="{t['locale']}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{e(full_title)}">
+<meta name="twitter:title" content="{e(title)}">
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{image}">
 <meta name="author" content="Vedran Štimac">
@@ -111,23 +177,24 @@ def page(path, title, body, desc=None, cls="", image=None, ld=None):
 </head>
 <body class="{cls}">
 <header class="site-header">
-  <a class="brand" href="/">
+  <a class="brand" href="{P('home', lang)}">
     <span class="brand-name">{S['title']}</span>
-    <span class="brand-tag">{S['tagline']}</span>
+    <span class="brand-tag">{t['tagline']}</span>
   </a>
-  <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="{t['menu']}"><span></span><span></span><span></span></button>
   <nav id="nav">
     <ul>
-      {nav("/", "HOME")}
-      {nav("/about", "ABOUT")}
-      <li class="has-sub"><a href="/illustrations"{work_cur}>WORK</a>
+      {nav("home")}
+      {nav("about")}
+      <li class="has-sub"><a href="{P('illustrations', lang)}"{work_cur}>{t['work']}</a>
         <ul class="sub">
-          {nav("/illustrations", "ILLUSTRATIONS")}
-          {nav("/street-art", "STREET ART")}
+          {nav("illustrations")}
+          {nav("street-art")}
         </ul>
       </li>
-      {nav("/contact", "CONTACT")}
-      <li><a href="{S['shop']}" target="_blank" rel="noopener">SHOP</a></li>
+      {nav("contact")}
+      <li><a href="{S['shop']}" target="_blank" rel="noopener">{t['shop']}</a></li>
+      {switch}
     </ul>
   </nav>
 </header>
@@ -143,179 +210,217 @@ def page(path, title, body, desc=None, cls="", image=None, ld=None):
 </html>
 """
 
-def gallery(items, kind):
-    """Ilustracije: [naziv, natpis, slika] -> klik otvara sliku.
-    Murali: {"slug","name","caption","thumb","images","text"} -> klik vodi na stranicu murala."""
+# ---------- dijelovi ----------
+def gallery(items, kind, lang):
+    t = T[lang]
     out = []
     for it in items:
-        if isinstance(it, dict) and "image" in it:
-            name, caption = it["name"], it["caption"]
-            link = f'<a href="/{it["slug"]}">'
-            img = None
-            src = ill_img(it)
-            alt = f"Portrait illustration of {name} by Vedran Štimac (PoliteBastART)"
-        elif isinstance(it, dict):
-            name, caption = it["name"], it["caption"]
-            link = f'<a href="/{it["slug"]}">'
-            img = it.get("thumb") or it["images"][0]
-            alt = f"{name}, {caption} – mural by Vedran Štimac"
-        else:
-            name, caption, img = it
-            alt = f"Portrait illustration of {name} by Vedran Štimac (PoliteBastART)"
-            link = f'<a href="{orig(img)}" class="lb" data-caption="{e(name)} — {e(caption)}">'
+        name, caption = L(it, "name", lang), L(it, "caption", lang)
+        if "image" in it:   # ilustracija
+            src = web(it["image"])
+            alt = t["portrait_of"].format(n=name)
+        else:               # mural
+            src = web(it.get("thumb") or it["images"][0])
+            alt = t["mural_alt"].format(n=name, c=caption)
         out.append(
-            f'<figure class="item">{link}'
-            f'<img src="{src if img is None else web(img)}" alt="{e(alt)}" loading="lazy" decoding="async"></a>'
+            f'<figure class="item"><a href="{P(it["slug"], lang)}">'
+            f'<img src="{src}" alt="{e(alt)}" loading="lazy" decoding="async"></a>'
             f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span></figcaption>'
             f'</figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
 
-def mural_page(m):
+def mural_page(m, lang):
+    t = T[lang]
+    name, cap, text = L(m, "name", lang), L(m, "caption", lang), L(m, "text", lang)
+    n = len(m["images"])
     photos = "".join(
-        f'<a href="{orig(w)}" class="lb" data-caption="{e(m["name"])} — {e(m["caption"])}">'
-        f'<img src="{web(w)}" alt="{e(m["name"])}, {e(m["caption"])} – photo {i} of {len(m["images"])}" loading="lazy" decoding="async"></a>'
+        f'<a href="{orig(w)}" class="lb" data-caption="{e(name)} — {e(cap)}">'
+        f'<img src="{web(w)}" alt="{e(name)}, {e(cap)} – {t["photo"]} {i} {t["of"]} {n}" loading="lazy" decoding="async"></a>'
         for i, w in enumerate(m["images"], 1))
-    text = "".join(f"<p>{e(p)}</p>" for p in m["text"])
+    paras = "".join(f"<p>{e(p)}</p>" for p in text)
     return f"""
 <section class="mural">
-  <div class="mural-photos n{len(m['images'])}">{photos}</div>
+  <div class="mural-photos n{n}">{photos}</div>
   <div class="mural-text">
-    <h1>{e(m['name'])}</h1>
-    {text}
-    <p class="place">{e(m['caption'])}</p>
-    <p class="back"><a href="/street-art">← Street art</a></p>
+    <h1>{e(name)}</h1>
+    {paras}
+    <p class="place">{e(cap)}</p>
+    <p class="back"><a href="{P('street-art', lang)}">{t['back_murals']}</a></p>
   </div>
 </section>"""
 
-def ill_page(it, prev, nxt):
-    src = ill_img(it)
-    text = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if S.get("show_illustration_text") else ""
-    buy = (f'<p class="buy"><a class="btn" href="{it["etsy"]}" target="_blank" rel="noopener">Buy print on Etsy</a></p>'
-           if it.get("etsy") else
-           f'<p class="buy-note">Prints of other portraits are available in the <a href="{S["shop"]}" target="_blank" rel="noopener">Etsy shop</a>.</p>')
+def ill_page(it, prev, nxt, lang):
+    t = T[lang]
+    cap = L(it, "caption", lang)
+    text = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if (S.get("show_illustration_text") and lang == "en") else ""
+    buy = (f'<p class="buy"><a class="btn" href="{it["etsy"]}" target="_blank" rel="noopener">{t["buy"]}</a></p>'
+           if it.get("etsy") else f'<p class="buy-note">{t["buy_note"].format(shop=S["shop"])}</p>')
     return f"""
 <section class="mural illus">
-  <div class="mural-photos n1"><a href="{orig(it['image'])}" class="lb" data-caption="{e(it['name'])} — {e(it['caption'])}">
-    <img src="{src}" alt="Portrait illustration of {e(it['name'])} by Vedran Štimac (PoliteBastART)"></a></div>
+  <div class="mural-photos n1"><a href="{orig(it['image'])}" class="lb" data-caption="{e(it['name'])} — {e(cap)}">
+    <img src="{web(it['image'])}" alt="{e(t['portrait_of'].format(n=it['name']))}"></a></div>
   <div class="mural-text">
     <h1>{e(it['name'])}</h1>
-    <p class="series">Portrait illustration · Room of Portraits</p>
+    <p class="series">{t['series']}</p>
     {text}
-    <p class="place">{e(it['caption'])}</p>
+    <p class="place">{e(cap)}</p>
     {buy}
-    <p class="back"><a href="/{prev['slug']}">← {e(prev['name'])}</a> &nbsp;·&nbsp; <a href="/illustrations">All illustrations</a> &nbsp;·&nbsp; <a href="/{nxt['slug']}">{e(nxt['name'])} →</a></p>
+    <p class="back"><a href="{P(prev['slug'], lang)}">← {e(prev['name'])}</a> &nbsp;·&nbsp; <a href="{P('illustrations', lang)}">{t['all_ill']}</a> &nbsp;·&nbsp; <a href="{P(nxt['slug'], lang)}">{e(nxt['name'])} →</a></p>
   </div>
 </section>"""
 
-def write(rel, html):
-    p = os.path.join(SITE, rel)
-    os.makedirs(os.path.dirname(p), exist_ok=True)
-    open(p, "w", encoding="utf-8").write(html)
+def write(path, html):
+    rel = path.strip("/")
+    f = os.path.join(SITE, rel, "index.html") if rel else os.path.join(SITE, "index.html")
+    os.makedirs(os.path.dirname(f), exist_ok=True)
+    open(f, "w", encoding="utf-8").write(html)
 
-M = C["media"]
+def build(key, lang, *a, **k):
+    write(P(key, lang), page(key, lang, *a, **k))
 
-# HOME
-write("index.html", page("/", "Vedran Štimac (PoliteBastART) – Illustrator & Muralist, Croatia", f"""
-<h1 class="sr-only">Vedran Štimac (PoliteBastART) – illustrator and muralist from Pula, Croatia</h1>
+# ---------- stranice ----------
+for lang in LANGS:
+    t = T[lang]
+    hr = lang == "hr"
+
+    # POČETNA
+    build("home", lang,
+          "Vedran Štimac (PoliteBastART) – ilustrator i muralist, Pula / Zagreb" if hr else
+          "Vedran Štimac (PoliteBastART) – Illustrator & Muralist, Croatia",
+          f"""
+<h1 class="sr-only">{"Vedran Štimac (PoliteBastART) – ilustrator i muralist iz Pule" if hr else "Vedran Štimac (PoliteBastART) – illustrator and muralist from Pula, Croatia"}</h1>
 <section class="hero-video">
   <video autoplay muted loop playsinline preload="auto" poster="/media/home-poster.jpg">
     <source src="/media/home.mp4" type="video/mp4">
   </video>
-</section>""", cls="home",
-    desc="Portrait illustrations and murals by Vedran Štimac (PoliteBastART), illustrator and street artist from Pula, based in Zagreb. Prints available on Etsy."))
+</section>""",
+          ("Portretne ilustracije i murali Vedrana Štimca (PoliteBastART), ilustratora i muralista iz Pule sa sjedištem u Zagrebu. Printovi dostupni na Etsyju."
+           if hr else
+           "Portrait illustrations and murals by Vedran Štimac (PoliteBastART), illustrator and street artist from Pula, based in Zagreb. Prints available on Etsy."),
+          cls="home")
 
-# ABOUT
-ex = []
-for year, items in C["exhibitions"]:
-    ex.append(f"<h3>{year}</h3>")
-    for t, place in items:
-        ex.append(f"<p>{e(t)}<br>{e(place)}</p>")
-write("about/index.html", page("/about", "About Vedran Štimac – Illustrator & Street Artist", f"""
+    # O MENI
+    ex = []
+    for year, items in (C["exhibitions_hr"] if hr else C["exhibitions"]):
+        ex.append(f"<h3>{year}</h3>")
+        for tt, place in items:
+            ex.append(f"<p>{e(tt)}<br>{e(place)}</p>")
+    build("about", lang,
+          "O meni – Vedran Štimac, ilustrator i muralist" if hr else "About Vedran Štimac – Illustrator & Street Artist",
+          f"""
 <section class="about">
   <div class="about-text">
-    <h1>ABOUT</h1>
-    {''.join(f'<p>{e(p)}</p>' for p in C['about'])}
+    <h1>{t['about_h']}</h1>
+    {''.join(f'<p>{e(p)}</p>' for p in (C['about_hr'] if hr else C['about']))}
   </div>
-  <div class="about-photo"><img src="{web(M['about_portrait'])}" alt="Picture of Vedran"></div>
-  <div class="about-photo wide"><img src="{web(M['about_mural'])}" alt="Vedran painting a mural" loading="lazy"></div>
+  <div class="about-photo"><img src="{web(M['about_portrait'])}" alt="{t['me_alt']}"></div>
+  <div class="about-photo wide"><img src="{web(M['about_mural'])}" alt="{t['me_mural_alt']}" loading="lazy"></div>
   <div class="exhibitions">
-    <h2>EXHIBITIONS</h2>
+    <h2>{t['exh_h']}</h2>
     {''.join(ex)}
   </div>
-</section>""", desc="Vedran Štimac (PoliteBastART) is an illustrator, muralist and screen printer from Pula, Croatia. Socially engaged portraits on paper and on walls; exhibitions across the region.",
-    image=web(M['about_portrait']), ld=[{"@type": "ProfilePage", "url": DOMAIN + "/about", "mainEntity": {"@id": DOMAIN + "/#vedran"}}]))
+</section>""",
+          ("Vedran Štimac (PoliteBastART) – ilustrator, muralist i sitotiskar iz Pule. Društveno angažirani portreti na papiru i na zidovima, izložbe diljem regije."
+           if hr else
+           "Vedran Štimac (PoliteBastART) is an illustrator, muralist and screen printer from Pula, Croatia. Socially engaged portraits on paper and on walls; exhibitions across the region."),
+          image=web(M["about_portrait"]),
+          ld=[{"@type": "ProfilePage", "url": DOMAIN + P("about", lang), "mainEntity": {"@id": DOMAIN + "/#vedran"}}])
 
-# ILLUSTRATIONS
-write("illustrations/index.html", page("/illustrations", "Portrait Illustrations – Room of Portraits | Vedran Štimac", f"""
+    # ILUSTRACIJE
+    IL = C["illustrations"]
+    build("illustrations", lang,
+          "Portretne ilustracije – Room of Portraits | Vedran Štimac" if hr else
+          "Portrait Illustrations – Room of Portraits | Vedran Štimac",
+          f"""
 <section class="work">
-  <h1 class="page-title">ILLUSTRATIONS</h1>
-  {gallery(C['illustrations'], 'portraits')}
-</section>""", desc='Portrait illustrations from the series "Room of Portraits" by Vedran Štimac: ink on paper, digitally coloured. Louise Michel, Mercedes Sosa, Nikola Tesla, Franz Kafka and more.',
-    image=ill_img(C['illustrations'][0])))
+  <h1 class="page-title">{t['ill_h']}</h1>
+  {gallery(IL, 'portraits', lang)}
+</section>""",
+          ("Portretne ilustracije iz serije „Room of Portraits“ Vedrana Štimca: tuš na papiru, digitalno bojano. Louise Michel, Mercedes Sosa, Nikola Tesla, Franz Kafka i drugi."
+           if hr else
+           'Portrait illustrations from the series "Room of Portraits" by Vedran Štimac: ink on paper, digitally coloured. Louise Michel, Mercedes Sosa, Nikola Tesla, Franz Kafka and more.'),
+          image=web(IL[0]["image"]))
 
-# STRANICE ILUSTRACIJA (npr. /louise-michel)
-IL = C["illustrations"]
-for i, it in enumerate(IL):
-    year = it["caption"][:4]
-    art = {"@type": "VisualArtwork", "name": f"Portrait of {it['name']}", "artform": "Illustration",
-           "artMedium": it["caption"][6:], "dateCreated": year, "url": DOMAIN + "/" + it["slug"],
-           "creator": {"@id": DOMAIN + "/#vedran"}, "about": {"@type": "Person", "name": it["name"]},
-           "image": DOMAIN + ill_img(it)}
-    if S.get("show_illustration_text"):
-        art["description"] = " ".join(it["text"])
-    if it.get("etsy"):
-        art["offers"] = {"@type": "Offer", "url": it["etsy"], "availability": "https://schema.org/InStock"}
-    write(f"{it['slug']}/index.html", page("/" + it["slug"], f"{it['name']} – Portrait Illustration | Vedran Štimac",
-          ill_page(it, IL[i - 1], IL[(i + 1) % len(IL)]),
-          desc=(short(f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][-1])
-                if S.get("show_illustration_text") else
-                f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. {it['caption'][6:]}. From the series Room of Portraits."),
-          image=ill_img(it), ld=[art]))
+    for i, it in enumerate(IL):
+        year = it["caption"][:4]
+        cap = L(it, "caption", lang)
+        art = {"@type": "VisualArtwork", "name": f"Portrait of {it['name']}", "artform": "Illustration",
+               "artMedium": it["caption"][6:], "dateCreated": year, "url": DOMAIN + P(it["slug"], lang),
+               "creator": {"@id": DOMAIN + "/#vedran"}, "about": {"@type": "Person", "name": it["name"]},
+               "image": DOMAIN + web(it["image"])}
+        if S.get("show_illustration_text") and not hr:
+            art["description"] = " ".join(it["text"])
+        if it.get("etsy"):
+            art["offers"] = {"@type": "Offer", "url": it["etsy"], "availability": "https://schema.org/InStock"}
+        if hr:
+            title = f"{it['name']} – portretna ilustracija | Vedran Štimac"
+            desc = f"Portretna ilustracija – {it['name']}, autor Vedran Štimac (PoliteBastART), {cap}. Iz serije Room of Portraits."
+        else:
+            title = f"{it['name']} – Portrait Illustration | Vedran Štimac"
+            desc = (short(f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][-1])
+                    if S.get("show_illustration_text") else
+                    f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. {it['caption'][6:]}. From the series Room of Portraits.")
+        build(it["slug"], lang, title, ill_page(it, IL[i - 1], IL[(i + 1) % len(IL)], lang), desc,
+              image=web(it["image"]), ld=[art])
 
-# STREET ART
-write("street-art/index.html", page("/street-art", "Murals & Street Art in Croatia and Abroad | Vedran Štimac", f"""
+    # MURALI
+    SA = C["street_art"]
+    build("street-art", lang,
+          "Murali i street art – Pula, Zagreb i svijet | Vedran Štimac" if hr else
+          "Murals & Street Art in Croatia and Abroad | Vedran Štimac",
+          f"""
 <section class="banner">
   <video autoplay muted loop playsinline preload="auto" poster="/media/street-art-poster.jpg">
     <source src="/media/street-art.mp4" type="video/mp4">
   </video>
-  <h1>STREET ART</h1>
+  <h1>{t['street_h']}</h1>
 </section>
 <section class="work">
-  {gallery(C['street_art'], 'murals')}
-</section>""", desc="Murals and street art by Vedran Štimac (PoliteBastART) in Pula, Zagreb, Krapina, Sisak, Umag, Ljubljana and Buenos Aires – each with its story and photos.",
-    image=web(C['street_art'][0].get('thumb') or C['street_art'][0]['images'][0])))
+  {gallery(SA, 'murals', lang)}
+</section>""",
+          ("Murali i street art Vedrana Štimca (PoliteBastART) u Puli, Zagrebu, Krapini, Sisku, Umagu, Ljubljani i Buenos Airesu – svaki sa svojom pričom i fotografijama."
+           if hr else
+           "Murals and street art by Vedran Štimac (PoliteBastART) in Pula, Zagreb, Krapina, Sisak, Umag, Ljubljana and Buenos Aires – each with its story and photos."),
+          image=web(SA[0].get("thumb") or SA[0]["images"][0]))
 
-# STRANICE MURALA (iste adrese kao na Wixu, npr. /julije-knifer)
-for m in C["street_art"]:
-    if isinstance(m, dict):
-        city, country, year = place_year(m["caption"])
-        art = {"@type": "VisualArtwork", "name": m["name"], "artform": "Mural", "url": DOMAIN + "/" + m["slug"],
+    for m in SA:
+        name, cap, text = L(m, "name", lang), L(m, "caption", lang), L(m, "text", lang)
+        city, country, year = place_year(cap)
+        art = {"@type": "VisualArtwork", "name": name, "artform": "Mural", "url": DOMAIN + P(m["slug"], lang),
                "creator": {"@id": DOMAIN + "/#vedran"}, "dateCreated": year,
                "locationCreated": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": city, "addressCountry": country}},
-               "image": [DOMAIN + web(w) for w in m["images"]], "description": " ".join(m["text"])}
-        write(f"{m['slug']}/index.html", page("/" + m["slug"], f"{m['name']} – {city}, {year} | Vedran Štimac", mural_page(m),
-              desc=short(f"{m['name']} by Vedran Štimac, {city} {year}. " + m["text"][0]),
-              image=web(m["images"][0]), ld=[art]))
+               "image": [DOMAIN + web(w) for w in m["images"]], "description": " ".join(text)}
+        build(m["slug"], lang, f"{name} – {city}, {year} | Vedran Štimac", mural_page(m, lang),
+              short(f"{name}, {'autor' if hr else 'by'} Vedran Štimac, {city} {year}. " + text[0]),
+              image=web(m["images"][0]), ld=[art])
+
+    # KONTAKT
+    build("contact", lang,
+          "Kontakt – narudžba murala ili ilustracije | Vedran Štimac" if hr else
+          "Contact – Commission a Mural or Illustration | Vedran Štimac",
+          f"""
+<section class="contact">
+  <h1>{t['contact_h']}</h1>
+  <p>e-mail: <a href="mailto:{S['email']}">{S['email']}</a></p>
+  <p>{t['studio']}: {S['studio']}</p>
+</section>""",
+          ("Naručite mural, portret ili ilustraciju od Vedrana Štimca (PoliteBastART). E-mail vedran.stimac1@gmail.com, atelijer Ilica 73, Zagreb."
+           if hr else
+           "Commission a mural, portrait or illustration from Vedran Štimac (PoliteBastART). E-mail vedran.stimac1@gmail.com, studio at Ilica 73, Zagreb."))
+
+# 404 (zajednička)
+PATHS["404"] = {"en": "/404", "hr": "/404"}
+open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write(page("404", "en", "Page not found | PoliteBastART", """
+<section class="contact">
+  <h1>PAGE NOT FOUND</h1>
+  <p><a href="/">Back to home</a> · <a href="/hr/">Natrag na početnu</a></p>
+</section>""", "Page not found."))
 
 # SITEMAP
-urls = ["/", "/about", "/illustrations", "/street-art", "/contact"] + sorted(MURAL_PATHS) + sorted(ILL_PATHS)
+keys = ["home", "about", "illustrations", "street-art", "contact"] + sorted(MURALS) + sorted(ILLS)
+urls = [P(k, "en") for k in keys] + ([P(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 
-# CONTACT
-write("contact/index.html", page("/contact", "Contact – Commission a Mural or Illustration | Vedran Štimac", f"""
-<section class="contact">
-  <h1>HAVE A PROJECT<br>IN MIND?</h1>
-  <p>e-mail: <a href="mailto:{S['email']}">{S['email']}</a></p>
-  <p>studio: {S['studio']}</p>
-</section>""", desc="Commission a mural, portrait or illustration from Vedran Štimac (PoliteBastART). E-mail vedran.stimac1@gmail.com, studio at Ilica 73, Zagreb."))
-
-# 404
-write("404.html", page("/404", "Page not found | PoliteBastART", """
-<section class="contact">
-  <h1>PAGE NOT FOUND</h1>
-  <p><a href="/">Back to home</a></p>
-</section>"""))
-
-print("Stranice generirane u", SITE)
+print("Stranice generirane u", SITE, "| HR javno:", HR_PUBLIC)

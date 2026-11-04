@@ -190,3 +190,7 @@ nav a:hover, nav a[aria-current="page"], nav a.current { text-decoration: underl
 .illus .back { margin-top: 28px; line-height: 2; }
 .portraits .item a { cursor: pointer; }
 .portraits .item a:hover img { opacity: .85; }
+
+/* Prekidač jezika EN | HR */
+nav .lang a { border: 1px solid var(--ink); padding: 2px 8px; }
+nav .lang a:hover { background: var(--ink); color: #fff; text-decoration: none; }

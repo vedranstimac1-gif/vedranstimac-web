@@ -14,7 +14,8 @@
     },
     "google_site_verification": "_Dv-1yoim9slo47ZwD34XsB7l20RZWzUkHT_Ye9K7-k",
     "pinterest_verify": "7bf6485b63c38b13534a6cc74a7ba508",
-    "cf_analytics_token": "61cdd8ce783f4bc997a04fd4cce58a83"
+    "cf_analytics_token": "61cdd8ce783f4bc997a04fd4cce58a83",
+    "hr_public": false
   },
   "media": {
     "og": "068c28_0ffe17edfcc4408da70cd3e668ac666e~mv2.gif",
@@ -113,7 +114,10 @@
       "text": [
         "Louise Michel (1830–1905) was a French teacher, anarchist and one of the most famous figures of the Paris Commune of 1871.",
         "Inside the portrait the Communards rise behind the banner “Vive la Commune”: the uprising she fought for, carried in her head long after its defeat."
-      ]
+      ],
+      "hr": {
+        "caption": "2021., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "venedikt-jerofejev",
@@ -124,7 +128,10 @@
       "text": [
         "Venedikt Yerofeyev (1938–1990) was a Soviet writer, best known for the prose poem “Moscow–Petushki”, a drunken train journey through late-Soviet life.",
         "The Kremlin’s onion domes turn into bottles labelled Moscow and Petushki – the beginning and the end of the book’s journey."
-      ]
+      ],
+      "hr": {
+        "caption": "2021., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "mercedes-sosa",
@@ -135,7 +142,10 @@
       "text": [
         "Mercedes Sosa (1935–2009) was an Argentine singer, often called the voice of Latin America and of the Nueva Canción movement.",
         "In place of her face is a heart drifting among clouds, watched over by the Sun of May – the songs she sang for the people of the continent."
-      ]
+      ],
+      "hr": {
+        "caption": "2021., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "stjepan-filipovic",
@@ -146,7 +156,10 @@
       "text": [
         "Stjepan Filipović (1916–1942) was a Yugoslav partisan and People’s Hero. Moments before his execution in Valjevo he raised his arms and called out against fascism – a gesture captured in one of the best-known photographs of the Second World War.",
         "In the portrait his gesture multiplies: people in the streets and windows raise their arms with him."
-      ]
+      ],
+      "hr": {
+        "caption": "2021., digitalna ilustracija"
+      }
     },
     {
       "slug": "diego-maradona",
@@ -157,7 +170,10 @@
       "text": [
         "Diego Armando Maradona (1960–2020) was an Argentine footballer and one of the greatest players of all time.",
         "The “Hand of God” rises with the ball as a halo, a stairway leads through it towards a red star – the street kid who climbed to the sky of world football."
-      ]
+      ],
+      "hr": {
+        "caption": "2021., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "nikola-tesla",
@@ -168,7 +184,10 @@
       "text": [
         "Nikola Tesla (1856–1943) was an inventor and engineer whose work on alternating current shaped the modern world.",
         "His greatest inventions are drawn as one intricate mechanism inside his head, based on original vintage engineering plans. Hand-drawn dotwork, about 30–40 hours of work."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "yevgeny-zamyatin",
@@ -179,7 +198,10 @@
       "text": [
         "Yevgeny Zamyatin (1884–1937) was a Russian writer whose novel “We” is one of the first great dystopias of the 20th century.",
         "A glass cell closes around an eye and the globe – the transparent houses of the One State, where every citizen is always watched."
-      ]
+      ],
+      "hr": {
+        "caption": "2017., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "galileo-galilei",
@@ -190,7 +212,10 @@
       "text": [
         "Galileo Galilei (1564–1642) was an astronomer and physicist, often called the father of modern science.",
         "Inside his head are the heliocentric model he defended and the Leaning Tower of Pisa – his birthplace and the setting of his legendary experiments with gravity."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "quentin-tarantino",
@@ -201,7 +226,10 @@
       "text": [
         "Quentin Tarantino (b. 1963) is an American film director and screenwriter.",
         "His face breaks into sharp geometric shards in the warm, saturated colours of his films, with a splash of blood on the collar."
-      ]
+      ],
+      "hr": {
+        "caption": "2020., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "simon-bolivar",
@@ -212,7 +240,10 @@
       "text": [
         "Simón Bolívar (1783–1830), “El Libertador”, led the independence struggles of much of South America against Spanish rule.",
         "The map of South America becomes a fist gripping a musket – a continent taking its freedom into its own hands."
-      ]
+      ],
+      "hr": {
+        "caption": "2018., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "karlo-rojc",
@@ -223,7 +254,10 @@
       "text": [
         "Karlo Rojc was a Yugoslav national hero from Pula whose life spanned two world wars. After the First World War he served as an officer aboard the submarine Smeli, symbolised in the portrait by an hourglass – fleeting time and a lasting legacy.",
         "The former army barracks in Pula named after him is today the Rojc social centre, home to music and art collectives."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "karl-marx",
@@ -234,7 +268,10 @@
       "text": [
         "Karl Marx (1818–1883) was a philosopher, economist and author of “The Communist Manifesto” and “Capital”.",
         "Inside the portrait is the world he wrote about: the city, the workers and their struggle for equality. Hand-drawn dotwork."
-      ]
+      ],
+      "hr": {
+        "caption": "2020., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "milja-marin",
@@ -245,7 +282,10 @@
       "text": [
         "Milja Marin was a Yugoslav partisan whose wartime portrait became one of the iconic images of women in the antifascist struggle.",
         "Under the partisan cap with a red star her face is broken into geometric shapes, with a rifle over her shoulder."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "herman-melville",
@@ -256,7 +296,10 @@
       "text": [
         "Herman Melville (1819–1891) was an American novelist, author of “Moby-Dick”.",
         "The whale fills his silhouette and its eye replaces his own – the line between creator and creation disappears. Captain Ahab stands with his harpoon, and two card suits float in the sea: luck shapes the fate of even the most determined."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "franz-kafka",
@@ -267,7 +310,10 @@
       "text": [
         "Franz Kafka (1883–1924) was a writer from Prague, author of “The Metamorphosis” and “The Trial”.",
         "Like the other portraits in the series, his work is drawn on his face: insects and human figures echo Gregor Samsa’s transformation. Dotwork, about 30–40 hours of work."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "ivica-vidovic",
@@ -278,7 +324,10 @@
       "text": [
         "Ivica Vidović (1939–2011) was a Croatian actor, remembered as Servantes in the series “Naše malo misto” – the dreamer who returns from Chile to a small Dalmatian town to translate Don Quixote.",
         "The portrait captures the character’s grotesque heroism and quiet dignity: idealism, art and quiet rebellion."
-      ]
+      ],
+      "hr": {
+        "caption": "2020., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "alfred-hitchcock",
@@ -289,7 +338,10 @@
       "text": [
         "Alfred Hitchcock (1899–1980) was a film director known as the master of suspense.",
         "Inside his famous silhouette are scenes from three of his films – Vertigo, Rear Window and The Birds."
-      ]
+      ],
+      "hr": {
+        "caption": "2016., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "ernest-hemingway",
@@ -300,7 +352,10 @@
       "text": [
         "Ernest Hemingway (1899–1961) was an American writer and Nobel Prize laureate.",
         "Half of his face opens into the sea of “The Old Man and the Sea”: the old fisherman in his boat, the great marlin and the sun over the water."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "fidel-castro",
@@ -311,7 +366,10 @@
       "text": [
         "Fidel Castro (1926–2016) was the leader of the Cuban Revolution.",
         "The portrait is built from symbols of the revolution, including the Moncada Barracks, where the movement began in 1953. Above it stands his line that a revolution is not a bed of roses, but a struggle between the future and the past."
-      ]
+      ],
+      "hr": {
+        "caption": "2017., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "mc-escher",
@@ -322,7 +380,10 @@
       "text": [
         "M. C. Escher (1898–1972) was a Dutch graphic artist known for impossible constructions and endless tessellations.",
         "His face dissolves into interlocking fish, in the spirit of his own transforming patterns."
-      ]
+      ],
+      "hr": {
+        "caption": "2018., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "edgar-allan-poe",
@@ -333,7 +394,10 @@
       "text": [
         "Edgar Allan Poe (1809–1849) was an American writer and poet, master of the macabre.",
         "The raven sits on his brow next to a pale woman’s face – the lost Lenore of his most famous poem."
-      ]
+      ],
+      "hr": {
+        "caption": "2016., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "che-guevara",
@@ -344,7 +408,10 @@
       "text": [
         "Ernesto “Che” Guevara (1928–1967) was a revolutionary and one of the leaders of the Cuban Revolution.",
         "Inside his head are factory chimneys and a worker and a farmer who together bring down the beast of capital – a picture of class struggle and solidarity. Hand-drawn dotwork, about 30–40 hours of work."
-      ]
+      ],
+      "hr": {
+        "caption": "2020., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "miguel-de-cervantes",
@@ -355,7 +422,10 @@
       "text": [
         "Miguel de Cervantes (1547–1616) was a Spanish writer, author of “Don Quixote”.",
         "Don Quixote charges with his lance again – this time not at windmills, but at smoking factory chimneys."
-      ]
+      ],
+      "hr": {
+        "caption": "2016., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "albert-camus",
@@ -366,7 +436,10 @@
       "text": [
         "Albert Camus (1913–1960) was a French writer and philosopher of the absurd, author of “The Myth of Sisyphus”.",
         "A chain ties him to the boulder Sisyphus pushes uphill. Once Sisyphus accepts the absurdity of life, the task becomes lighter and the burden is shared."
-      ]
+      ],
+      "hr": {
+        "caption": "2016., tuš na papiru, digitalno bojano"
+      }
     },
     {
       "slug": "vladimir-nabokov",
@@ -377,7 +450,10 @@
       "text": [
         "Vladimir Nabokov (1899–1977) was a Russian-American novelist and a passionate lepidopterist.",
         "A butterfly sits on his forehead among fragments and objects from his novels, assembled like a collector’s case."
-      ]
+      ],
+      "hr": {
+        "caption": "2015., tuš na papiru, digitalno bojano"
+      }
     }
   ],
   "street_art": [
@@ -393,7 +469,15 @@
       "text": [
         "Painted on the façade of Vidikovac Primary School in Pula, the mural shows a pupil striding forward towards a better future, one shaped by peace, solidarity and prosperity.",
         "Holding the globe close and setting a white dove free, the figure carries the world with care into the time ahead."
-      ]
+      ],
+      "hr": {
+        "name": "Mural „Imagine the Better World“",
+        "caption": "Pula, Hrvatska (2025)",
+        "text": [
+          "Mural na pročelju Osnovne škole Vidikovac u Puli prikazuje učenika koji korača prema boljoj budućnosti – budućnosti određenoj mirom, solidarnošću i prosperitetom.",
+          "Držeći globus uz sebe i puštajući bijelu golubicu, lik s pažnjom nosi svijet u vrijeme koje dolazi."
+        ]
+      }
     },
     {
       "slug": "julije-knifer",
@@ -406,10 +490,18 @@
         "julije-knifer-mural-zagreb-vedran-stimac-4.jpg"
       ],
       "text": [
-        "Julije Knifer (23 April 1924 – 7 December 2004) was a Croatian abstract painter and a founding member of the 1960s Croatian art collective known as the Gorgona Group.",
-        "The central motif of mural is Knifer's art, meander, a geometric form which he had been creating since 1960 in various painting techniques such as print, oil, acrylic paint and collage."
+        "Julije Knifer (23 April 1924 – 7 December 2004) was a Croatian abstract painter and a founding member of the Gorgona Group, a Croatian art collective of the 1960s.",
+        "The central motif of the mural is Knifer's meander, a geometric form he created from 1960 onwards in various techniques such as print, oil, acrylic and collage."
       ],
-      "thumb": "julije-knifer-mural-zagreb-vedran-stimac.jpg"
+      "thumb": "julije-knifer-mural-zagreb-vedran-stimac.jpg",
+      "hr": {
+        "name": "Mural Julije Knifer",
+        "caption": "Zagreb, Hrvatska (2021)",
+        "text": [
+          "Julije Knifer (23. travnja 1924. – 7. prosinca 2004.) bio je hrvatski apstraktni slikar i jedan od osnivača Gorgone, hrvatskog umjetničkog kolektiva iz 1960-ih.",
+          "Središnji motiv murala je Kniferov meandar, geometrijski oblik koji je od 1960. stvarao u različitim tehnikama – grafici, ulju, akrilu i kolažu."
+        ]
+      }
     },
     {
       "slug": "gauchito-gil",
@@ -422,10 +514,18 @@
         "gauchito-gil-mural-zagreb-vedran-stimac-4.jpg"
       ],
       "text": [
-        "Antonio Gauchito Gil was Argentinian \"Robin Hood\" who lived as an outlaw in the 1800s after refusing to fight in the military in a civil conflict. This legendary Argentinian outlaw became a folk saint because of his deeds – stealing with his gang from the rich and giving to the poor. Today, Gauchito is praised as a „people's saint“, as a protector of the poor, oppressed, and all people who are living on the margins of society.",
-        "In the portrait of Antonio Gauchito Gil there are candles (which can very often be found on his shrine), and medallion of San Muerte. Legend says that this medallion saved him from the bullet and certain death."
+        "Antonio Gauchito Gil was an Argentine \"Robin Hood\" who lived as an outlaw in the 1800s after refusing to fight in a civil war. Stealing from the rich and giving to the poor, the legendary outlaw became a folk saint. Today Gauchito is revered as a „people's saint“, protector of the poor, the oppressed and everyone living on the margins of society.",
+        "The portrait contains candles, often found at his roadside shrines, and a medallion of San La Muerte. Legend says the medallion saved him from a bullet and certain death."
       ],
-      "thumb": "gauchito-gil-mural-zagreb-vedran-stimac.jpg"
+      "thumb": "gauchito-gil-mural-zagreb-vedran-stimac.jpg",
+      "hr": {
+        "name": "Mural Antonio Gauchito Gil",
+        "caption": "Zagreb, Hrvatska (2021)",
+        "text": [
+          "Antonio Gauchito Gil bio je argentinski „Robin Hood“ koji je u 19. stoljeću živio kao odmetnik nakon što je odbio ratovati u građanskom ratu. Kradući od bogatih i dajući siromašnima, legendarni odmetnik postao je narodni svetac. Gauchita i danas štuju kao „svetca naroda“, zaštitnika siromašnih, potlačenih i svih koji žive na margini društva.",
+          "U portretu su svijeće, kakve se često nalaze uz njegova svetišta uz cestu, i medaljon San La Muerte. Legenda kaže da ga je upravo taj medaljon spasio od metka i sigurne smrti."
+        ]
+      }
     },
     {
       "slug": "latinoamerica-lucha",
@@ -438,10 +538,18 @@
         "latinoamerica-lucha-mural-buenos-aires-vedran-stimac-4.jpg"
       ],
       "text": [
-        "In 2019, in Chile, were huge mass demonstrations against neoliberal policies. Civil protests took place throughout Chile in response to a raise in the Santiago Metro's subway fare, the increased cost of living, privatisation and inequality prevalent in the country.",
-        "The mural is drawn on the former prison in Las Barracas barrio, Buenos Aires. Silhouette of the portrait belongs to a native Latin-American woman. Inside the portrait is a woman with a flag of Mapuche people (native people who suffered the most from colonial policies), and the Wiphala - a square emblem commonly used as a flag to represent some native peoples of the Andes that include today's Peru, Bolivia, and parts of Ecuador, Argentina, Chile and Colombia."
+        "In 2019 Chile saw huge mass demonstrations against neoliberal policies. Protests spread across the country in response to a rise in Santiago Metro fares, the increasing cost of living, privatisation and the inequality prevalent in the country.",
+        "The mural was painted on the former prison in the Barracas neighbourhood of Buenos Aires. The silhouette of the portrait belongs to a native Latin American woman. Inside it is a woman with the flag of the Mapuche people (the native people who suffered most under colonial rule) and the Wiphala – a square emblem used as a flag by native peoples of the Andes, in today's Peru, Bolivia and parts of Ecuador, Argentina, Chile and Colombia."
       ],
-      "thumb": "latinoamerica-lucha-mural-buenos-aires-vedran-stimac-1.jpg"
+      "thumb": "latinoamerica-lucha-mural-buenos-aires-vedran-stimac-1.jpg",
+      "hr": {
+        "name": "Mural „Latinoamerica Lucha“",
+        "caption": "Buenos Aires, Argentina (2019)",
+        "text": [
+          "Čile je 2019. godine potresli masovni prosvjedi protiv neoliberalnih politika. Prosvjedi su se proširili zemljom kao odgovor na poskupljenje karata za podzemnu željeznicu u Santiagu, rast troškova života, privatizaciju i duboku nejednakost.",
+          "Mural je naslikan na bivšem zatvoru u četvrti Barracas u Buenos Airesu. Silueta portreta pripada domorotkinji Latinske Amerike. Unutar nje je žena sa zastavom naroda Mapuche (domorodačkog naroda koji je najviše stradao pod kolonijalnom vlašću) i Wiphalom – četvrtastim znakom koji kao zastavu koriste domorodački narodi Anda, na području današnjeg Perua, Bolivije te dijelova Ekvadora, Argentine, Čilea i Kolumbije."
+        ]
+      }
     },
     {
       "slug": "herbert-marcuse",
@@ -454,10 +562,18 @@
         "herbert-marcuse-mural-krapina-vedran-stimac-4.jpg"
       ],
       "text": [
-        "Herbert Marcuse was a German-American philosopher, sociologist, and political theorist, associated with the Frankfurt School of critical theory. His most famous book is the „One-dimensional Man“ where he argues in short that no matter if we are workers or bureaucracy, we are all together victims of a consumer society.",
-        "On the portrait background is drawn a barcode which generally symbolizes the consumer society, and inside the portrait are white and blue collar workers. It communicates the main idea from his book „One-dimensional Man“."
+        "Herbert Marcuse was a German-American philosopher, sociologist and political theorist associated with the Frankfurt School of critical theory. In his best-known book, „One-Dimensional Man“, he argues that whether we are workers or bureaucrats, we are all victims of consumer society.",
+        "The background of the portrait is a barcode, a symbol of consumer society, and inside the portrait are white- and blue-collar workers – the central idea of „One-Dimensional Man“."
       ],
-      "thumb": "herbert-marcuse-mural-krapina-vedran-stimac.jpg"
+      "thumb": "herbert-marcuse-mural-krapina-vedran-stimac.jpg",
+      "hr": {
+        "name": "Mural Herbert Marcuse",
+        "caption": "Krapina, Hrvatska (2017)",
+        "text": [
+          "Herbert Marcuse bio je njemačko-američki filozof, sociolog i politički teoretičar, povezan s Frankfurtskom školom kritičke teorije. U svojoj najpoznatijoj knjizi „Jednodimenzionalni čovjek“ tvrdi da smo, bili radnici ili birokrati, svi zajedno žrtve potrošačkog društva.",
+          "Pozadina portreta je bar-kod, simbol potrošačkog društva, a unutar portreta su radnici u plavim i bijelim ovratnicima – središnja ideja „Jednodimenzionalnog čovjeka“."
+        ]
+      }
     },
     {
       "slug": "rossana-rossanda",
@@ -470,10 +586,18 @@
         "rossana-rossanda-mural-pula-vedran-stimac-4.jpg"
       ],
       "text": [
-        "Rossana Rossanda (1924-2020) was born in Pula, Croatia, during the initial consolidation of Benito Mussolini’s Fascist regime. She was a journalist, writer, feminist, and protagonist of Italian politics. She was a participant in the partisan movement and militant members of the PCI (from where she was expelled because of her critical stance towards USSR authoritarian politics) and the Italian parliament from 1963 to 1968. She made a huge contribution to the founding of the influential paper \"Il Manifesto\", which remains the most critical daily in Berlusconi’s Italy.",
-        "The main motive in the mural is her leaving of this world walking up the stairs into one more just world – a world for she fought through all of her life. The curtains here are made of newspapers „Il Manifesto“, where se was one of main editors, and also one of the founders."
+        "Rossana Rossanda (1924–2020) was born in Pula, Croatia, during the early consolidation of Benito Mussolini's Fascist regime. She was a journalist, writer, feminist and a leading figure in Italian politics. She took part in the partisan movement, was a militant member of the PCI (from which she was expelled for her criticism of Soviet authoritarianism) and sat in the Italian parliament from 1963 to 1968. She was one of the founders of the influential paper „il manifesto“, which remained the most critical daily in Berlusconi's Italy.",
+        "The main motif of the mural is her departure from this world: she climbs the stairs into a more just world – the world she fought for all her life. The curtains are made of pages of „il manifesto“, the paper she co-founded and edited."
       ],
-      "thumb": "rossana-rossanda-mural-pula-vedran-stimac-3.jpg"
+      "thumb": "rossana-rossanda-mural-pula-vedran-stimac-3.jpg",
+      "hr": {
+        "name": "Mural Rossana Rossanda",
+        "caption": "Pula, Hrvatska (2021)",
+        "text": [
+          "Rossana Rossanda (1924. – 2020.) rođena je u Puli u vrijeme učvršćivanja fašističkog režima Benita Mussolinija. Bila je novinarka, spisateljica, feministkinja i jedna od ključnih figura talijanske politike. Sudjelovala je u partizanskom pokretu, bila militantna članica Komunističke partije Italije (iz koje je izbačena zbog kritike sovjetskog autoritarizma) i zastupnica u talijanskom parlamentu od 1963. do 1968. Jedna je od osnivačica utjecajnog lista „il manifesto“, koji je ostao najkritičniji dnevnik Berlusconijeve Italije.",
+          "Glavni motiv murala je njezin odlazak s ovoga svijeta: penje se stepenicama u pravedniji svijet – svijet za koji se borila cijeli život. Zavjese su napravljene od stranica „il manifesta“, lista koji je suosnovala i uređivala."
+        ]
+      }
     },
     {
       "slug": "cities-for-people-not-for-profit",
@@ -486,10 +610,18 @@
         "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-4.jpg"
       ],
       "text": [
-        "The dominant trend of gentrification and raise of rents due the free market is affecting huge mass of population. Lots of people even in the so-called „developed“ west can't afford a decent housing. Young people are still living with their parents, and those who are considered lucky live with 2 or more roommates. Also, there huge number of people who can't afford even that and are homeless.",
-        "In the portrait is a map of Ljubljana with a focus around AKC Metelkova (keyhole is painted on it). The rat symbolizes marginalized, oppressed, and stigmatized citizens who have the \"key\" of their hometown. It is a question of the moment when they will use that \"key\" and fight dominant urbanistic practices guided by the profit logic."
+        "Gentrification and rising rents driven by the free market affect huge numbers of people. Even in the so-called „developed“ West, many cannot afford decent housing. Young people still live with their parents, the „lucky“ ones share flats with two or more roommates, and many cannot afford even that and end up homeless.",
+        "Inside the portrait is a map of Ljubljana centred on AKC Metelkova, with a keyhole painted on it. The rat symbolises the marginalised, oppressed and stigmatised citizens who hold the \"key\" to their city. The only question is when they will use that \"key\" to fight urban planning driven by profit."
       ],
-      "thumb": "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac.jpg"
+      "thumb": "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac.jpg",
+      "hr": {
+        "name": "Mural „Cities for People, Not for Profit“",
+        "caption": "Ljubljana, Slovenija (2019)",
+        "text": [
+          "Gentrifikacija i rast najamnina potaknuti slobodnim tržištem pogađaju golem broj ljudi. Čak i na takozvanom „razvijenom“ Zapadu mnogi si ne mogu priuštiti pristojan stan. Mladi i dalje žive s roditeljima, „sretnici“ dijele stan s dvoje ili više cimera, a mnogi si ne mogu priuštiti ni to i završe bez krova nad glavom.",
+          "Unutar portreta je karta Ljubljane sa središtem na AKC Metelkova, na kojoj je nacrtana ključanica. Štakor simbolizira marginalizirane, potlačene i stigmatizirane građane koji drže „ključ“ svoga grada. Pitanje je samo trenutka kada će taj „ključ“ upotrijebiti i suprotstaviti se urbanizmu vođenom logikom profita."
+        ]
+      }
     },
     {
       "slug": "solidarity-with-palestine",
@@ -502,10 +634,18 @@
         "solidarity-with-palestine-mural-sisak-vedran-stimac-4.jpg"
       ],
       "text": [
-        "For decades, systematic oppression and ethnic cleansing of the population of Palestine have been carried out by the State of Israel. From land grabbing, forcible relocation of people, disruption of electricity and water supplies, abolition of exchange of goods and services (eg. ban on import of Covid vaccines for medical staff), to rocketing the Gaza Strip in which only in 2021 lost its life 256 people (66 children and 40 women). In moments when there is injustice, it is important not to be silent about it, because in that way we are standing on the side of the oppressor.",
-        "This mural was painted on a residential building in Sisak - as a call for an end to Israeli aggression, solidarity with the people of Palestine and hope for a brighter, more peaceful and freer future for all people in Palestine and Israel who are victims of violence and daily injustice. The portrait silhouette belongs to Leila Khaled, Palestinian activist and intellectual."
+        "For decades the State of Israel has carried out systematic oppression and ethnic cleansing of the Palestinian population: land grabs, forced displacement, cuts to electricity and water supplies, blockades of goods and services (for example, a ban on importing Covid vaccines for medical staff), and the bombing of the Gaza Strip, where in 2021 alone 256 people were killed, among them 66 children and 40 women. In the face of injustice it is important not to stay silent, because silence means standing on the side of the oppressor.",
+        "The mural was painted on a residential building in Sisak as a call to end Israeli aggression, as solidarity with the people of Palestine, and as a hope for a brighter, more peaceful and freer future for everyone in Palestine and Israel who suffers violence and daily injustice. The silhouette of the portrait belongs to Leila Khaled, Palestinian activist and intellectual."
       ],
-      "thumb": "solidarity-with-palestine-mural-sisak-vedran-stimac.jpg"
+      "thumb": "solidarity-with-palestine-mural-sisak-vedran-stimac.jpg",
+      "hr": {
+        "name": "Mural „Solidarity with The People of Palestine“",
+        "caption": "Sisak, Hrvatska (2021)",
+        "text": [
+          "Država Izrael desetljećima provodi sustavno ugnjetavanje i etničko čišćenje palestinskog stanovništva: otimanje zemlje, prisilna preseljenja, prekide opskrbe strujom i vodom, blokade robe i usluga (primjerice zabranu uvoza cjepiva protiv covida za medicinsko osoblje) te bombardiranje Pojasa Gaze, u kojem je samo 2021. ubijeno 256 ljudi, od toga 66 djece i 40 žena. Kad se događa nepravda, važno je ne šutjeti, jer šutnjom stajemo na stranu tlačitelja.",
+          "Mural je naslikan na stambenoj zgradi u Sisku kao poziv na prestanak izraelske agresije, kao solidarnost s narodom Palestine i kao nada u svjetliju, mirniju i slobodniju budućnost za sve u Palestini i Izraelu koji trpe nasilje i svakodnevnu nepravdu. Silueta portreta pripada Leili Khaled, palestinskoj aktivistici i intelektualki."
+        ]
+      }
     },
     {
       "slug": "rojava-revolution",
@@ -518,10 +658,18 @@
         "rojava-revolution-mural-pula-vedran-stimac-4.jpg"
       ],
       "text": [
-        "The Rojava conflict, also known as the Rojava Revolution, is a political upheaval and military conflict taking place in northern Syria, known among Kurds as Western Kurdistan or Rojava. A new kind of society is being built in Syria, but it's not one you would expect. Surrounded by deadly bands of ISIS and hostile Turkish forces, the people living in Syria's Rojava cantons are carving out one of the most radically progressive societies on the planet today.",
-        "Dominant colours in the mural are the red, green and yellow which are the colours of the Rojava's flag. Also, there are three portraits of woman, which symbolize solidarity among Syrian woman and feminism (the bastion of Rojava democratic confederalism)."
+        "The Rojava Revolution is a political upheaval and military conflict in northern Syria, known among Kurds as Western Kurdistan or Rojava. A new kind of society is being built there: surrounded by ISIS and hostile Turkish forces, the people of the Rojava cantons are creating one of the most radically progressive societies on the planet today.",
+        "The dominant colours of the mural – red, green and yellow – are the colours of Rojava's flag. The three female portraits symbolise solidarity among the women of Syria and feminism, the cornerstone of Rojava's democratic confederalism."
       ],
-      "thumb": "rojava-revolution-mural-pula-vedran-stimac-1.jpg"
+      "thumb": "rojava-revolution-mural-pula-vedran-stimac-1.jpg",
+      "hr": {
+        "name": "Mural „Solidarity with Rojava Revolution“",
+        "caption": "Pula, Hrvatska (2020)",
+        "text": [
+          "Revolucija u Rojavi politički je preokret i vojni sukob na sjeveru Sirije, području koje Kurdi nazivaju Zapadnim Kurdistanom ili Rojavom. Ondje se gradi nova vrsta društva: okruženi ISIL-om i neprijateljskim turskim snagama, stanovnici kantona Rojave stvaraju jedno od najradikalnije progresivnih društava na planetu.",
+          "Dominantne boje murala – crvena, zelena i žuta – boje su zastave Rojave. Tri ženska portreta simboliziraju solidarnost među ženama Sirije i feminizam, temelj demokratskog konfederalizma Rojave."
+        ]
+      }
     },
     {
       "slug": "fallen-industry",
@@ -534,10 +682,18 @@
         "fallen-industry-mural-pula-vedran-stimac-4.jpg"
       ],
       "text": [
-        "Back 20 years ago, Pula was industrial city. Shipyard and various factories provided a decent life to the half of the city population. Nowadays, the dominant trend of deindustrialization, and economy based only on tourism, is devastating for welfare of Pula's citizens.",
-        "This street art piece is dedicated to shipyard Uljanik which was one of the last bastions of Pula's industry. Continuous and ubiquitous sale of public goods in favor of private interests results in an existential crisis for many of us. The modified pattern of Louis Vuitton represents the shipyard as a pure commodity for sale."
+        "Twenty years ago Pula was an industrial city. The shipyard and various factories provided a decent living for half of the city's population. Today deindustrialisation and an economy based solely on tourism are devastating the welfare of Pula's citizens.",
+        "The piece is dedicated to the Uljanik shipyard, one of the last bastions of Pula's industry. The continuous sell-off of public goods to private interests pushes many of us into existential crisis. The modified Louis Vuitton pattern presents the shipyard as a pure commodity for sale."
       ],
-      "thumb": "fallen-industry-mural-pula-vedran-stimac.jpg"
+      "thumb": "fallen-industry-mural-pula-vedran-stimac.jpg",
+      "hr": {
+        "name": "Mural „Fallen Industry“",
+        "caption": "Pula, Hrvatska (2020)",
+        "text": [
+          "Prije dvadesetak godina Pula je bila industrijski grad. Brodogradilište i brojne tvornice osiguravale su pristojan život polovici stanovnika. Danas deindustrijalizacija i gospodarstvo oslonjeno samo na turizam razaraju dobrobit građana Pule.",
+          "Rad je posvećen brodogradilištu Uljanik, jednom od posljednjih bastiona pulske industrije. Neprekidna rasprodaja javnih dobara u korist privatnih interesa mnoge od nas gura u egzistencijalnu krizu. Izmijenjeni uzorak Louis Vuittona prikazuje brodogradilište kao čistu robu na prodaju."
+        ]
+      }
     },
     {
       "slug": "dragutin-gorjanovic-kramberger",
@@ -550,10 +706,18 @@
         "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-4.jpg"
       ],
       "text": [
-        "Dragutin Gorjanović-Kramberger was a Croatian geologist, paleontologist, and archeologist. His most famous archeological discovery was neanderthal skull „type C“ on Hušnjak Hill near Krapina.",
-        "In this street art piece we can see the exact Neanderthal skull „type C“ as a mask on Gorjanović's face. The mural was painted in Krapina because the importance of heritage he left with work during life."
+        "Dragutin Gorjanović-Kramberger was a Croatian geologist, palaeontologist and archaeologist. His most famous discovery is the Neanderthal skull „type C“ from Hušnjak Hill near Krapina.",
+        "In this piece the Neanderthal skull „type C“ appears as a mask on Gorjanović's face. The mural was painted in Krapina because of the heritage his work left to the town."
       ],
-      "thumb": "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-1.jpg"
+      "thumb": "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-1.jpg",
+      "hr": {
+        "name": "Mural Dragutin Gorjanović Kramberger",
+        "caption": "Krapina, Hrvatska (2015)",
+        "text": [
+          "Dragutin Gorjanović-Kramberger bio je hrvatski geolog, paleontolog i arheolog. Njegovo najpoznatije otkriće je neandertalska lubanja „tip C“ s brda Hušnjakovo kraj Krapine.",
+          "Na ovom radu neandertalska lubanja „tip C“ pojavljuje se kao maska na Gorjanovićevu licu. Mural je naslikan u Krapini zbog nasljeđa koje je njegov rad ostavio gradu."
+        ]
+      }
     },
     {
       "slug": "sean-connery",
@@ -565,10 +729,98 @@
         "sean-connery-mural-umag-vedran-stimac-3.jpg"
       ],
       "text": [
-        "Sir Sean Connery was a Scottish actor. He was the first actor to portray fictional British secret agent James Bond on film, starring in seven Bond films between 1962 and 1983.",
-        "In this street art piece, a portrait of him acting in the movie “From Russia with Love” is shown. Instead of his face there is an opening scene from James Bond movies."
+        "Sir Sean Connery was a Scottish actor and the first to play the British secret agent James Bond on film, starring in seven Bond films between 1962 and 1983.",
+        "The portrait shows him in „From Russia with Love“. In place of his face is the famous gun-barrel opening sequence of the James Bond films."
       ],
-      "thumb": "sean-connery-mural-umag-vedran-stimac-2.jpg"
+      "thumb": "sean-connery-mural-umag-vedran-stimac-2.jpg",
+      "hr": {
+        "name": "Mural Sean Connery",
+        "caption": "Umag, Hrvatska (2016)",
+        "text": [
+          "Sir Sean Connery bio je škotski glumac i prvi filmski James Bond, britanski tajni agent kojeg je utjelovio u sedam filmova između 1962. i 1983.",
+          "Portret ga prikazuje u filmu „Iz Rusije s ljubavlju“. Umjesto lica je slavna uvodna scena filmova o Jamesu Bondu, pogled kroz cijev pištolja."
+        ]
+      }
     }
+  ],
+  "about_hr": [
+    "Nakon diplome na Fakultetu ekonomije i turizma u Puli preselio sam se u Ljubljanu, gdje izrađujem doktorat iz političke antropologije o seljačkim društvenim pokretima. Ilustracijom se aktivno bavim od 2014. godine. Prepoznatljiv sam po crtačkom stilu koji spaja više ilustratorskih tehnika, s velikom pažnjom prema detaljima i slobodom izraza. Osim ilustracijom, bavim se street artom i sitotiskom.",
+    "Glavni motiv, ali i kanal moga ilustratorskog rada je portret. Kroz portret nastojim prenijeti ideje i život osobe koju prikazuje. U svakoj ilustraciji, na zidu ili na papiru, želim izgraditi priču iza nje, pa je svaka ilustracija na neki način društveno angažirana. Tim angažmanom nastojim određene društvene pojave unijeti u javni diskurs."
+  ],
+  "exhibitions_hr": [
+    [
+      "2021",
+      [
+        [
+          "Room of Portraits – samostalna izložba",
+          "Galerija KLET, Zagreb, Hrvatska"
+        ],
+        [
+          "Room of Portraits – samostalna izložba",
+          "Garden Gallery, Subotica, Srbija"
+        ]
+      ]
+    ],
+    [
+      "2020",
+      [
+        [
+          "Room of Portraits – samostalna izložba",
+          "Galerija Brodac, Sarajevo, Bosna i Hercegovina"
+        ]
+      ]
+    ],
+    [
+      "2019",
+      [
+        [
+          "Room of Portraits – samostalna izložba",
+          "Galerija UDAS, Banja Luka, Bosna i Hercegovina"
+        ]
+      ]
+    ],
+    [
+      "2018",
+      [
+        [
+          "Vizkultura „Plakatiranje“ – skupna izložba",
+          "Lauba, Zagreb, Hrvatska"
+        ],
+        [
+          "Room of Portraits – samostalna izložba",
+          "Galerija CAA, Pula, Hrvatska"
+        ],
+        [
+          "Room of Portraits – samostalna izložba",
+          "Galerija Dobra Vaga, Ljubljana, Slovenija"
+        ]
+      ]
+    ],
+    [
+      "2017",
+      [
+        [
+          "Indirekt – samostalna izložba",
+          "Pučko otvoreno učilište Poreč, Poreč, Hrvatska"
+        ],
+        [
+          "„Drawing Politics – Drawing of Politics“ – skupna izložba",
+          "Galerija Karlo Rojc, Pula, Hrvatska"
+        ]
+      ]
+    ],
+    [
+      "2016",
+      [
+        [
+          "„Drawing Politics – Drawing of Politics“ – skupna izložba",
+          "BLOK, Zagreb, Hrvatska"
+        ],
+        [
+          "Međunarodni festival alternativnog kazališta PUF – skupna izložba",
+          "Dnevni boravak Rojca, Pula, Hrvatska"
+        ]
+      ]
+    ]
   ]
 }
