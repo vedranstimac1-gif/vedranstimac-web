@@ -11,6 +11,17 @@ C = json.load(open(os.path.join(ROOT, "content.json"), encoding="utf-8"))
 S = C["site"]
 DOMAIN = "https://www.vedranstimac.com"
 MURAL_PATHS = {"/" + m["slug"] for m in C["street_art"] if isinstance(m, dict)}
+ILL_PATHS = {"/" + m["slug"] for m in C["illustrations"] if isinstance(m, dict)}
+
+def ill_img(it):
+    """Slika ilustracije s opisnim imenom datoteke (bolje za Google slike)."""
+    import shutil
+    name = f"{it['slug']}-portrait-illustration-vedran-stimac.jpg"
+    dst = os.path.join(SITE, "media", "illustrations", name)
+    if not os.path.exists(dst):
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copyfile(os.path.join(SITE, web(it["image"]).lstrip("/")), dst)
+    return "/media/illustrations/" + name
 
 def web(wid):
     stem = wid.split("~")[0] if "~" in wid else os.path.splitext(wid)[0]
@@ -75,7 +86,7 @@ def page(path, title, body, desc=None, cls="", image=None, ld=None):
     def nav(href, label):
         cur = ' aria-current="page"' if path == href else ""
         return f'<li><a href="{href}"{cur}>{label}</a></li>'
-    work_cur = ' class="current"' if path in ("/illustrations", "/street-art") or path in MURAL_PATHS else ""
+    work_cur = ' class="current"' if path in ("/illustrations", "/street-art") or path in MURAL_PATHS or path in ILL_PATHS else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -144,7 +155,13 @@ def gallery(items, kind):
     Murali: {"slug","name","caption","thumb","images","text"} -> klik vodi na stranicu murala."""
     out = []
     for it in items:
-        if isinstance(it, dict):
+        if isinstance(it, dict) and "image" in it:
+            name, caption = it["name"], it["caption"]
+            link = f'<a href="/{it["slug"]}">'
+            img = None
+            src = ill_img(it)
+            alt = f"Portrait illustration of {name} by Vedran Štimac (PoliteBastART)"
+        elif isinstance(it, dict):
             name, caption = it["name"], it["caption"]
             link = f'<a href="/{it["slug"]}">'
             img = it.get("thumb") or it["images"][0]
@@ -155,7 +172,7 @@ def gallery(items, kind):
             link = f'<a href="{orig(img)}" class="lb" data-caption="{e(name)} — {e(caption)}">'
         out.append(
             f'<figure class="item">{link}'
-            f'<img src="{web(img)}" alt="{e(alt)}" loading="lazy" decoding="async"></a>'
+            f'<img src="{src if img is None else web(img)}" alt="{e(alt)}" loading="lazy" decoding="async"></a>'
             f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span></figcaption>'
             f'</figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
@@ -174,6 +191,26 @@ def mural_page(m):
     {text}
     <p class="place">{e(m['caption'])}</p>
     <p class="back"><a href="/street-art">← Street art</a></p>
+  </div>
+</section>"""
+
+def ill_page(it, prev, nxt):
+    src = ill_img(it)
+    text = "".join(f"<p>{e(p)}</p>" for p in it["text"])
+    buy = (f'<p class="buy"><a class="btn" href="{it["etsy"]}" target="_blank" rel="noopener">Buy print on Etsy</a></p>'
+           if it.get("etsy") else
+           f'<p class="buy-note">Prints of other portraits are available in the <a href="{S["shop"]}" target="_blank" rel="noopener">Etsy shop</a>.</p>')
+    return f"""
+<section class="mural illus">
+  <div class="mural-photos n1"><a href="{orig(it['image'])}" class="lb" data-caption="{e(it['name'])} — {e(it['caption'])}">
+    <img src="{src}" alt="Portrait illustration of {e(it['name'])} by Vedran Štimac (PoliteBastART)"></a></div>
+  <div class="mural-text">
+    <h1>{e(it['name'])}</h1>
+    <p class="series">Portrait illustration · Room of Portraits</p>
+    {text}
+    <p class="place">{e(it['caption'])}</p>
+    {buy}
+    <p class="back"><a href="/{prev['slug']}">← {e(prev['name'])}</a> &nbsp;·&nbsp; <a href="/illustrations">All illustrations</a> &nbsp;·&nbsp; <a href="/{nxt['slug']}">{e(nxt['name'])} →</a></p>
   </div>
 </section>"""
 
@@ -221,7 +258,22 @@ write("illustrations/index.html", page("/illustrations", "Portrait Illustrations
   <h1 class="page-title">ILLUSTRATIONS</h1>
   {gallery(C['illustrations'], 'portraits')}
 </section>""", desc='Portrait illustrations from the series "Room of Portraits" by Vedran Štimac: ink on paper, digitally coloured. Louise Michel, Mercedes Sosa, Nikola Tesla, Franz Kafka and more.',
-    image=web(C['illustrations'][0][2])))
+    image=ill_img(C['illustrations'][0])))
+
+# STRANICE ILUSTRACIJA (npr. /louise-michel)
+IL = C["illustrations"]
+for i, it in enumerate(IL):
+    year = it["caption"][:4]
+    art = {"@type": "VisualArtwork", "name": f"Portrait of {it['name']}", "artform": "Illustration",
+           "artMedium": it["caption"][6:], "dateCreated": year, "url": DOMAIN + "/" + it["slug"],
+           "creator": {"@id": DOMAIN + "/#vedran"}, "about": {"@type": "Person", "name": it["name"]},
+           "image": DOMAIN + ill_img(it), "description": " ".join(it["text"])}
+    if it.get("etsy"):
+        art["offers"] = {"@type": "Offer", "url": it["etsy"], "availability": "https://schema.org/InStock"}
+    write(f"{it['slug']}/index.html", page("/" + it["slug"], f"{it['name']} – Portrait Illustration | Vedran Štimac",
+          ill_page(it, IL[i - 1], IL[(i + 1) % len(IL)]),
+          desc=short(f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][-1]),
+          image=ill_img(it), ld=[art]))
 
 # STREET ART
 write("street-art/index.html", page("/street-art", "Murals & Street Art in Croatia and Abroad | Vedran Štimac", f"""
@@ -249,7 +301,7 @@ for m in C["street_art"]:
               image=web(m["images"][0]), ld=[art]))
 
 # SITEMAP
-urls = ["/", "/about", "/illustrations", "/street-art", "/contact"] + sorted(MURAL_PATHS)
+urls = ["/", "/about", "/illustrations", "/street-art", "/contact"] + sorted(MURAL_PATHS) + sorted(ILL_PATHS)
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + "".join(f"  <url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>\n")

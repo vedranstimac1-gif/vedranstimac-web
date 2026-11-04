@@ -104,131 +104,281 @@
     ]
   ],
   "illustrations": [
-    [
-      "Louise Michel",
-      "2021, Ink on paper; Digitally colored",
-      "068c28_61f4044038124d8791c864a53323223e~mv2.png"
-    ],
-    [
-      "Venedikt Jerofejev",
-      "2021, Ink on paper; Digitally colored",
-      "068c28_fa7d4eea8cac4fedb28e9d524d2a3848~mv2.jpg"
-    ],
-    [
-      "Mercedes Sosa",
-      "2021, Ink on paper; Digitally colored",
-      "068c28_421d146f8d5746c7afbf297a1c463d65~mv2.jpg"
-    ],
-    [
-      "Stjepan Filipović",
-      "2021, Digital Illustration",
-      "068c28_9f511278c2204a08960a7f65b8eae6c2~mv2.png"
-    ],
-    [
-      "Diego Armando Maradona",
-      "2021, Ink on paper; Digitally colored",
-      "068c28_9517b8c52d224dec95deb2b79ecd855e~mv2.jpg"
-    ],
-    [
-      "Nikola Tesla",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_15c1a610d1244aeb8e1e3afceed842b9~mv2.jpg"
-    ],
-    [
-      "Yevgeny Zamyatin",
-      "2017, Ink on paper; Digitally colored",
-      "068c28_41e8056026e141539c7b1ef70426e23f~mv2.png"
-    ],
-    [
-      "Galileo Galilei",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_30372bd7356f429bb825e20e4fa76cd0~mv2.jpg"
-    ],
-    [
-      "Quentin Tarantino",
-      "2020, Ink on paper; Digitally colored",
-      "068c28_3d3d4aea1662490fb62f89d5474d9562~mv2.jpg"
-    ],
-    [
-      "Simon Bolivar",
-      "2018, Ink on paper; Digitally colored",
-      "068c28_c7ce5a5f513b4231a92eb85458a9bcfa~mv2.png"
-    ],
-    [
-      "Karlo Rojc",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_969f7611a1204eb7b5c42f895500ac7b~mv2.jpg"
-    ],
-    [
-      "Karl Marx",
-      "2020, Ink on paper; Digitally colored",
-      "068c28_fd8c8515ac9e406a9d15bfaf52ec22a9~mv2.jpg"
-    ],
-    [
-      "Milja Marin",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_0d8672e4f7224b6bb33b3907914861fc~mv2.jpg"
-    ],
-    [
-      "Herman Melville",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_94c0380fa9bd42478a75e0b6508c1157~mv2.jpg"
-    ],
-    [
-      "Franz Kafka",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_ae6fde4070614ee2a6799081aab13462~mv2.jpg"
-    ],
-    [
-      "Ivica Vidović",
-      "2020, Ink on paper; Digitally colored",
-      "068c28_48d4e0b4e769437cba1042a5222b984a~mv2.jpg"
-    ],
-    [
-      "Alfred Hitchcock",
-      "2016, Ink on paper; Digitally colored",
-      "068c28_7e71ebaf353f404185467018acc93cd3~mv2.jpg"
-    ],
-    [
-      "Ernest Hemingway",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_42d99fb5a0fa4d1480a7d16d07bd9cbc~mv2.jpg"
-    ],
-    [
-      "Fidel Castro",
-      "2017, Ink on paper; Digitally colored",
-      "068c28_38916a7695b7487da9c1453b89bd98c8~mv2.jpg"
-    ],
-    [
-      "M.C. Escher",
-      "2018, Ink on paper; Digitally colored",
-      "068c28_0d5b764b4c3f42ec8ba7c4cee50f6d8e~mv2.jpg"
-    ],
-    [
-      "Edgar Allan Poe",
-      "2016, Ink on paper; Digitally colored",
-      "068c28_2d9019a2ddb84ce9aa366cfe9e15638d~mv2.jpg"
-    ],
-    [
-      "Che Guevara",
-      "2020, Ink on paper; Digitally colored",
-      "068c28_e63a10a72fdb446489c783a6a5127683~mv2.jpg"
-    ],
-    [
-      "Miguel de Cervantes",
-      "2016, Ink on paper; Digitally colored",
-      "068c28_79fd52166839413a92974f80f5e9c39c~mv2.png"
-    ],
-    [
-      "Albert Camus",
-      "2016, Ink on paper; Digitally colored",
-      "068c28_f9ffc20502864e34827a117090a99ba1~mv2.jpg"
-    ],
-    [
-      "Vladimir Nabokov",
-      "2015, Ink on paper; Digitally colored",
-      "068c28_588992f539d3485f93be61ea22522a4f~mv2.jpg"
-    ]
+    {
+      "slug": "louise-michel",
+      "name": "Louise Michel",
+      "caption": "2021, Ink on paper; Digitally colored",
+      "image": "068c28_61f4044038124d8791c864a53323223e~mv2.png",
+      "etsy": null,
+      "text": [
+        "Louise Michel (1830–1905) was a French teacher, anarchist and one of the most famous figures of the Paris Commune of 1871.",
+        "Inside the portrait the Communards rise behind the banner “Vive la Commune”: the uprising she fought for, carried in her head long after its defeat."
+      ]
+    },
+    {
+      "slug": "venedikt-jerofejev",
+      "name": "Venedikt Jerofejev",
+      "caption": "2021, Ink on paper; Digitally colored",
+      "image": "068c28_fa7d4eea8cac4fedb28e9d524d2a3848~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Venedikt Yerofeyev (1938–1990) was a Soviet writer, best known for the prose poem “Moscow–Petushki”, a drunken train journey through late-Soviet life.",
+        "The Kremlin’s onion domes turn into bottles labelled Moscow and Petushki – the beginning and the end of the book’s journey."
+      ]
+    },
+    {
+      "slug": "mercedes-sosa",
+      "name": "Mercedes Sosa",
+      "caption": "2021, Ink on paper; Digitally colored",
+      "image": "068c28_421d146f8d5746c7afbf297a1c463d65~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Mercedes Sosa (1935–2009) was an Argentine singer, often called the voice of Latin America and of the Nueva Canción movement.",
+        "In place of her face is a heart drifting among clouds, watched over by the Sun of May – the songs she sang for the people of the continent."
+      ]
+    },
+    {
+      "slug": "stjepan-filipovic",
+      "name": "Stjepan Filipović",
+      "caption": "2021, Digital Illustration",
+      "image": "068c28_9f511278c2204a08960a7f65b8eae6c2~mv2.png",
+      "etsy": null,
+      "text": [
+        "Stjepan Filipović (1916–1942) was a Yugoslav partisan and People’s Hero. Moments before his execution in Valjevo he raised his arms and called out against fascism – a gesture captured in one of the best-known photographs of the Second World War.",
+        "In the portrait his gesture multiplies: people in the streets and windows raise their arms with him."
+      ]
+    },
+    {
+      "slug": "diego-maradona",
+      "name": "Diego Armando Maradona",
+      "caption": "2021, Ink on paper; Digitally colored",
+      "image": "068c28_9517b8c52d224dec95deb2b79ecd855e~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Diego Armando Maradona (1960–2020) was an Argentine footballer and one of the greatest players of all time.",
+        "The “Hand of God” rises with the ball as a halo, a stairway leads through it towards a red star – the street kid who climbed to the sky of world football."
+      ]
+    },
+    {
+      "slug": "nikola-tesla",
+      "name": "Nikola Tesla",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_15c1a610d1244aeb8e1e3afceed842b9~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/794314645",
+      "text": [
+        "Nikola Tesla (1856–1943) was an inventor and engineer whose work on alternating current shaped the modern world.",
+        "His greatest inventions are drawn as one intricate mechanism inside his head, based on original vintage engineering plans. Hand-drawn dotwork, about 30–40 hours of work."
+      ]
+    },
+    {
+      "slug": "yevgeny-zamyatin",
+      "name": "Yevgeny Zamyatin",
+      "caption": "2017, Ink on paper; Digitally colored",
+      "image": "068c28_41e8056026e141539c7b1ef70426e23f~mv2.png",
+      "etsy": null,
+      "text": [
+        "Yevgeny Zamyatin (1884–1937) was a Russian writer whose novel “We” is one of the first great dystopias of the 20th century.",
+        "A glass cell closes around an eye and the globe – the transparent houses of the One State, where every citizen is always watched."
+      ]
+    },
+    {
+      "slug": "galileo-galilei",
+      "name": "Galileo Galilei",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_30372bd7356f429bb825e20e4fa76cd0~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/780540490",
+      "text": [
+        "Galileo Galilei (1564–1642) was an astronomer and physicist, often called the father of modern science.",
+        "Inside his head are the heliocentric model he defended and the Leaning Tower of Pisa – his birthplace and the setting of his legendary experiments with gravity."
+      ]
+    },
+    {
+      "slug": "quentin-tarantino",
+      "name": "Quentin Tarantino",
+      "caption": "2020, Ink on paper; Digitally colored",
+      "image": "068c28_3d3d4aea1662490fb62f89d5474d9562~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Quentin Tarantino (b. 1963) is an American film director and screenwriter.",
+        "His face breaks into sharp geometric shards in the warm, saturated colours of his films, with a splash of blood on the collar."
+      ]
+    },
+    {
+      "slug": "simon-bolivar",
+      "name": "Simon Bolivar",
+      "caption": "2018, Ink on paper; Digitally colored",
+      "image": "068c28_c7ce5a5f513b4231a92eb85458a9bcfa~mv2.png",
+      "etsy": null,
+      "text": [
+        "Simón Bolívar (1783–1830), “El Libertador”, led the independence struggles of much of South America against Spanish rule.",
+        "The map of South America becomes a fist gripping a musket – a continent taking its freedom into its own hands."
+      ]
+    },
+    {
+      "slug": "karlo-rojc",
+      "name": "Karlo Rojc",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_969f7611a1204eb7b5c42f895500ac7b~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/779552180",
+      "text": [
+        "Karlo Rojc was a Yugoslav national hero from Pula whose life spanned two world wars. After the First World War he served as an officer aboard the submarine Smeli, symbolised in the portrait by an hourglass – fleeting time and a lasting legacy.",
+        "The former army barracks in Pula named after him is today the Rojc social centre, home to music and art collectives."
+      ]
+    },
+    {
+      "slug": "karl-marx",
+      "name": "Karl Marx",
+      "caption": "2020, Ink on paper; Digitally colored",
+      "image": "068c28_fd8c8515ac9e406a9d15bfaf52ec22a9~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/784817416",
+      "text": [
+        "Karl Marx (1818–1883) was a philosopher, economist and author of “The Communist Manifesto” and “Capital”.",
+        "Inside the portrait is the world he wrote about: the city, the workers and their struggle for equality. Hand-drawn dotwork."
+      ]
+    },
+    {
+      "slug": "milja-marin",
+      "name": "Milja Marin",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_0d8672e4f7224b6bb33b3907914861fc~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Milja Marin was a Yugoslav partisan whose wartime portrait became one of the iconic images of women in the antifascist struggle.",
+        "Under the partisan cap with a red star her face is broken into geometric shapes, with a rifle over her shoulder."
+      ]
+    },
+    {
+      "slug": "herman-melville",
+      "name": "Herman Melville",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_94c0380fa9bd42478a75e0b6508c1157~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/794302959",
+      "text": [
+        "Herman Melville (1819–1891) was an American novelist, author of “Moby-Dick”.",
+        "The whale fills his silhouette and its eye replaces his own – the line between creator and creation disappears. Captain Ahab stands with his harpoon, and two card suits float in the sea: luck shapes the fate of even the most determined."
+      ]
+    },
+    {
+      "slug": "franz-kafka",
+      "name": "Franz Kafka",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_ae6fde4070614ee2a6799081aab13462~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/798072867",
+      "text": [
+        "Franz Kafka (1883–1924) was a writer from Prague, author of “The Metamorphosis” and “The Trial”.",
+        "Like the other portraits in the series, his work is drawn on his face: insects and human figures echo Gregor Samsa’s transformation. Dotwork, about 30–40 hours of work."
+      ]
+    },
+    {
+      "slug": "ivica-vidovic",
+      "name": "Ivica Vidović",
+      "caption": "2020, Ink on paper; Digitally colored",
+      "image": "068c28_48d4e0b4e769437cba1042a5222b984a~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/779565190",
+      "text": [
+        "Ivica Vidović (1939–2011) was a Croatian actor, remembered as Servantes in the series “Naše malo misto” – the dreamer who returns from Chile to a small Dalmatian town to translate Don Quixote.",
+        "The portrait captures the character’s grotesque heroism and quiet dignity: idealism, art and quiet rebellion."
+      ]
+    },
+    {
+      "slug": "alfred-hitchcock",
+      "name": "Alfred Hitchcock",
+      "caption": "2016, Ink on paper; Digitally colored",
+      "image": "068c28_7e71ebaf353f404185467018acc93cd3~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/794305207",
+      "text": [
+        "Alfred Hitchcock (1899–1980) was a film director known as the master of suspense.",
+        "Inside his famous silhouette are scenes from three of his films – Vertigo, Rear Window and The Birds."
+      ]
+    },
+    {
+      "slug": "ernest-hemingway",
+      "name": "Ernest Hemingway",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_42d99fb5a0fa4d1480a7d16d07bd9cbc~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Ernest Hemingway (1899–1961) was an American writer and Nobel Prize laureate.",
+        "Half of his face opens into the sea of “The Old Man and the Sea”: the old fisherman in his boat, the great marlin and the sun over the water."
+      ]
+    },
+    {
+      "slug": "fidel-castro",
+      "name": "Fidel Castro",
+      "caption": "2017, Ink on paper; Digitally colored",
+      "image": "068c28_38916a7695b7487da9c1453b89bd98c8~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/794360433",
+      "text": [
+        "Fidel Castro (1926–2016) was the leader of the Cuban Revolution.",
+        "The portrait is built from symbols of the revolution, including the Moncada Barracks, where the movement began in 1953. Above it stands his line that a revolution is not a bed of roses, but a struggle between the future and the past."
+      ]
+    },
+    {
+      "slug": "mc-escher",
+      "name": "M.C. Escher",
+      "caption": "2018, Ink on paper; Digitally colored",
+      "image": "068c28_0d5b764b4c3f42ec8ba7c4cee50f6d8e~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "M. C. Escher (1898–1972) was a Dutch graphic artist known for impossible constructions and endless tessellations.",
+        "His face dissolves into interlocking fish, in the spirit of his own transforming patterns."
+      ]
+    },
+    {
+      "slug": "edgar-allan-poe",
+      "name": "Edgar Allan Poe",
+      "caption": "2016, Ink on paper; Digitally colored",
+      "image": "068c28_2d9019a2ddb84ce9aa366cfe9e15638d~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Edgar Allan Poe (1809–1849) was an American writer and poet, master of the macabre.",
+        "The raven sits on his brow next to a pale woman’s face – the lost Lenore of his most famous poem."
+      ]
+    },
+    {
+      "slug": "che-guevara",
+      "name": "Che Guevara",
+      "caption": "2020, Ink on paper; Digitally colored",
+      "image": "068c28_e63a10a72fdb446489c783a6a5127683~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/780435726",
+      "text": [
+        "Ernesto “Che” Guevara (1928–1967) was a revolutionary and one of the leaders of the Cuban Revolution.",
+        "Inside his head are factory chimneys and a worker and a farmer who together bring down the beast of capital – a picture of class struggle and solidarity. Hand-drawn dotwork, about 30–40 hours of work."
+      ]
+    },
+    {
+      "slug": "miguel-de-cervantes",
+      "name": "Miguel de Cervantes",
+      "caption": "2016, Ink on paper; Digitally colored",
+      "image": "068c28_79fd52166839413a92974f80f5e9c39c~mv2.png",
+      "etsy": null,
+      "text": [
+        "Miguel de Cervantes (1547–1616) was a Spanish writer, author of “Don Quixote”.",
+        "Don Quixote charges with his lance again – this time not at windmills, but at smoking factory chimneys."
+      ]
+    },
+    {
+      "slug": "albert-camus",
+      "name": "Albert Camus",
+      "caption": "2016, Ink on paper; Digitally colored",
+      "image": "068c28_f9ffc20502864e34827a117090a99ba1~mv2.jpg",
+      "etsy": "https://www.etsy.com/listing/794345491",
+      "text": [
+        "Albert Camus (1913–1960) was a French writer and philosopher of the absurd, author of “The Myth of Sisyphus”.",
+        "A chain ties him to the boulder Sisyphus pushes uphill. Once Sisyphus accepts the absurdity of life, the task becomes lighter and the burden is shared."
+      ]
+    },
+    {
+      "slug": "vladimir-nabokov",
+      "name": "Vladimir Nabokov",
+      "caption": "2015, Ink on paper; Digitally colored",
+      "image": "068c28_588992f539d3485f93be61ea22522a4f~mv2.jpg",
+      "etsy": null,
+      "text": [
+        "Vladimir Nabokov (1899–1977) was a Russian-American novelist and a passionate lepidopterist.",
+        "A butterfly sits on his forehead among fragments and objects from his novels, assembled like a collector’s case."
+      ]
+    }
   ],
   "street_art": [
     {

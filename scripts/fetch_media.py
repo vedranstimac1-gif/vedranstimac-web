@@ -35,7 +35,7 @@ def get(url, dest):
 
 jobs = []
 images = [C["media"]["about_portrait"], C["media"]["about_mural"], C["media"]["og"]]
-images += [x[2] for x in C["illustrations"]]
+images += [x["image"] if isinstance(x, dict) else x[2] for x in C["illustrations"]]
 for x in C["street_art"]:
     if isinstance(x, list):
         images.append(x[2])
