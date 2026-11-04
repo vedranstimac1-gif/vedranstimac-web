@@ -2,7 +2,7 @@
 """Generira statične HTML stranice u site/ iz content.json.
 Sadržaj se mijenja u content.json, zatim: python3 scripts/build.py
 """
-import json, os
+import json, os, re
 from html import escape as e
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,10 +33,41 @@ def analytics():
     return ("\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" "
             f"data-cf-beacon='{{\"token\": \"{e(t)}\"}}'></script>")
 
-def page(path, title, body, desc=None, cls=""):
+PERSON = {
+    "@type": "Person",
+    "@id": DOMAIN + "/#vedran",
+    "name": "Vedran Štimac",
+    "alternateName": "PoliteBastART",
+    "jobTitle": "Illustrator and muralist",
+    "description": "Croatian illustrator, muralist and street artist from Pula, based in Zagreb.",
+    "url": DOMAIN + "/",
+    "image": DOMAIN + "/media/web/068c28_e11b793a722f4617a98d37fa5b3d1205.jpg",
+    "email": "mailto:" + S["email"],
+    "birthPlace": {"@type": "Place", "name": "Pula, Croatia"},
+    "homeLocation": {"@type": "Place", "name": "Zagreb, Croatia"},
+    "knowsAbout": ["Illustration", "Murals", "Street art", "Portrait illustration", "Screen printing"],
+    "sameAs": [S["social"]["instagram"], S["social"]["behance"], S["social"]["facebook"], S["shop"]],
+}
+
+def place_year(caption):
+    """'Pula, Croatia (2025)' -> ('Pula', 'Croatia', '2025')"""
+    m = re.match(r"\s*([^,]+),\s*([^(]+?)\s*\((\d{4})\)", caption)
+    return (m.group(1).strip(), m.group(2).strip(), m.group(3)) if m else (caption, "", "")
+
+def short(text, n=155):
+    if len(text) <= n:
+        return text
+    return text[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+
+def page(path, title, body, desc=None, cls="", image=None, ld=None):
     desc = desc or S["description"]
-    full_title = f"{title} | {S['title']}" if title else f"Vedran Štimac | {S['title']}"
+    full_title = title
     url = DOMAIN + path
+    image = DOMAIN + (image or "/media/share.jpg")
+    graph = [PERSON, {"@type": "WebSite", "@id": DOMAIN + "/#site", "url": DOMAIN + "/",
+                      "name": "PoliteBastART – Vedran Štimac", "publisher": {"@id": DOMAIN + "/#vedran"}}]
+    graph += ld or []
+    ldjson = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False).replace("</", "<\\/")
     social = "".join(
         f'<li><a href="{S["social"][k]}" target="_blank" rel="noopener" aria-label="{k.title()}">'
         f'<svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[k]}</svg></a></li>'
@@ -58,8 +89,14 @@ def page(path, title, body, desc=None, cls=""):
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
 <meta property="og:site_name" content="{S['title']}">
-<meta property="og:image" content="{DOMAIN}/media/orig/{C['media']['og']}">
+<meta property="og:image" content="{image}">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(full_title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{image}">
+<meta name="author" content="Vedran Štimac">
+<script type="application/ld+json">{ldjson}</script>
 <meta name="google-site-verification" content="{S['google_site_verification']}">
 <meta name="p:domain_verify" content="{S['pinterest_verify']}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -111,12 +148,14 @@ def gallery(items, kind):
             name, caption = it["name"], it["caption"]
             link = f'<a href="/{it["slug"]}">'
             img = it.get("thumb") or it["images"][0]
+            alt = f"{name}, {caption} – mural by Vedran Štimac"
         else:
             name, caption, img = it
+            alt = f"Portrait illustration of {name} by Vedran Štimac (PoliteBastART)"
             link = f'<a href="{orig(img)}" class="lb" data-caption="{e(name)} — {e(caption)}">'
         out.append(
             f'<figure class="item">{link}'
-            f'<img src="{web(img)}" alt="{e(name)}" loading="lazy" decoding="async"></a>'
+            f'<img src="{web(img)}" alt="{e(alt)}" loading="lazy" decoding="async"></a>'
             f'<figcaption><strong>{e(name)}</strong><span>{e(caption)}</span></figcaption>'
             f'</figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
@@ -124,8 +163,8 @@ def gallery(items, kind):
 def mural_page(m):
     photos = "".join(
         f'<a href="{orig(w)}" class="lb" data-caption="{e(m["name"])} — {e(m["caption"])}">'
-        f'<img src="{web(w)}" alt="{e(m["name"])}" loading="lazy" decoding="async"></a>'
-        for w in m["images"])
+        f'<img src="{web(w)}" alt="{e(m["name"])}, {e(m["caption"])} – photo {i} of {len(m["images"])}" loading="lazy" decoding="async"></a>'
+        for i, w in enumerate(m["images"], 1))
     text = "".join(f"<p>{e(p)}</p>" for p in m["text"])
     return f"""
 <section class="mural">
@@ -146,12 +185,14 @@ def write(rel, html):
 M = C["media"]
 
 # HOME
-write("index.html", page("/", None, f"""
+write("index.html", page("/", "Vedran Štimac (PoliteBastART) – Illustrator & Muralist, Croatia", f"""
+<h1 class="sr-only">Vedran Štimac (PoliteBastART) – illustrator and muralist from Pula, Croatia</h1>
 <section class="hero-video">
   <video autoplay muted loop playsinline preload="auto" poster="/media/home-poster.jpg">
     <source src="/media/home.mp4" type="video/mp4">
   </video>
-</section>""", cls="home"))
+</section>""", cls="home",
+    desc="Portrait illustrations and murals by Vedran Štimac (PoliteBastART), illustrator and street artist from Pula, based in Zagreb. Prints available on Etsy."))
 
 # ABOUT
 ex = []
@@ -159,7 +200,7 @@ for year, items in C["exhibitions"]:
     ex.append(f"<h3>{year}</h3>")
     for t, place in items:
         ex.append(f"<p>{e(t)}<br>{e(place)}</p>")
-write("about/index.html", page("/about", "ABOUT", f"""
+write("about/index.html", page("/about", "About Vedran Štimac – Illustrator & Street Artist", f"""
 <section class="about">
   <div class="about-text">
     <h1>ABOUT</h1>
@@ -171,17 +212,19 @@ write("about/index.html", page("/about", "ABOUT", f"""
     <h2>EXHIBITIONS</h2>
     {''.join(ex)}
   </div>
-</section>"""))
+</section>""", desc="Vedran Štimac (PoliteBastART) is an illustrator, muralist and screen printer from Pula, Croatia. Socially engaged portraits on paper and on walls; exhibitions across the region.",
+    image=web(M['about_portrait']), ld=[{"@type": "ProfilePage", "url": DOMAIN + "/about", "mainEntity": {"@id": DOMAIN + "/#vedran"}}]))
 
 # ILLUSTRATIONS
-write("illustrations/index.html", page("/illustrations", "ILLUSTRATIONS", f"""
+write("illustrations/index.html", page("/illustrations", "Portrait Illustrations – Room of Portraits | Vedran Štimac", f"""
 <section class="work">
   <h1 class="page-title">ILLUSTRATIONS</h1>
   {gallery(C['illustrations'], 'portraits')}
-</section>""", desc='Illustrations from series "Room of Portraits".'))
+</section>""", desc='Portrait illustrations from the series "Room of Portraits" by Vedran Štimac: ink on paper, digitally coloured. Louise Michel, Mercedes Sosa, Nikola Tesla, Franz Kafka and more.',
+    image=web(C['illustrations'][0][2])))
 
 # STREET ART
-write("street-art/index.html", page("/street-art", "STREET ART", f"""
+write("street-art/index.html", page("/street-art", "Murals & Street Art in Croatia and Abroad | Vedran Štimac", f"""
 <section class="banner">
   <video autoplay muted loop playsinline preload="auto" poster="/media/street-art-poster.jpg">
     <source src="/media/street-art.mp4" type="video/mp4">
@@ -190,13 +233,20 @@ write("street-art/index.html", page("/street-art", "STREET ART", f"""
 </section>
 <section class="work">
   {gallery(C['street_art'], 'murals')}
-</section>""", desc="Murals and street art by Vedran Štimac (PoliteBastART)."))
+</section>""", desc="Murals and street art by Vedran Štimac (PoliteBastART) in Pula, Zagreb, Krapina, Sisak, Umag, Ljubljana and Buenos Aires – each with its story and photos.",
+    image=web(C['street_art'][0].get('thumb') or C['street_art'][0]['images'][0])))
 
 # STRANICE MURALA (iste adrese kao na Wixu, npr. /julije-knifer)
 for m in C["street_art"]:
     if isinstance(m, dict):
-        write(f"{m['slug']}/index.html", page("/" + m["slug"], m["name"], mural_page(m),
-              desc=m["text"][0][:155] if m.get("text") else None))
+        city, country, year = place_year(m["caption"])
+        art = {"@type": "VisualArtwork", "name": m["name"], "artform": "Mural", "url": DOMAIN + "/" + m["slug"],
+               "creator": {"@id": DOMAIN + "/#vedran"}, "dateCreated": year,
+               "locationCreated": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": city, "addressCountry": country}},
+               "image": [DOMAIN + web(w) for w in m["images"]], "description": " ".join(m["text"])}
+        write(f"{m['slug']}/index.html", page("/" + m["slug"], f"{m['name']} – {city}, {year} | Vedran Štimac", mural_page(m),
+              desc=short(f"{m['name']} by Vedran Štimac, {city} {year}. " + m["text"][0]),
+              image=web(m["images"][0]), ld=[art]))
 
 # SITEMAP
 urls = ["/", "/about", "/illustrations", "/street-art", "/contact"] + sorted(MURAL_PATHS)
@@ -205,15 +255,15 @@ open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     + "".join(f"  <url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 
 # CONTACT
-write("contact/index.html", page("/contact", "CONTACT", f"""
+write("contact/index.html", page("/contact", "Contact – Commission a Mural or Illustration | Vedran Štimac", f"""
 <section class="contact">
   <h1>HAVE A PROJECT<br>IN MIND?</h1>
   <p>e-mail: <a href="mailto:{S['email']}">{S['email']}</a></p>
   <p>studio: {S['studio']}</p>
-</section>"""))
+</section>""", desc="Commission a mural, portrait or illustration from Vedran Štimac (PoliteBastART). E-mail vedran.stimac1@gmail.com, studio at Ilica 73, Zagreb."))
 
 # 404
-write("404.html", page("/404", "NOT FOUND", """
+write("404.html", page("/404", "Page not found | PoliteBastART", """
 <section class="contact">
   <h1>PAGE NOT FOUND</h1>
   <p><a href="/">Back to home</a></p>
