@@ -480,6 +480,77 @@
       }
     },
     {
+      "slug": "vladimir-nazor",
+      "name": "Mural of Vladimir Nazor",
+      "caption": "Pazin, Croatia (2025)",
+      "images": [
+        "vladimir-nazor-mural-pazin-vedran-stimac-1.jpg",
+        "vladimir-nazor-mural-pazin-vedran-stimac-2.jpg",
+        "vladimir-nazor-mural-pazin-vedran-stimac-3.jpg",
+        "vladimir-nazor-mural-pazin-vedran-stimac-4.jpg",
+        "vladimir-nazor-mural-pazin-vedran-stimac-5.jpg"
+      ],
+      "text": [
+        "Vladimir Nazor (1876–1949) was one of the most important Croatian poets and writers. His story “Veli Jože” – about a gentle giant from Motovun who breaks free from his masters – became a symbol of the Istrian people and their struggle for freedom.",
+        "The mural was painted on the façade of Vladimir Nazor Primary School in Pazin, during six days in the sun. Inside the portrait is Veli Jože carrying a sheaf of wheat past a hilltop Istrian town, and women harvesting in the fields – the land and the people Nazor wrote about."
+      ],
+      "hr": {
+        "name": "Mural Vladimir Nazor",
+        "caption": "Pazin, Hrvatska (2025)",
+        "text": [
+          "Vladimir Nazor (1876. – 1949.) jedan je od najvažnijih hrvatskih pjesnika i pisaca. Njegova pripovijest „Veli Jože“ – o dobroćudnom divu iz Motovuna koji se oslobađa svojih gospodara – postala je simbol istarskog naroda i njegove borbe za slobodu.",
+          "Mural je naslikan na pročelju Osnovne škole Vladimira Nazora u Pazinu, kroz šest dana na suncu. Unutar portreta je Veli Jože koji nosi snop žita pokraj istarskog gradića na brežuljku i žene koje žanju u polju – zemlja i ljudi o kojima je Nazor pisao."
+        ]
+      },
+      "thumb": "vladimir-nazor-mural-pazin-vedran-stimac-1.jpg"
+    },
+    {
+      "slug": "frida-kahlo",
+      "name": "Mural of Frida Kahlo",
+      "caption": "Zagreb, Croatia (2024)",
+      "images": [
+        "frida-kahlo-mural-zagreb-vedran-stimac-1.jpg",
+        "frida-kahlo-mural-zagreb-vedran-stimac-2.jpg"
+      ],
+      "text": [
+        "Frida Kahlo (1907–1954) was a Mexican painter, known for her self-portraits, her bold use of colour and the symbols of Mexican folk culture.",
+        "The mural, painted at Studio-galerija Klet in Zagreb, is based on my illustration of her. A bird spreads its wings across her face, leaves grow on her cheeks and flowers crown her hair, all set against a sun-like halo."
+      ],
+      "hr": {
+        "name": "Mural Frida Kahlo",
+        "caption": "Zagreb, Hrvatska (2024)",
+        "text": [
+          "Frida Kahlo (1907. – 1954.) bila je meksička slikarica, poznata po autoportretima, hrabrim bojama i simbolima meksičke narodne kulture.",
+          "Mural, naslikan u Studio-galeriji Klet u Zagrebu, nastao je prema mojoj ilustraciji. Ptica širi krila preko njezina lica, na obrazima rastu listovi, a kosu krune cvjetovi – sve ispred aureole nalik suncu."
+        ]
+      },
+      "thumb": "frida-kahlo-mural-zagreb-vedran-stimac-1.jpg"
+    },
+    {
+      "slug": "karlo-rojc-mural",
+      "name": "Mural of Karlo Rojc",
+      "caption": "Pula, Croatia (2023)",
+      "images": [
+        "karlo-rojc-mural-pula-vedran-stimac-1.jpg",
+        "karlo-rojc-mural-pula-vedran-stimac-2.jpg",
+        "karlo-rojc-mural-pula-vedran-stimac-3.jpg",
+        "karlo-rojc-mural-pula-vedran-stimac-4.jpg"
+      ],
+      "text": [
+        "Karlo Rojc was a national hero from Pula. The former army barracks named after him is today the Karlo Rojc community centre, home to dozens of associations, music and art collectives.",
+        "The mural was painted on the centre's building during the Kistom kroz zid street art festival. Inside the portrait are the submarine and the hourglass from my illustration of Rojc, together with the façade of the building that carries his name."
+      ],
+      "hr": {
+        "name": "Mural Karlo Rojc",
+        "caption": "Pula, Hrvatska (2023)",
+        "text": [
+          "Karlo Rojc bio je narodni heroj iz Pule. Bivša vojarna koja nosi njegovo ime danas je Društveni centar Karlo Rojc, dom desetaka udruga te glazbenih i umjetničkih kolektiva.",
+          "Mural je naslikan na zgradi centra tijekom festivala ulične umjetnosti Kistom kroz zid. Unutar portreta su podmornica i pješčani sat s moje ilustracije Rojca, zajedno s pročeljem zgrade koja nosi njegovo ime."
+        ]
+      },
+      "thumb": "karlo-rojc-mural-pula-vedran-stimac-1.jpg"
+    },
+    {
       "slug": "julije-knifer",
       "name": "Mural of Julije Knifer",
       "caption": "Zagreb, Croatia (2021)",
@@ -487,7 +558,10 @@
         "julije-knifer-mural-zagreb-vedran-stimac-1.jpg",
         "julije-knifer-mural-zagreb-vedran-stimac-2.jpg",
         "julije-knifer-mural-zagreb-vedran-stimac-3.jpg",
-        "julije-knifer-mural-zagreb-vedran-stimac-4.jpg"
+        "julije-knifer-mural-zagreb-vedran-stimac-4.jpg",
+        "julije-knifer-mural-zagreb-vedran-stimac-5.jpg",
+        "julije-knifer-mural-zagreb-vedran-stimac-6.jpg",
+        "julije-knifer-mural-zagreb-vedran-stimac-7.jpg"
       ],
       "text": [
         "Julije Knifer (23 April 1924 – 7 December 2004) was a Croatian abstract painter and a founding member of the Gorgona Group, a Croatian art collective of the 1960s.",
@@ -583,7 +657,9 @@
         "rossana-rossanda-mural-pula-vedran-stimac-1.jpg",
         "rossana-rossanda-mural-pula-vedran-stimac-2.jpg",
         "rossana-rossanda-mural-pula-vedran-stimac-3.jpg",
-        "rossana-rossanda-mural-pula-vedran-stimac-4.jpg"
+        "rossana-rossanda-mural-pula-vedran-stimac-4.jpg",
+        "rossana-rossanda-mural-pula-vedran-stimac-5.jpg",
+        "rossana-rossanda-mural-pula-vedran-stimac-6.jpg"
       ],
       "text": [
         "Rossana Rossanda (1924–2020) was born in Pula, Croatia, during the early consolidation of Benito Mussolini's Fascist regime. She was a journalist, writer, feminist and a leading figure in Italian politics. She took part in the partisan movement, was a militant member of the PCI (from which she was expelled for her criticism of Soviet authoritarianism) and sat in the Italian parliament from 1963 to 1968. She was one of the founders of the influential paper „il manifesto“, which remained the most critical daily in Berlusconi's Italy.",
@@ -607,7 +683,10 @@
         "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-1.jpg",
         "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-2.jpg",
         "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-3.jpg",
-        "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-4.jpg"
+        "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-4.jpg",
+        "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-5.jpg",
+        "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-6.jpg",
+        "cities-for-people-not-for-profit-mural-ljubljana-vedran-stimac-7.jpg"
       ],
       "text": [
         "Gentrification and rising rents driven by the free market affect huge numbers of people. Even in the so-called „developed“ West, many cannot afford decent housing. Young people still live with their parents, the „lucky“ ones share flats with two or more roommates, and many cannot afford even that and end up homeless.",
@@ -628,16 +707,21 @@
       "name": "Mural of \"Solidarity with The People of Palestine\"",
       "caption": "Sisak, Croatia (2021)",
       "images": [
+        "solidarity-with-palestine-mural-sisak-vedran-stimac-5.jpg",
+        "solidarity-with-palestine-mural-sisak-vedran-stimac-6.jpg",
         "solidarity-with-palestine-mural-sisak-vedran-stimac-1.jpg",
         "solidarity-with-palestine-mural-sisak-vedran-stimac-2.jpg",
         "solidarity-with-palestine-mural-sisak-vedran-stimac-3.jpg",
-        "solidarity-with-palestine-mural-sisak-vedran-stimac-4.jpg"
+        "solidarity-with-palestine-mural-sisak-vedran-stimac-4.jpg",
+        "solidarity-with-palestine-mural-sisak-vedran-stimac-7.jpg",
+        "solidarity-with-palestine-mural-sisak-vedran-stimac-8.jpg",
+        "solidarity-with-palestine-mural-sisak-vedran-stimac-9.jpg"
       ],
       "text": [
         "For decades the State of Israel has carried out systematic oppression and ethnic cleansing of the Palestinian population: land grabs, forced displacement, cuts to electricity and water supplies, blockades of goods and services (for example, a ban on importing Covid vaccines for medical staff), and the bombing of the Gaza Strip, where in 2021 alone 256 people were killed, among them 66 children and 40 women. In the face of injustice it is important not to stay silent, because silence means standing on the side of the oppressor.",
         "The mural was painted on a residential building in Sisak as a call to end Israeli aggression, as solidarity with the people of Palestine, and as a hope for a brighter, more peaceful and freer future for everyone in Palestine and Israel who suffers violence and daily injustice. The silhouette of the portrait belongs to Leila Khaled, Palestinian activist and intellectual."
       ],
-      "thumb": "solidarity-with-palestine-mural-sisak-vedran-stimac.jpg",
+      "thumb": "solidarity-with-palestine-mural-sisak-vedran-stimac-5.jpg",
       "hr": {
         "name": "Mural „Solidarity with The People of Palestine“",
         "caption": "Sisak, Hrvatska (2021)",
@@ -652,16 +736,18 @@
       "name": "Mural of \"Solidarity with Rojava Revolution\"",
       "caption": "Pula, Croatia (2020)",
       "images": [
+        "rojava-revolution-mural-pula-vedran-stimac-5.jpg",
         "rojava-revolution-mural-pula-vedran-stimac-1.jpg",
         "rojava-revolution-mural-pula-vedran-stimac-2.jpg",
         "rojava-revolution-mural-pula-vedran-stimac-3.jpg",
-        "rojava-revolution-mural-pula-vedran-stimac-4.jpg"
+        "rojava-revolution-mural-pula-vedran-stimac-4.jpg",
+        "rojava-revolution-mural-pula-vedran-stimac-6.jpg"
       ],
       "text": [
         "The Rojava Revolution is a political upheaval and military conflict in northern Syria, known among Kurds as Western Kurdistan or Rojava. A new kind of society is being built there: surrounded by ISIS and hostile Turkish forces, the people of the Rojava cantons are creating one of the most radically progressive societies on the planet today.",
         "The dominant colours of the mural – red, green and yellow – are the colours of Rojava's flag. The three female portraits symbolise solidarity among the women of Syria and feminism, the cornerstone of Rojava's democratic confederalism."
       ],
-      "thumb": "rojava-revolution-mural-pula-vedran-stimac-1.jpg",
+      "thumb": "rojava-revolution-mural-pula-vedran-stimac-5.jpg",
       "hr": {
         "name": "Mural „Solidarity with Rojava Revolution“",
         "caption": "Pula, Hrvatska (2020)",
@@ -703,7 +789,8 @@
         "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-1.jpg",
         "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-2.jpg",
         "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-3.jpg",
-        "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-4.jpg"
+        "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-4.jpg",
+        "dragutin-gorjanovic-kramberger-mural-krapina-vedran-stimac-5.jpg"
       ],
       "text": [
         "Dragutin Gorjanović-Kramberger was a Croatian geologist, palaeontologist and archaeologist. His most famous discovery is the Neanderthal skull „type C“ from Hušnjak Hill near Krapina.",

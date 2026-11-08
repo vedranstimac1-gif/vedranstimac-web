@@ -378,9 +378,9 @@ for lang in LANGS:
 <section class="work">
   {gallery(SA, 'murals', lang)}
 </section>""",
-          ("Murali i street art Vedrana Štimca (PoliteBastART) u Puli, Zagrebu, Krapini, Sisku, Umagu, Ljubljani i Buenos Airesu – svaki sa svojom pričom i fotografijama."
+          ("Murali i street art Vedrana Štimca (PoliteBastART) u Puli, Pazinu, Zagrebu, Krapini, Sisku, Umagu, Ljubljani i Buenos Airesu – svaki sa svojom pričom i fotografijama."
            if hr else
-           "Murals and street art by Vedran Štimac (PoliteBastART) in Pula, Zagreb, Krapina, Sisak, Umag, Ljubljana and Buenos Aires – each with its story and photos."),
+           "Murals and street art by Vedran Štimac (PoliteBastART) in Pula, Pazin, Zagreb, Krapina, Sisak, Umag, Ljubljana and Buenos Aires – each with its story and photos."),
           image=web(SA[0].get("thumb") or SA[0]["images"][0]))
 
     for m in SA:
