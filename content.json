@@ -1164,6 +1164,20 @@
       }
     },
     {
+      "slug": "bloomsday-2026-poster",
+      "name": "Bloomsday 2026",
+      "client": "Tourist Board of the City of Pula",
+      "kind": "Festival poster",
+      "year": "2026",
+      "images": [
+        "bloomsday-2026-poster-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "plakat festivala",
+        "client": "Turistička zajednica grada Pule"
+      }
+    },
+    {
       "slug": "the-atlantic-cult-of-maga",
       "name": "The End Will Come for the Cult of MAGA",
       "client": "The Atlantic",
@@ -1210,7 +1224,7 @@
     {
       "slug": "bloomsday-2025-poster",
       "name": "Bloomsday 2025",
-      "client": "Bloomsday Pula",
+      "client": "Tourist Board of the City of Pula",
       "kind": "Festival poster",
       "year": "2025",
       "images": [
@@ -1218,7 +1232,7 @@
       ],
       "hr": {
         "kind": "plakat festivala",
-        "client": "Bloomsday Pula"
+        "client": "Turistička zajednica grada Pule"
       }
     },
     {
@@ -1319,7 +1333,7 @@
     {
       "slug": "bloomsday-2024-poster",
       "name": "Bloomsday 2024",
-      "client": "Bloomsday Pula",
+      "client": "Tourist Board of the City of Pula",
       "kind": "Festival poster",
       "year": "2024",
       "images": [
@@ -1327,7 +1341,7 @@
       ],
       "hr": {
         "kind": "plakat festivala",
-        "client": "Bloomsday Pula"
+        "client": "Turistička zajednica grada Pule"
       }
     },
     {
@@ -1390,7 +1404,7 @@
     {
       "slug": "bloomsday-2023-poster",
       "name": "Bloomsday 2023",
-      "client": "Bloomsday Pula",
+      "client": "Tourist Board of the City of Pula",
       "kind": "Festival poster",
       "year": "2023",
       "images": [
@@ -1398,7 +1412,7 @@
       ],
       "hr": {
         "kind": "plakat festivala",
-        "client": "Bloomsday Pula"
+        "client": "Turistička zajednica grada Pule"
       }
     },
     {
