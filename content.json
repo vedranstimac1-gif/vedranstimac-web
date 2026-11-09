@@ -1799,6 +1799,19 @@
       }
     },
     {
+      "slug": "resort-san-servolo",
+      "name": "Resort San Servolo",
+      "client": "Resort San Servolo",
+      "year": "2026",
+      "images": [
+        "resort-san-servolo-mural-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "name": "Resort San Servolo",
+        "client": "Resort San Servolo"
+      }
+    },
+    {
       "slug": "super-klet-bar-counter",
       "name": "Super Klet bar counter",
       "client": "Studio-galerija Super Klet",
