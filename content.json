@@ -1579,16 +1579,35 @@
       }
     },
     {
+      "slug": "pula-film-festival-stairwell",
+      "name": "Pula Film Festival",
+      "client": "Pula Film Festival",
+      "year": "2024",
+      "images": [
+        "pula-film-festival-stairwell-mural-vedran-stimac.jpg"
+      ],
+      "text": [
+        "A stairwell mural celebrating the Pula Film Festival, held since 1954."
+      ],
+      "hr": {
+        "name": "Pulski filmski festival",
+        "client": "Pulski filmski festival",
+        "text": [
+          "Mural na stubištu posvećen Pulskom filmskom festivalu, koji se održava od 1954."
+        ]
+      }
+    },
+    {
       "slug": "jarun-six-structures",
       "name": "Six structures on Jarun",
-      "client": "",
+      "client": "City of Zagreb",
       "year": "2023",
       "text": [
         "Together with fellow artists, we painted six structures on Jarun."
       ],
       "hr": {
         "name": "Šest objekata na Jarunu",
-        "client": "",
+        "client": "Grad Zagreb",
         "text": [
           "S kolegama umjetnicima oslikali smo šest objekata na Jarunu."
         ]
@@ -1645,25 +1664,6 @@
         "nikola-tesla-mural-atrium-bar-mural-vedran-stimac-1.jpg",
         "nikola-tesla-mural-atrium-bar-mural-vedran-stimac-2.jpg"
       ]
-    },
-    {
-      "slug": "pula-film-festival-stairwell",
-      "name": "Pula Film Festival",
-      "client": "",
-      "year": "",
-      "images": [
-        "pula-film-festival-stairwell-mural-vedran-stimac.jpg"
-      ],
-      "text": [
-        "A stairwell mural celebrating the Pula Film Festival, held since 1954."
-      ],
-      "hr": {
-        "name": "Pulski filmski festival",
-        "client": "",
-        "text": [
-          "Mural na stubištu posvećen Pulskom filmskom festivalu, koji se održava od 1954."
-        ]
-      }
     }
   ]
 }
