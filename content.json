@@ -1342,20 +1342,6 @@
       }
     },
     {
-      "slug": "godisnji-banket-bratovstine-grobara-book-cover",
-      "name": "Mathias Énard – Godišnji banket bratovštine grobara",
-      "client": "Fraktura",
-      "kind": "Book cover",
-      "year": "",
-      "images": [
-        "godisnji-banket-bratovstine-grobara-book-cover-illustration-vedran-stimac.jpg"
-      ],
-      "hr": {
-        "kind": "naslovnica knjige",
-        "client": "Fraktura"
-      }
-    },
-    {
       "slug": "clear-kayak-t-shirt",
       "name": "Clear Kayak",
       "client": "Clear Kayak Tours",
@@ -1425,6 +1411,22 @@
       "hr": {
         "kind": "etiketa piva",
         "client": "Art Park Pula"
+      }
+    },
+    {
+      "slug": "godisnji-banket-bratovstine-grobara-book-cover",
+      "name": "Mathias Énard – Godišnji banket bratovštine grobara",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "2022",
+      "images": [
+        "godisnji-banket-bratovstine-grobara-book-cover-illustration-vedran-stimac-1.jpg",
+        "godisnji-banket-bratovstine-grobara-book-cover-illustration-vedran-stimac-2.jpg",
+        "godisnji-banket-bratovstine-grobara-book-cover-illustration-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
       }
     },
     {
