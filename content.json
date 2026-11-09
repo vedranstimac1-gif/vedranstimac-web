@@ -1428,6 +1428,20 @@
       }
     },
     {
+      "slug": "dosta-je-rezova",
+      "name": "Dosta je rezova",
+      "client": "Le Monde diplomatique",
+      "kind": "Illustration in solidarity with BLOK",
+      "year": "2019",
+      "images": [
+        "dosta-je-rezova-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija solidarnosti s BLOK-om",
+        "client": "Le Monde diplomatique"
+      }
+    },
+    {
       "slug": "odiseja-magazine-illustrations",
       "name": "Odiseja",
       "client": "Časopis Odiseja",
