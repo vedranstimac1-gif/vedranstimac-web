@@ -15,6 +15,12 @@ S = C["site"]
 M = C["media"]
 DOMAIN = "https://www.vedranstimac.com"
 HR_PUBLIC = bool(S.get("hr_public"))
+
+def ver(f):
+    """Kratki otisak datoteke – kad se CSS/JS promijeni, preglednik ga ponovo učita."""
+    import hashlib
+    return hashlib.md5(open(os.path.join(SITE, f), "rb").read()).hexdigest()[:8]
+V_CSS, V_JS = ver("style.css"), ver("site.js")
 LANGS = ("en", "hr")
 
 # ---------- adrese ----------
@@ -174,7 +180,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v={V_CSS}">
 </head>
 <body class="{cls}">
 <header class="site-header">
@@ -207,7 +213,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
   <p>{S['copyright']}</p>
   <ul class="social">{social}</ul>
 </footer>
-<script src="/site.js" defer></script>{analytics()}
+<script src="/site.js?v={V_JS}" defer></script>{analytics()}
 </body>
 </html>
 """
