@@ -1179,6 +1179,20 @@
       }
     },
     {
+      "slug": "ckz-the-balkan-corridor",
+      "name": "The Balkan Corridor – 10 Years After",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2025",
+      "images": [
+        "ckz-the-balkan-corridor-cover-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "bloomsday-2025-poster",
       "name": "Bloomsday 2025",
       "client": "Bloomsday Pula",
