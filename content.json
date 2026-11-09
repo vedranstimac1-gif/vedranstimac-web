@@ -16,7 +16,8 @@
     "cf_analytics_token": "61cdd8ce783f4bc997a04fd4cce58a83",
     "hr_public": true,
     "commissions_public": true,
-    "commission_ill_public": true
+    "commission_ill_public": true,
+    "show_illustration_text": true
   },
   "media": {
     "og": "068c28_0ffe17edfcc4408da70cd3e668ac666e~mv2.gif",
@@ -178,7 +179,8 @@
       },
       "extra": [
         "labinska-republika-portrait-illustration-vedran-stimac-2.jpg"
-      ]
+      ],
+      "not_portrait": true
     },
     {
       "slug": "jean-paul-sartre",

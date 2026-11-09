@@ -464,9 +464,10 @@ for lang in LANGS:
             title = f"{nm} – ilustracija | Vedran Štimac (PoliteBastART)"
             desc = f"{nm} – ilustracija, autor Vedran Štimac (PoliteBastART), {cap}. Iz serije Room of Portraits."
         else:
-            title = f"{nm} – Illustration | Vedran Štimac (PoliteBastART)"
-            desc = (short(f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][-1])
-                    if S.get("show_illustration_text") else
+            kind_en = "Illustration" if it.get("not_portrait") else "Portrait Illustration"
+            title = f"{nm} – {kind_en} | Vedran Štimac (PoliteBastART)"
+            desc = (short(f"{nm} – {kind_en.lower()} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][0])
+                    if (S.get("show_illustration_text") and it["text"]) else
                     f"{nm} – illustration by Vedran Štimac (PoliteBastART), {year}. {it['caption'][6:]}. From the series Room of Portraits.")
         build(it["slug"], lang, title, ill_page(it, IL[i - 1], IL[(i + 1) % len(IL)], lang), desc,
               image=web(it["image"]), ld=[art])
@@ -622,13 +623,26 @@ open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write(page("404", "e
   <p><a href="/">Back to home</a> · <a href="/hr/">Natrag na početnu</a></p>
 </section>""", "Page not found."))
 
-# SITEMAP
+# SITEMAP (sa slikama za Google Images)
+IMG = {}
+for it in C["illustrations"]:
+    IMG[it["slug"]] = [web(w) for w in [it["image"]] + it.get("extra", [])]
+for m in C["street_art"]:
+    IMG[m["slug"]] = [web(w) for w in m["images"]]
+for x in CPROJ:
+    IMG[x["slug"]] = [web(w) for w in x["images"]]
+IMG["paintings"] = [web(w["image"]) for w in C["paintings"]["items"]]
+IMG["about"] = [web(M["about_portrait"])]
+def urlxml(k, lang):
+    imgs = "".join(f"<image:image><image:loc>{DOMAIN}{u}</image:loc></image:image>" for u in IMG.get(k, []))
+    return f"  <url><loc>{DOMAIN}{P(k, lang)}</loc>{imgs}</url>\n"
 keys = (["home", "about", "work", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
         + (["commissions", "c-mur"] + sorted(COMM - CILLS) if COMM_PUBLIC else [])
         + (["c-ill"] + sorted(CILLS) if CILL_PUBLIC else []))
-urls = [P(k, "en") for k in keys] + ([P(k, "hr") for k in keys] if HR_PUBLIC else [])
+pairs = [(k, "en") for k in keys] + ([(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
-    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    + "".join(f"  <url><loc>{DOMAIN}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+    'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+    + "".join(urlxml(k, l) for k, l in pairs) + "</urlset>\n")
 
 print("Stranice generirane u", SITE, "| HR javno:", HR_PUBLIC)
