@@ -68,9 +68,9 @@ T = {
         "locale": "en_US",
     },
     "hr": {
-        "tagline": "Ilustracije i murali Vedrana Štimca", "home": "POČETNA", "about": "O MENI", "work": "RADOVI",
-        "illustrations": "ILUSTRACIJE", "street-art": "MURALI", "paintings": "SLIKE", "contact": "KONTAKT",
-        "commissions": "PO NARUDŽBI", "c-ill": "ILUSTRACIJE", "c-mur": "MURALI",
+        "tagline": "Slikarstvo, muralizam i ilustracije Vedrana Štimca", "home": "POČETNA", "about": "O MENI", "work": "AUTORSKI RAD",
+        "illustrations": "ILUSTRACIJE", "street-art": "STREET ART", "paintings": "SLIKE", "contact": "KONTAKT",
+        "commissions": "RAD PO NARUDŽBI", "c-ill": "ILUSTRACIJE", "c-mur": "MURALI",
         "c-ill_h": "ILUSTRACIJE PO NARUDŽBI", "c-mur_h": "MURALI PO NARUDŽBI",
         "back_c-ill": "← Ilustracije po narudžbi", "back_c-mur": "← Murali po narudžbi", "client": "Naručitelj",
         "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "MURALI",
@@ -379,8 +379,7 @@ for lang in LANGS:
 
     # POČETNA
     build("home", lang,
-          "Vedran Štimac (PoliteBastART) – ilustrator i muralist, Pula / Zagreb" if hr else
-          "Vedran Štimac (PoliteBastART) – Illustrator & Muralist, Croatia",
+          "Vedran Štimac (PoliteBastART)",
           f"""
 <h1 class="sr-only">{"Vedran Štimac (PoliteBastART) – ilustrator i muralist iz Pule" if hr else "Vedran Štimac (PoliteBastART) – illustrator and muralist from Pula, Croatia"}</h1>
 <section class="hero-video">
@@ -388,9 +387,9 @@ for lang in LANGS:
     <source src="/media/home.mp4" type="video/mp4">
   </video>
 </section>""",
-          ("Portretne ilustracije i murali Vedrana Štimca (PoliteBastART), ilustratora i muralista iz Pule sa sjedištem u Zagrebu."
+          ("Slike, murali i ilustracije Vedrana Štimca (PoliteBastART), Pula / Zagreb."
            if hr else
-           "Portrait illustrations and murals by Vedran Štimac (PoliteBastART), illustrator and street artist from Pula, based in Zagreb."),
+           "Paintings, murals and illustrations by Vedran Štimac (PoliteBastART), Pula / Zagreb."),
           cls="home")
 
     # O MENI
