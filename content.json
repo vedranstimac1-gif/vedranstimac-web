@@ -1428,6 +1428,29 @@
       }
     },
     {
+      "slug": "odiseja-magazine-illustrations",
+      "name": "Odiseja",
+      "client": "Časopis Odiseja",
+      "kind": "Magazine illustrations",
+      "year": "2018",
+      "images": [
+        "odiseja-magazine-illustrations-vedran-stimac-1.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-2.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-3.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-4.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-5.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-6.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-7.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-8.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-9.jpg",
+        "odiseja-magazine-illustrations-vedran-stimac-10.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracije za časopis",
+        "client": "Časopis Odiseja"
+      }
+    },
+    {
       "slug": "dj-borka-ment-festival",
       "name": "dj Borka",
       "client": "MENT Festival Ljubljana",
