@@ -1154,7 +1154,7 @@
       "kind": "Festival poster",
       "year": "2026",
       "images": [
-        "monte-libric-2026-poster-illustration-vedran-stimac-1.jpg",
+        "monte-libric-2026-poster-illustration-vedran-stimac-1-crop.jpg",
         "monte-libric-2026-poster-illustration-vedran-stimac-2.jpg",
         "monte-libric-2026-poster-illustration-vedran-stimac-3.jpg"
       ],
@@ -1185,8 +1185,7 @@
       "kind": "Festival poster",
       "year": "2025",
       "images": [
-        "bloomsday-2025-poster-illustration-vedran-stimac-1.jpg",
-        "bloomsday-2025-poster-illustration-vedran-stimac-2.jpg"
+        "bloomsday-2025-poster-illustration-vedran-stimac-1-crop.jpg"
       ],
       "hr": {
         "kind": "plakat festivala",
@@ -1230,8 +1229,8 @@
       "kind": "Magazine cover",
       "year": "2024",
       "images": [
-        "ckz-utelesenost-komunikacijskih-praks-illustration-vedran-stimac.jpg",
-        "ckz-utelesenost-komunikacijskih-praks-illustration-vedran-stimac-2.jpg"
+        "ckz-utelesenost-komunikacijskih-praks-illustration-vedran-stimac-crop.jpg",
+        "ckz-utelesenost-komunikacijskih-praks-illustration-vedran-stimac-2-crop.jpg"
       ],
       "hr": {
         "kind": "naslovnica časopisa",
@@ -1279,7 +1278,7 @@
       "kind": "Magazine cover",
       "year": "2024",
       "images": [
-        "ckz-feminizem-umetnost-literatura-illustration-vedran-stimac.jpg"
+        "ckz-feminizem-umetnost-literatura-illustration-vedran-stimac-crop.jpg"
       ],
       "hr": {
         "kind": "naslovnica časopisa",
@@ -1335,7 +1334,7 @@
       "kind": "Magazine cover",
       "year": "2024",
       "images": [
-        "ckz-kino001-illustration-vedran-stimac.jpg"
+        "ckz-kino001-illustration-vedran-stimac-crop.jpg"
       ],
       "hr": {
         "kind": "naslovnica časopisa",
@@ -1421,7 +1420,7 @@
       "kind": "Book cover",
       "year": "2023",
       "images": [
-        "antifasizam-book-cover-illustration-vedran-stimac.jpg"
+        "antifasizam-book-cover-illustration-vedran-stimac-crop.jpg"
       ],
       "hr": {
         "kind": "naslovnica knjige",
