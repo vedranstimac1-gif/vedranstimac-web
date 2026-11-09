@@ -1428,6 +1428,20 @@
       }
     },
     {
+      "slug": "le-monde-diplomatique-2017",
+      "name": "Le Monde diplomatique",
+      "client": "Le Monde diplomatique",
+      "kind": "Editorial illustration",
+      "year": "2017",
+      "images": [
+        "le-monde-diplomatique-2017-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija za članak",
+        "client": "Le Monde diplomatique"
+      }
+    },
+    {
       "slug": "motovun-film-festival-poster-2016",
       "name": "Gdje ste bili 2016?",
       "client": "Motovun Film Festival",
