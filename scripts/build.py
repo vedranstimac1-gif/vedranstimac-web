@@ -308,7 +308,10 @@ def ill_page(it, prev, nxt, lang):
 def cmeta(x, lang):
     """Opis narudžbe: samo 'Naručitelj, godina' (bez mjesta)."""
     hr = lang == "hr"
-    parts = [p for p in (L(x, "client", lang) if x.get("client") else "",
+    client = L(x, "client", lang) if x.get("client") else ""
+    if "name" in x and client == L(x, "name", lang):  # naziv = naručitelj: ne ponavljaj
+        client = ""
+    parts = [p for p in (client,
                          (x["year"] + ("." if hr else "")) if x.get("year") else "") if p]
     return ", ".join(parts)
 

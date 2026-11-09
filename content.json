@@ -1411,6 +1411,20 @@
         "kind": "etiketa piva",
         "client": "Art Park Pula"
       }
+    },
+    {
+      "slug": "dj-duplo-illustration",
+      "name": "DJ DUPLO",
+      "client": "DJ DUPLO",
+      "kind": "Illustration",
+      "year": "2015",
+      "images": [
+        "dj-duplo-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija",
+        "client": "DJ DUPLO"
+      }
     }
   ],
   "commission_murals": [
