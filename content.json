@@ -1415,6 +1415,20 @@
       }
     },
     {
+      "slug": "antifasizam-book-cover",
+      "name": "Antifašizam",
+      "client": "Centralna Europa",
+      "kind": "Book cover",
+      "year": "2023",
+      "images": [
+        "antifasizam-book-cover-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Izdavačka kuća Centralna Europa"
+      }
+    },
+    {
       "slug": "ckz-amargi",
       "name": "Amargi",
       "client": "ČKZ",
