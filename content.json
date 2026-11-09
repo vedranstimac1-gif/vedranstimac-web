@@ -1428,6 +1428,25 @@
       }
     },
     {
+      "slug": "ckz-okoljski-boji",
+      "name": "Okoljski boji",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2020",
+      "images": [
+        "ckz-okoljski-boji-cover-vedran-stimac-1.jpg",
+        "ckz-okoljski-boji-cover-vedran-stimac-2.jpg",
+        "ckz-okoljski-boji-cover-vedran-stimac-3.jpg",
+        "ckz-okoljski-boji-cover-vedran-stimac-4.jpg",
+        "ckz-okoljski-boji-cover-vedran-stimac-5.jpg",
+        "ckz-okoljski-boji-cover-vedran-stimac-6.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "dosta-je-rezova",
       "name": "Dosta je rezova",
       "client": "Le Monde diplomatique",
