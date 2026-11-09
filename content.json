@@ -1259,7 +1259,7 @@
       "name": "Le Monde diplomatique",
       "client": "Le Monde diplomatique",
       "kind": "Editorial illustrations",
-      "year": "",
+      "year": "2017",
       "images": [
         "le-monde-diplomatique-illustrations-illustration-vedran-stimac-1.jpg",
         "le-monde-diplomatique-illustrations-illustration-vedran-stimac-2.jpg",
@@ -1319,7 +1319,7 @@
       "name": "Thoreau",
       "client": "The Atlantic",
       "kind": "Editorial illustration",
-      "year": "",
+      "year": "2023",
       "images": [
         "the-atlantic-thoreau-illustration-vedran-stimac.jpg"
       ],
@@ -1349,8 +1349,8 @@
       "kind": "T-shirt design",
       "year": "2023",
       "images": [
-        "clear-kayak-t-shirt-illustration-vedran-stimac-1.jpg",
-        "clear-kayak-t-shirt-illustration-vedran-stimac-2.jpg"
+        "clear-kayak-t-shirt-illustration-vedran-stimac-2.jpg",
+        "clear-kayak-t-shirt-illustration-vedran-stimac-1.jpg"
       ],
       "hr": {
         "kind": "dizajn majice",
@@ -1402,16 +1402,16 @@
     {
       "slug": "art-park-beer-label",
       "name": "Art Park beer",
-      "client": "Art Park Pula",
+      "client": "Pivovara Medvedgrad",
       "kind": "Beer label",
-      "year": "",
+      "year": "2024",
       "images": [
-        "art-park-beer-label-illustration-vedran-stimac-1.jpg",
-        "art-park-beer-label-illustration-vedran-stimac-2.jpg"
+        "art-park-beer-label-illustration-vedran-stimac-2.jpg",
+        "art-park-beer-label-illustration-vedran-stimac-1.jpg"
       ],
       "hr": {
         "kind": "etiketa piva",
-        "client": "Art Park Pula"
+        "client": "Pivovara Medvedgrad"
       }
     },
     {
