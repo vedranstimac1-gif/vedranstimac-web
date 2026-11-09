@@ -16,7 +16,7 @@
     "cf_analytics_token": "61cdd8ce783f4bc997a04fd4cce58a83",
     "hr_public": false,
     "commissions_public": true,
-    "commission_ill_public": false
+    "commission_ill_public": true
   },
   "media": {
     "og": "068c28_0ffe17edfcc4408da70cd3e668ac666e~mv2.gif",
@@ -1569,7 +1569,7 @@
     {
       "slug": "pulska-filmska-tvornica-posters",
       "name": "Pulska filmska tvornica",
-      "client": "Pulska filmska tvornica",
+      "client": "Pula Film Factory",
       "kind": "Posters",
       "year": "2022",
       "images": [
@@ -1692,7 +1692,7 @@
     {
       "slug": "odiseja-magazine-illustrations",
       "name": "Odiseja",
-      "client": "Časopis Odiseja",
+      "client": "Odiseja Magazine",
       "kind": "Magazine illustrations",
       "year": "2018",
       "images": [
@@ -1803,7 +1803,7 @@
     {
       "slug": "drugi-izlaz-poster",
       "name": "Drugi izlaz",
-      "client": "Kazalište Dr. Inat",
+      "client": "Dr. Inat Theatre",
       "kind": "Theatre poster",
       "year": "2017",
       "images": [
