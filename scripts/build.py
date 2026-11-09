@@ -305,6 +305,13 @@ def ill_page(it, prev, nxt, lang):
   </div>
 </section>"""
 
+def cfull(x, lang):
+    """Naručitelj i godina, uvijek oboje (za galeriju bez naslova)."""
+    hr = lang == "hr"
+    parts = [p for p in (L(x, "client", lang) if x.get("client") else "",
+                         (x["year"] + ("." if hr else "")) if x.get("year") else "") if p]
+    return ", ".join(parts)
+
 def cmeta(x, lang):
     """Opis narudžbe: samo 'Naručitelj, godina' (bez mjesta)."""
     hr = lang == "hr"
@@ -329,7 +336,7 @@ def cgallery(items, kind, lang):
         out.append(
             f'<figure class="item"><a href="{P(slug, lang)}">'
             f'<img src="{src}" alt="{e(name)}{" – " + e(cap) if cap else ""}, Vedran Štimac" loading="lazy" decoding="async"></a>'
-            f'<figcaption><strong>{e(name)}</strong><span>{e(cap)}</span></figcaption></figure>')
+            f'<figcaption><span>{e(cfull(x, lang))}</span></figcaption></figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
 
 def cproj_page(x, back, lang):
