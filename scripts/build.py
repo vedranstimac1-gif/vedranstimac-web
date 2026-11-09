@@ -303,16 +303,10 @@ def ill_page(it, prev, nxt, lang):
 </section>"""
 
 def cmeta(x, lang):
-    """Opis narudžbe: 'Naručitelj · vrsta · godina'."""
+    """Opis narudžbe: samo 'Naručitelj, godina' (bez mjesta)."""
     hr = lang == "hr"
-    parts = []
-    if "kind" in x:
-        parts.append(L(x, "kind", lang) if hr else x["kind"])
-    if "kind" not in x:  # mural: 'Mjesto (godina)', kao kod ostalih murala
-        where = L(x, "place", lang) or L(x, "client", lang)
-        return f"{where} ({x['year']})" if x.get("year") else where
-    if x.get("year"):
-        parts.append(x["year"] + ("." if hr else ""))
+    parts = [p for p in (L(x, "client", lang) if x.get("client") else "",
+                         (x["year"] + ("." if hr else "")) if x.get("year") else "") if p]
     return ", ".join(parts)
 
 def cgallery(items, kind, lang):
@@ -320,40 +314,38 @@ def cgallery(items, kind, lang):
     for x in items:
         if "ref" in x:  # mural koji već postoji među muralima
             m = next(s for s in C["street_art"] if s["slug"] == x["ref"])
-            name, cap = L(m, "name", lang), L(m, "caption", lang)
+            name, cap = L(m, "name", lang), cmeta(x, lang)
             src = web(m.get("thumb") or m["images"][0])
             slug = m["slug"]
         else:
             name, cap = L(x, "name", lang), cmeta(x, lang)
-            client = L(x, "client", lang)
-            if client and client != name and kind == "portraits":
-                cap = client + " · " + cap
             src, slug = web(x["images"][0]), x["slug"]
         out.append(
             f'<figure class="item"><a href="{P(slug, lang)}">'
-            f'<img src="{src}" alt="{e(name)} – {e(cap)}, Vedran Štimac" loading="lazy" decoding="async"></a>'
+            f'<img src="{src}" alt="{e(name)}{" – " + e(cap) if cap else ""}, Vedran Štimac" loading="lazy" decoding="async"></a>'
             f'<figcaption><strong>{e(name)}</strong><span>{e(cap)}</span></figcaption></figure>')
     return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
 
 def cproj_page(x, back, lang):
     t = T[lang]
-    name, client, meta = L(x, "name", lang), L(x, "client", lang), cmeta(x, lang)
+    name, meta = L(x, "name", lang), cmeta(x, lang)
     n = len(x["images"])
-    label = f"{name} — {client + ', ' if client and client != name else ''}{meta}"
+    label = name + (f" — {meta}" if meta else "")
     photos = "".join(
         f'<a href="{orig(w)}" class="lb" data-caption="{e(label)}">'
         f'<img src="{web(w)}" alt="{e(name)}, Vedran Štimac – {i}/{n}" loading="lazy" decoding="async"></a>'
         for i, w in enumerate(x["images"], 1))
     paras = "".join(f"<p>{e(p)}</p>" for p in L(x, "text", lang)) if x.get("text") else ""
-    cl = f'<p class="series">{t["client"]}: {e(client)}</p>' if client and client != name else ""
+    kind = f'<p class="series">{e(L(x, "kind", lang))}</p>' if x.get("kind") else ""
+    place = f'<p class="place">{e(meta)}</p>' if meta else ""
     return f"""
 <section class="mural illus">
   <div class="mural-photos n{n}">{photos}</div>
   <div class="mural-text">
     <h1>{e(name)}</h1>
-    {cl}
+    {kind}
     {paras}
-    <p class="place">{e(meta)}</p>
+    {place}
     <p class="back"><a href="{P(back, lang)}">{t['back_' + back]}</a></p>
   </div>
 </section>"""
@@ -559,8 +551,8 @@ for lang in LANGS:
 <section class="work">
   {cgallery(CMUR, 'murals', lang)}
 </section>""",
-          ("Murali po narudžbi Vedrana Štimca: Pomorski i povijesni muzej Istre, osnovne škole u Puli, Pazinu i Ogulinu, Retail park Rovinj, Jarun, Općina Medulin." if hr else
-           "Commissioned murals by Vedran Štimac for the Historical and Maritime Museum of Istria, schools in Pula, Pazin and Ogulin, Retail Park Rovinj, Jarun and the Municipality of Medulin."),
+          ("Murali po narudžbi Vedrana Štimca: Pomorski i povijesni muzej Istre, osnovne škole, Max City, Retail park Rovinj, Općina Marčana, Općina Medulin, Brist Olive Oil." if hr else
+           "Commissioned murals by Vedran Štimac for the Historical and Maritime Museum of Istria, elementary schools, Max City, Retail Park Rovinj, the municipalities of Marčana and Medulin, and Brist Olive Oil."),
           image=web(CMUR[0]["images"][0]))
     for back, items, form in (("c-ill", CILL, "Illustration"), ("c-mur", [m for m in CMUR if "slug" in m], "Mural")):
         for x in items:
@@ -571,11 +563,13 @@ for lang in LANGS:
                 art["dateCreated"] = x["year"]
             if client:
                 art["sourceOrganization"] = {"@type": "Organization", "name": client}
+            what = L(x, "kind", lang) if x.get("kind") else ("mural po narudžbi" if hr else "commissioned mural")
             who = f" {'za' if hr else 'for'} {client}" if client and client != name else ""
-            desc = f"{name} – {meta}{who}. {'Autor' if hr else 'By'} Vedran Štimac (PoliteBastART)."
+            yr = f", {x['year']}{'.' if hr else ''}" if x.get("year") else ""
+            desc = f"{name} – {what}{who}{yr}. {'Autor' if hr else 'By'} Vedran Štimac (PoliteBastART)."
             if x.get("text"):
                 desc = short(desc + " " + L(x, "text", lang)[0])
-            build(x["slug"], lang, f"{name} – {meta} | Vedran Štimac", cproj_page(x, back, lang), desc,
+            build(x["slug"], lang, f"{name}{' – ' + meta if meta else ''} | Vedran Štimac", cproj_page(x, back, lang), desc,
                   image=web(x["images"][0]), ld=[art])
 
     # KONTAKT

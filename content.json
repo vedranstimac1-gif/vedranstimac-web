@@ -1384,18 +1384,16 @@
     {
       "slug": "antoine-de-ville-pula",
       "name": "Antoine De Ville",
-      "client": "Pomorski i povijesni muzej Istre (Historical and Maritime Museum of Istria)",
-      "place": "Pula, Croatia",
+      "client": "Historical and Maritime Museum of Istria",
       "year": "2026",
       "text": [
-        "A large-format piece inspired by Antoine De Ville, the French military engineer who drew the plans for the Venetian fortress on the hill above Pula, the Kaštel, home of the Historical and Maritime Museum of Istria."
+        "A large-format piece inspired by Antoine De Ville, the French military engineer who designed the Venetian fortress Kaštel, today home of the Historical and Maritime Museum of Istria."
       ],
       "hr": {
         "name": "Antoine De Ville",
         "client": "Pomorski i povijesni muzej Istre",
-        "place": "Pula, Hrvatska",
         "text": [
-          "Rad velikog formata inspiriran Antoineom De Villeom, francuskim vojnim inženjerom koji je nacrtao planove mletačke tvrđave na brežuljku iznad Pule, Kaštela, u kojem je danas Pomorski i povijesni muzej Istre."
+          "Rad velikog formata inspiriran Antoineom De Villeom, francuskim vojnim inženjerom koji je projektirao mletačku tvrđavu Kaštel, u kojoj je danas Pomorski i povijesni muzej Istre."
         ]
       },
       "images": [
@@ -1406,10 +1404,49 @@
       ]
     },
     {
+      "slug": "max-city-landscape",
+      "name": "Max City",
+      "client": "Max City",
+      "year": "2026",
+      "images": [
+        "max-city-landscape-mural-vedran-stimac-1.jpg",
+        "max-city-landscape-mural-vedran-stimac-2.jpg"
+      ],
+      "text": [
+        "A landscape of olive groves, vineyards and cypresses on the terrace of Max City."
+      ],
+      "hr": {
+        "name": "Max City",
+        "client": "Max City",
+        "text": [
+          "Pejzaž s maslinicima, vinogradima i čempresima na terasi Max Cityja."
+        ]
+      }
+    },
+    {
+      "slug": "restoran-plocica",
+      "name": "Restoran Pločica",
+      "client": "Restoran Pločica",
+      "year": "2026",
+      "images": [
+        "restoran-plocica-mural-vedran-stimac-1.jpg",
+        "restoran-plocica-mural-vedran-stimac-2.jpg"
+      ],
+      "text": [
+        "A mural for the restaurant's terrace, with ingredients and kitchen tools."
+      ],
+      "hr": {
+        "name": "Restoran Pločica",
+        "client": "Restoran Pločica",
+        "text": [
+          "Mural na terasi restorana, s namirnicama i kuhinjskim priborom."
+        ]
+      }
+    },
+    {
       "slug": "super-klet-bar-counter",
       "name": "Super Klet bar counter",
       "client": "Studio-galerija Super Klet",
-      "place": "Zagreb, Croatia",
       "year": "2025",
       "text": [
         "A new bar counter painted in the fileteado porteño style, the ornamental lettering tradition of Buenos Aires."
@@ -1417,7 +1454,6 @@
       "hr": {
         "name": "Šank Super Klet",
         "client": "Studio-galerija Super Klet",
-        "place": "Zagreb, Hrvatska",
         "text": [
           "Novi šank oslikan u stilu fileteado porteño, ornamentalnog oslikavanja i natpisa iz Buenos Airesa."
         ]
@@ -1432,26 +1468,28 @@
       ]
     },
     {
-      "ref": "imagine-the-better-world"
+      "ref": "imagine-the-better-world",
+      "client": "OŠ Vidikovac",
+      "year": "2025"
     },
     {
-      "ref": "vladimir-nazor"
+      "ref": "vladimir-nazor",
+      "client": "OŠ Vladimira Nazora",
+      "year": "2025"
     },
     {
       "slug": "ivana-brlic-mazuranic-ogulin",
       "name": "Ivana Brlić-Mažuranić",
-      "client": "OŠ Ivane Brlić-Mažuranić, Ogulin",
-      "place": "Ogulin, Croatia",
+      "client": "OŠ Ivane Brlić-Mažuranić",
       "year": "2025",
       "text": [
-        "A mural on the Ivana Brlić-Mažuranić Elementary School in Ogulin, the writer's hometown, with motifs from her Croatian Tales of Long Ago. The mural is dedicated to the children of Palestine."
+        "A mural on the Ivana Brlić-Mažuranić Elementary School, with motifs from her Croatian Tales of Long Ago. The mural is dedicated to the children of Palestine."
       ],
       "hr": {
         "name": "Ivana Brlić-Mažuranić",
-        "client": "OŠ Ivane Brlić-Mažuranić, Ogulin",
-        "place": "Ogulin, Hrvatska",
+        "client": "OŠ Ivane Brlić-Mažuranić",
         "text": [
-          "Mural na Osnovnoj školi Ivane Brlić-Mažuranić u Ogulinu, rodnom gradu spisateljice, s motivima iz Priča iz davnine. Mural je posvećen djeci Palestine."
+          "Mural na Osnovnoj školi Ivane Brlić-Mažuranić s motivima iz Priča iz davnine. Mural je posvećen djeci Palestine."
         ]
       },
       "images": [
@@ -1462,10 +1500,48 @@
       ]
     },
     {
+      "slug": "art-park-caravan",
+      "name": "Art Park caravan",
+      "client": "Art Park Pula",
+      "year": "2025",
+      "images": [
+        "art-park-caravan-mural-vedran-stimac.jpg"
+      ],
+      "text": [
+        "A caravan painted in a western theme as part of the festival scenography."
+      ],
+      "hr": {
+        "name": "Art Park kamp kućica",
+        "client": "Art Park Pula",
+        "text": [
+          "Kamp kućica oslikana u western stilu kao dio scenografije festivala."
+        ]
+      }
+    },
+    {
+      "slug": "brist-olive-oil",
+      "name": "Brist Olive Oil",
+      "client": "Brist Olive Oil",
+      "year": "2025",
+      "images": [
+        "brist-olive-oil-mural-vedran-stimac-1.jpg",
+        "brist-olive-oil-mural-vedran-stimac-2.jpg"
+      ],
+      "text": [
+        "A woman among olive branches and lemons, wrapping around the corner of the building."
+      ],
+      "hr": {
+        "name": "Brist Olive Oil",
+        "client": "Brist Olive Oil",
+        "text": [
+          "Žena među maslinovim grančicama i limunima, koja se proteže preko ugla zgrade."
+        ]
+      }
+    },
+    {
       "slug": "container-mural-workshop-medulin",
       "name": "Container mural workshop",
-      "client": "Općina Medulin (Municipality of Medulin)",
-      "place": "Medulin, Croatia",
+      "client": "Municipality of Medulin",
       "year": "2024",
       "text": [
         "Murals painted on containers as part of a mural-painting workshop."
@@ -1473,7 +1549,6 @@
       "hr": {
         "name": "Radionica oslikavanja murala na kontejnerima",
         "client": "Općina Medulin",
-        "place": "Medulin, Hrvatska",
         "text": [
           "Murali na kontejnerima, oslikani u sklopu radionice oslikavanja murala."
         ]
@@ -1484,20 +1559,38 @@
       ]
     },
     {
+      "slug": "kuca-biciklizma-loborika",
+      "name": "Loborika House of Cycling",
+      "client": "Municipality of Marčana",
+      "year": "2024",
+      "images": [
+        "kuca-biciklizma-loborika-mural-vedran-stimac-1.jpg",
+        "kuca-biciklizma-loborika-mural-vedran-stimac-2.jpg"
+      ],
+      "text": [
+        "Murals and lettering for the House of Cycling in Loborika."
+      ],
+      "hr": {
+        "name": "Kuća biciklizma Loborika",
+        "client": "Općina Marčana",
+        "text": [
+          "Murali i natpisi za Kuću biciklizma Loborika."
+        ]
+      }
+    },
+    {
       "slug": "jarun-six-structures",
       "name": "Six structures on Jarun",
       "client": "",
-      "place": "Zagreb, Croatia",
       "year": "2023",
       "text": [
-        "Together with fellow artists, we painted six structures on Lake Jarun in Zagreb."
+        "Together with fellow artists, we painted six structures on Jarun."
       ],
       "hr": {
         "name": "Šest objekata na Jarunu",
         "client": "",
-        "place": "Zagreb, Hrvatska",
         "text": [
-          "S kolegama umjetnicima oslikali smo šest objekata na jezeru Jarun u Zagrebu."
+          "S kolegama umjetnicima oslikali smo šest objekata na Jarunu."
         ]
       },
       "images": [
@@ -1510,17 +1603,15 @@
       "slug": "retail-park-rovinj",
       "name": "Retail Park Rovinj",
       "client": "Retail Park Rovinj",
-      "place": "Rovinj, Croatia",
       "year": "2023",
       "text": [
-        "Around 1,500 m² of murals for the Retail Park in Rovinj, painted together with Boris Bare and Marin Remić."
+        "Around 1,500 m² of murals for Retail Park Rovinj, painted together with Boris Bare and Marin Remić."
       ],
       "hr": {
         "name": "Retail park Rovinj",
         "client": "Retail park Rovinj",
-        "place": "Rovinj, Hrvatska",
         "text": [
-          "Oko 1.500 m² murala za Retail park u Rovinju, oslikanih zajedno s Borisom Bareom i Marinom Remićem."
+          "Oko 1.500 m² murala za Retail park Rovinj, oslikanih zajedno s Borisom Bareom i Marinom Remićem."
         ]
       },
       "images": [
@@ -1539,7 +1630,6 @@
       "slug": "nikola-tesla-mural-atrium-bar",
       "name": "Nikola Tesla",
       "client": "Atrium bar",
-      "place": "",
       "year": "2022",
       "text": [
         "An indoor mural of Nikola Tesla for Atrium bar."
@@ -1547,7 +1637,6 @@
       "hr": {
         "name": "Nikola Tesla",
         "client": "Atrium bar",
-        "place": "",
         "text": [
           "Unutarnji mural Nikole Tesle za Atrium bar."
         ]
@@ -1556,6 +1645,25 @@
         "nikola-tesla-mural-atrium-bar-mural-vedran-stimac-1.jpg",
         "nikola-tesla-mural-atrium-bar-mural-vedran-stimac-2.jpg"
       ]
+    },
+    {
+      "slug": "pula-film-festival-stairwell",
+      "name": "Pula Film Festival",
+      "client": "",
+      "year": "",
+      "images": [
+        "pula-film-festival-stairwell-mural-vedran-stimac.jpg"
+      ],
+      "text": [
+        "A stairwell mural celebrating the Pula Film Festival, held since 1954."
+      ],
+      "hr": {
+        "name": "Pulski filmski festival",
+        "client": "",
+        "text": [
+          "Mural na stubištu posvećen Pulskom filmskom festivalu, koji se održava od 1954."
+        ]
+      }
     }
   ]
 }
