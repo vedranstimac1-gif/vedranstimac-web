@@ -169,7 +169,7 @@ nav a:hover, nav a[aria-current="page"], nav a.current { text-decoration: underl
   .sub { position: static; transform: none; display: block; box-shadow: none; text-align: left; padding: 8px 0 0 16px; min-width: 0; }
   .sub li a { padding: 4px 0; }
   /* Mobitel: video u punom formatu (kao na računalu), centriran na bijeloj pozadini */
-  .home .hero-video { width: 100%; height: auto; min-height: 0; aspect-ratio: 1 / 1; margin-top: 8px; background: #fff; }
+  .home .hero-video { width: 100%; height: auto; min-height: 0; aspect-ratio: 4 / 5; margin-top: 8px; background: #fff; }
   .home .hero-video video { object-fit: cover; }
   .about { grid-template-columns: 1fr; gap: 28px; }
   .mural { grid-template-columns: 1fr; gap: 28px; }
