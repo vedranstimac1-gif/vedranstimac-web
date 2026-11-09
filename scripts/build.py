@@ -41,6 +41,13 @@ PATHS = {
 CILL = C.get("commission_illustrations", [])
 CMUR = C.get("commission_murals", [])
 CPROJ = CILL + [m for m in CMUR if "slug" in m]
+SHOP = C.get("shop", {"products": [], "sizes": []})
+SHOP_PUBLIC = bool(SHOP.get("public"))
+SHOPP = [next(i for i in C["illustrations"] if i["slug"] == sl) for sl in SHOP["products"]]
+PATHS["shop"] = {"en": "/shop", "hr": "/hr/trgovina"}
+PATHS["cart"] = {"en": "/shop/cart", "hr": "/hr/trgovina/kosarica"}
+for it in SHOPP:
+    PATHS["shop:" + it["slug"]] = {"en": f"/shop/{it['slug']}-print", "hr": f"/hr/trgovina/{it['slug']}-print"}
 for x in C["street_art"] + C["illustrations"] + CPROJ:
     PATHS[x["slug"]] = {"en": "/" + x["slug"], "hr": "/hr/" + x["slug"]}
 MURALS = {m["slug"] for m in C["street_art"]}
@@ -59,6 +66,11 @@ T = {
         "commissions": "COMMISSIONS", "c-ill": "ILLUSTRATIONS", "c-mur": "MURALS",
         "c-ill_h": "COMMISSION ILLUSTRATIONS", "c-mur_h": "COMMISSION MURALS",
         "back_c-ill": "← Commission illustrations", "back_c-mur": "← Commission murals", "client": "Client",
+        "shop": "SHOP", "shop_h": "PRINTS", "cart": "Cart", "from": "from", "size": "Size", "add": "Add to cart", "added": "Added to cart",
+        "print_kind": "Fine art print", "all_prints": "← All prints", "cart_h": "CART", "cart_empty": "Your cart is empty.",
+        "subtotal": "Subtotal", "ship_note": "Shipping is calculated at checkout.", "checkout": "Checkout", "remove": "Remove",
+        "soon": "Checkout is not open yet.", "qty": "Qty", "continue": "← Continue shopping",
+        "details": ["Printed on museum-quality matte fine art paper (200 g/m²) with archival pigment inks.", "Printed to order and shipped worldwide in protective packaging, usually within 3–7 working days.", "Frame not included."],
         "menu": "Menu", "about_h": "ABOUT", "exh_h": "EXHIBITIONS", "ill_h": "ILLUSTRATIONS", "street_h": "STREET ART",
         "contact_h": "HAVE A PROJECT<br>IN MIND?", "studio": "studio",
         "series": "Room of Portraits", "all_ill": "All illustrations",
@@ -73,6 +85,11 @@ T = {
         "commissions": "RAD PO NARUDŽBI", "c-ill": "ILUSTRACIJE", "c-mur": "MURALI",
         "c-ill_h": "ILUSTRACIJE PO NARUDŽBI", "c-mur_h": "MURALI PO NARUDŽBI",
         "back_c-ill": "← Ilustracije po narudžbi", "back_c-mur": "← Murali po narudžbi", "client": "Naručitelj",
+        "shop": "TRGOVINA", "shop_h": "GRAFIKE", "cart": "Košarica", "from": "od", "size": "Veličina", "add": "Dodaj u košaricu", "added": "Dodano u košaricu",
+        "print_kind": "Umjetnički print", "all_prints": "← Sve grafike", "cart_h": "KOŠARICA", "cart_empty": "Košarica je prazna.",
+        "subtotal": "Ukupno", "ship_note": "Dostava se obračunava pri plaćanju.", "checkout": "Na plaćanje", "remove": "Ukloni",
+        "soon": "Plaćanje još nije otvoreno.", "qty": "Kom.", "continue": "← Nastavi kupovati",
+        "details": ["Tiskano na mat papiru muzejske kvalitete (200 g/m²) arhivskim pigmentnim tintama.", "Tiska se po narudžbi i šalje na adrese diljem svijeta u zaštitnom pakiranju, obično u roku od 3 do 7 radnih dana.", "Okvir nije uključen."],
         "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "STREET ART",
         "contact_h": "IMATE PROJEKT<br>NA UMU?", "studio": "atelijer",
         "series": "Room of Portraits", "all_ill": "Sve ilustracije",
@@ -180,7 +197,8 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     else:
         alt, switch = "", ""
         robots = '\n<meta name="robots" content="noindex, nofollow">' if lang == "hr" else ""
-    if (not COMM_PUBLIC and (key in ("commissions", "c-ill", "c-mur") or key in COMM)) or \
+    if (not SHOP_PUBLIC and (key in ("shop", "cart") or key.startswith("shop:"))) or \
+       (not COMM_PUBLIC and (key in ("commissions", "c-ill", "c-mur") or key in COMM)) or \
        (not CILL_PUBLIC and (key == "c-ill" or key in CILLS)):
         robots = '\n<meta name="robots" content="noindex, nofollow">'
 
@@ -602,6 +620,64 @@ for lang in LANGS:
             build(x["slug"], lang, f"{name} – {what}{yr} | Vedran Štimac (PoliteBastART)", cproj_page(x, back, lang), desc,
                   image=web(x["images"][0]), ld=[art])
 
+    # TRGOVINA (skrivena dok shop.public nije true)
+    if SHOPP:
+        sizes = SHOP["sizes"]; low = min(z["price"] for z in sizes)
+        bar = f'<p class="shop-bar"><a href="{P("cart", lang)}" class="cart-link">{t["cart"]} (<span class="cart-count">0</span>)</a></p>'
+        cards = "".join(
+            f'<figure class="item"><a href="{P("shop:" + it["slug"], lang)}" style="cursor:pointer">'
+            f'<img src="{web(it["image"])}" alt="{e(L(it, "name", lang))} – {t["print_kind"].lower()}" loading="lazy"></a>'
+            f'<figcaption><strong>{e(L(it, "name", lang))}</strong><span>{t["from"]} {low} €</span></figcaption></figure>'
+            for it in SHOPP)
+        build("shop", lang, ("Grafike – Vedran Štimac (PoliteBastART)" if hr else "Prints – Vedran Štimac (PoliteBastART)"),
+              f"""
+<section class="work shop">
+  {bar}
+  <h1 class="page-title">{t['shop_h']}</h1>
+  <div class="gallery portraits">{cards}</div>
+</section>""",
+              ("Umjetnički printovi ilustracija Vedrana Štimca (PoliteBastART)." if hr else "Fine art prints of illustrations by Vedran Štimac (PoliteBastART)."))
+        for it in SHOPP:
+            nm = L(it, "name", lang)
+            opts = "".join(
+                f'<label class="size-opt"><input type="radio" name="size" value="{z["id"]}" data-price="{z["price"]}" data-label="{z["label"]}"{" checked" if k == 0 else ""}>'
+                f'<span><b>{z["label"]}</b><i>{z["dim"]}</i><em>{z["price"]} €</em></span></label>'
+                for k, z in enumerate(sizes))
+            desc_p = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if (lang == "en" and it["text"]) else ""
+            body = f"""
+<section class="mural illus product" data-slug="{it['slug']}" data-name="{e(nm)}" data-img="{web(it['image'])}" data-url="{P('shop:' + it['slug'], lang)}">
+  {bar}
+  <div class="mural-photos n1"><a href="{orig(it['image'])}" class="lb" data-caption="{e(nm)}"><img src="{web(it['image'])}" alt="{e(nm)} – {t['print_kind'].lower()}"></a></div>
+  <div class="mural-text">
+    <h1>{e(nm)}</h1>
+    <p class="series">{t['print_kind']} · Room of Portraits</p>
+    {desc_p}
+    <form class="buy-form">
+      <p class="opt-h">{t['size']}</p>
+      <div class="sizes">{opts}</div>
+      <button type="submit" class="btn">{t['add']} · <span class="price">{sizes[0]['price']}</span> €</button>
+      <p class="added" hidden>{t['added']} – <a href="{P('cart', lang)}">{t['cart']}</a></p>
+    </form>
+    <ul class="details">{''.join(f'<li>{e(d)}</li>' for d in t['details'])}</ul>
+    <p class="back"><a href="{P('shop', lang)}">{t['all_prints']}</a></p>
+  </div>
+</section>"""
+            build("shop:" + it["slug"], lang, f"{nm} – {'umjetnički print' if hr else 'Fine Art Print'} | Vedran Štimac (PoliteBastART)", body,
+                  (f"{nm} – umjetnički print ilustracije Vedrana Štimca (PoliteBastART)." if hr else f"{nm} – fine art print of the illustration by Vedran Štimac (PoliteBastART)."),
+                  image=web(it["image"]))
+        build("cart", lang, f"{t['cart']} – Vedran Štimac (PoliteBastART)", f"""
+<section class="cart-page" data-empty="{e(t['cart_empty'])}" data-remove="{e(t['remove'])}" data-qty="{e(t['qty'])}">
+  <h1 class="page-title">{t['cart_h']}</h1>
+  <div class="cart-items"></div>
+  <div class="cart-sum" hidden>
+    <p class="subtotal">{t['subtotal']}: <b><span class="sum">0</span> €</b></p>
+    <p class="note">{t['ship_note']}</p>
+    <button class="btn checkout" type="button" data-soon="{e(t['soon'])}">{t['checkout']}</button>
+    <p class="soon" hidden></p>
+  </div>
+  <p class="back"><a href="{P('shop', lang)}">{t['continue']}</a></p>
+</section>""", t["cart"])
+
     # KONTAKT
     build("contact", lang,
           "Kontakt – Vedran Štimac (PoliteBastART)" if hr else "Contact – Vedran Štimac (PoliteBastART)",
@@ -638,7 +714,8 @@ def urlxml(k, lang):
     return f"  <url><loc>{DOMAIN}{P(k, lang)}</loc>{imgs}</url>\n"
 keys = (["home", "about", "work", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
         + (["commissions", "c-mur"] + sorted(COMM - CILLS) if COMM_PUBLIC else [])
-        + (["c-ill"] + sorted(CILLS) if CILL_PUBLIC else []))
+        + (["c-ill"] + sorted(CILLS) if CILL_PUBLIC else [])
+        + (["shop"] + ["shop:" + it["slug"] for it in SHOPP] if SHOP_PUBLIC else []))
 pairs = [(k, "en") for k in keys] + ([(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '

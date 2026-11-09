@@ -32,6 +32,63 @@
     var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(layout, 150); });
   });
 
+
+  // Trgovina: košarica u pregledniku (localStorage)
+  var CART_KEY = 'vs-cart';
+  function cartGet() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch (e) { return []; } }
+  function cartSet(c) { try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch (e) {} cartBadge(); }
+  function cartBadge() {
+    var n = cartGet().reduce(function (a, x) { return a + x.qty; }, 0);
+    Array.prototype.forEach.call(document.querySelectorAll('.cart-count'), function (el) { el.textContent = n; });
+  }
+  cartBadge();
+  var prod = document.querySelector('.product');
+  if (prod) {
+    var form = prod.querySelector('.buy-form'), priceEl = form.querySelector('.price');
+    function sel() { return form.querySelector('input[name=size]:checked'); }
+    form.addEventListener('change', function () { priceEl.textContent = sel().getAttribute('data-price'); });
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var s = sel(), c = cartGet(), id = prod.getAttribute('data-slug') + ':' + s.value;
+      var hit = c.filter(function (x) { return x.id === id; })[0];
+      if (hit) hit.qty += 1;
+      else c.push({ id: id, slug: prod.getAttribute('data-slug'), name: prod.getAttribute('data-name'),
+        size: s.getAttribute('data-label'), price: +s.getAttribute('data-price'), qty: 1,
+        img: prod.getAttribute('data-img'), url: prod.getAttribute('data-url') });
+      cartSet(c);
+      form.querySelector('.added').hidden = false;
+    });
+  }
+  var cp = document.querySelector('.cart-page');
+  if (cp) {
+    var box = cp.querySelector('.cart-items'), sum = cp.querySelector('.cart-sum');
+    function render() {
+      var c = cartGet(), total = 0;
+      if (!c.length) { box.innerHTML = '<p class="empty">' + cp.getAttribute('data-empty') + '</p>'; sum.hidden = true; return; }
+      box.innerHTML = c.map(function (x, i) {
+        total += x.price * x.qty;
+        return '<div class="cart-row"><a href="' + x.url + '"><img src="' + x.img + '" alt=""></a>' +
+          '<div class="ci"><a href="' + x.url + '"><b>' + x.name + '</b></a><span>' + x.size + '</span>' +
+          '<span class="qty">' + cp.getAttribute('data-qty') + ' <button data-d="-1" data-i="' + i + '">−</button> ' + x.qty +
+          ' <button data-d="1" data-i="' + i + '">+</button></span>' +
+          '<button class="rm" data-i="' + i + '">' + cp.getAttribute('data-remove') + '</button></div>' +
+          '<div class="cp">' + (x.price * x.qty) + ' €</div></div>';
+      }).join('');
+      cp.querySelector('.sum').textContent = total; sum.hidden = false;
+    }
+    box.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button'); if (!b) return;
+      var c = cartGet(), i = +b.getAttribute('data-i');
+      if (b.classList.contains('rm')) c.splice(i, 1);
+      else { c[i].qty += +b.getAttribute('data-d'); if (c[i].qty < 1) c.splice(i, 1); }
+      cartSet(c); render();
+    });
+    cp.querySelector('.checkout').addEventListener('click', function () {
+      var p = cp.querySelector('.soon'); p.textContent = this.getAttribute('data-soon'); p.hidden = false;
+    });
+    render();
+  }
+
   var links = Array.prototype.slice.call(document.querySelectorAll('a.lb'));
   if (!links.length) return;
   var box = document.createElement('div');

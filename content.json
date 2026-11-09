@@ -2089,5 +2089,34 @@
         "nikola-tesla-mural-atrium-bar-mural-vedran-stimac-2.jpg"
       ]
     }
-  ]
+  ],
+  "shop": {
+    "public": false,
+    "currency": "EUR",
+    "sizes": [
+      {
+        "id": "a4",
+        "label": "A4",
+        "dim": "21 × 29.7 cm",
+        "price": 29
+      },
+      {
+        "id": "a3",
+        "label": "A3",
+        "dim": "29.7 × 42 cm",
+        "price": 39
+      },
+      {
+        "id": "50x70",
+        "label": "50 × 70",
+        "dim": "50 × 70 cm",
+        "price": 59
+      }
+    ],
+    "products": [
+      "albert-camus",
+      "alfred-hitchcock",
+      "nikola-tesla"
+    ]
+  }
 }
