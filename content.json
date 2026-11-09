@@ -1193,20 +1193,6 @@
       }
     },
     {
-      "slug": "nocni-mars-8-mart-poster",
-      "name": "8. mart – Feminizam i gotovo.",
-      "client": "Noćni marš",
-      "kind": "Poster",
-      "year": "2024",
-      "images": [
-        "nocni-mars-8-mart-poster-illustration-vedran-stimac.jpg"
-      ],
-      "hr": {
-        "kind": "plakat",
-        "client": "Noćni marš"
-      }
-    },
-    {
       "slug": "eva-santa-del-pueblo-skateboard",
       "name": "Eva Santa del Pueblo",
       "client": "Private commission",
