@@ -61,9 +61,9 @@ T = {
         "back_c-ill": "← Commission illustrations", "back_c-mur": "← Commission murals", "client": "Client",
         "menu": "Menu", "about_h": "ABOUT", "exh_h": "EXHIBITIONS", "ill_h": "ILLUSTRATIONS", "street_h": "STREET ART",
         "contact_h": "HAVE A PROJECT<br>IN MIND?", "studio": "studio",
-        "series": "Portrait illustration · Room of Portraits", "all_ill": "All illustrations",
+        "series": "Room of Portraits", "all_ill": "All illustrations",
         "back_murals": "← Street art",
-        "photo": "photo", "of": "of", "portrait_of": "Portrait illustration of {n} by Vedran Štimac (PoliteBastART)",
+        "photo": "photo", "of": "of", "portrait_of": "{n} – illustration by Vedran Štimac (PoliteBastART)",
         "mural_alt": "{n}, {c} – mural by Vedran Štimac", "me_alt": "Picture of Vedran", "me_mural_alt": "Vedran painting a mural",
         "locale": "en_US",
     },
@@ -75,9 +75,9 @@ T = {
         "back_c-ill": "← Ilustracije po narudžbi", "back_c-mur": "← Murali po narudžbi", "client": "Naručitelj",
         "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "STREET ART",
         "contact_h": "IMATE PROJEKT<br>NA UMU?", "studio": "atelijer",
-        "series": "Portretna ilustracija · Room of Portraits", "all_ill": "Sve ilustracije",
+        "series": "Room of Portraits", "all_ill": "Sve ilustracije",
         "back_murals": "← Street art",
-        "photo": "fotografija", "of": "od", "portrait_of": "Portretna ilustracija – {n}, autor Vedran Štimac (PoliteBastART)",
+        "photo": "fotografija", "of": "od", "portrait_of": "{n} – ilustracija, autor Vedran Štimac (PoliteBastART)",
         "mural_alt": "{n}, {c} – mural, Vedran Štimac", "me_alt": "Vedran Štimac", "me_mural_alt": "Vedran slika mural",
         "locale": "hr_HR",
     },
@@ -291,23 +291,24 @@ def mural_page(m, lang):
 def ill_page(it, prev, nxt, lang):
     t = T[lang]
     cap = L(it, "caption", lang)
+    nm, pn, nn = L(it, "name", lang), L(prev, "name", lang), L(nxt, "name", lang)
     text = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if (S.get("show_illustration_text") and lang == "en") else ""
     buy = ""
     extra = "".join(
-        f'<a href="{orig(w)}" class="lb" data-caption="{e(it["name"])} — {e(cap)}">'
-        f'<img src="{web(w)}" alt="{e(t["portrait_of"].format(n=it["name"]))} ({i})" loading="lazy"></a>'
+        f'<a href="{orig(w)}" class="lb" data-caption="{e(nm)} — {e(cap)}">'
+        f'<img src="{web(w)}" alt="{e(t["portrait_of"].format(n=nm))} ({i})" loading="lazy"></a>'
         for i, w in enumerate(it.get("extra", []), 2))
     return f"""
 <section class="mural illus">
-  <div class="mural-photos n1"><a href="{orig(it['image'])}" class="lb" data-caption="{e(it['name'])} — {e(cap)}">
-    <img src="{web(it['image'])}" alt="{e(t['portrait_of'].format(n=it['name']))}"></a>{extra}</div>
+  <div class="mural-photos n1"><a href="{orig(it['image'])}" class="lb" data-caption="{e(nm)} — {e(cap)}">
+    <img src="{web(it['image'])}" alt="{e(t['portrait_of'].format(n=nm))}"></a>{extra}</div>
   <div class="mural-text">
-    <h1>{e(it['name'])}</h1>
+    <h1>{e(nm)}</h1>
     <p class="series">{t['series']}</p>
     {text}
     <p class="place">{e(cap)}</p>
     {buy}
-    <p class="back"><a href="{P(prev['slug'], lang)}">← {e(prev['name'])}</a> &nbsp;·&nbsp; <a href="{P('illustrations', lang)}">{t['all_ill']}</a> &nbsp;·&nbsp; <a href="{P(nxt['slug'], lang)}">{e(nxt['name'])} →</a></p>
+    <p class="back"><a href="{P(prev['slug'], lang)}">← {e(pn)}</a> &nbsp;·&nbsp; <a href="{P('illustrations', lang)}">{t['all_ill']}</a> &nbsp;·&nbsp; <a href="{P(nxt['slug'], lang)}">{e(nn)} →</a></p>
   </div>
 </section>"""
 
@@ -428,35 +429,35 @@ for lang in LANGS:
     # ILUSTRACIJE
     IL = C["illustrations"]
     build("illustrations", lang,
-          "Portretne ilustracije – Room of Portraits | Vedran Štimac" if hr else
-          "Portrait Illustrations – Room of Portraits | Vedran Štimac",
+          "Ilustracije – Vedran Štimac (PoliteBastART)" if hr else "Illustrations – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="work">
   <h1 class="page-title">{t['ill_h']}</h1>
   {gallery(IL, 'portraits', lang)}
 </section>""",
-          ("Portretne ilustracije iz serije „Room of Portraits“ Vedrana Štimca: tuš na papiru, digitalno bojano. Louise Michel, Mercedes Sosa, Nikola Tesla, Franz Kafka i drugi."
+          ("Ilustracije Vedrana Štimca (PoliteBastART) iz serije Room of Portraits: Albert Camus, Alfred Hitchcock, Nikola Tesla, Franz Kafka, Salvador Dalí, Che Guevara, Quentin Tarantino i drugi."
            if hr else
-           'Portrait illustrations from the series "Room of Portraits" by Vedran Štimac: ink on paper, digitally coloured. Louise Michel, Mercedes Sosa, Nikola Tesla, Franz Kafka and more.'),
+           "Illustrations by Vedran Štimac (PoliteBastART) from the series Room of Portraits: Albert Camus, Alfred Hitchcock, Nikola Tesla, Franz Kafka, Salvador Dalí, Che Guevara, Quentin Tarantino and more."),
           image=web(IL[0]["image"]))
 
     for i, it in enumerate(IL):
         year = it["caption"][:4]
         cap = L(it, "caption", lang)
-        art = {"@type": "VisualArtwork", "name": f"Portrait of {it['name']}", "artform": "Illustration",
+        nm = L(it, "name", lang)
+        art = {"@type": "VisualArtwork", "name": nm, "artform": "Illustration",
                "artMedium": it["caption"][6:], "dateCreated": year, "url": DOMAIN + P(it["slug"], lang),
                "creator": {"@id": DOMAIN + "/#vedran"}, "about": {"@type": "Person", "name": it["name"]},
                "image": [DOMAIN + web(w) for w in [it["image"]] + it.get("extra", [])]}
         if S.get("show_illustration_text") and not hr:
             art["description"] = " ".join(it["text"])
         if hr:
-            title = f"{it['name']} – portretna ilustracija | Vedran Štimac"
-            desc = f"Portretna ilustracija – {it['name']}, autor Vedran Štimac (PoliteBastART), {cap}. Iz serije Room of Portraits."
+            title = f"{nm} – ilustracija | Vedran Štimac (PoliteBastART)"
+            desc = f"{nm} – ilustracija, autor Vedran Štimac (PoliteBastART), {cap}. Iz serije Room of Portraits."
         else:
-            title = f"{it['name']} – Portrait Illustration | Vedran Štimac"
+            title = f"{nm} – Illustration | Vedran Štimac (PoliteBastART)"
             desc = (short(f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. " + it["text"][-1])
                     if S.get("show_illustration_text") else
-                    f"Portrait illustration of {it['name']} by Vedran Štimac (PoliteBastART), {year}. {it['caption'][6:]}. From the series Room of Portraits.")
+                    f"{nm} – illustration by Vedran Štimac (PoliteBastART), {year}. {it['caption'][6:]}. From the series Room of Portraits.")
         build(it["slug"], lang, title, ill_page(it, IL[i - 1], IL[(i + 1) % len(IL)], lang), desc,
               image=web(it["image"]), ld=[art])
 

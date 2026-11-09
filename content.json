@@ -235,7 +235,7 @@
     },
     {
       "slug": "venedikt-jerofejev",
-      "name": "Venedikt Jerofejev",
+      "name": "Venedikt Yerofeyev",
       "caption": "2021, Ink on paper; Digitally colored",
       "image": "venedikt-jerofejev-portrait-illustration-vedran-stimac.jpg",
       "text": [
@@ -243,7 +243,8 @@
         "The Kremlin’s onion domes turn into bottles labelled Moscow and Petushki – the beginning and the end of the book’s journey."
       ],
       "hr": {
-        "caption": "2021., tuš na papiru, digitalno bojano"
+        "caption": "2021., tuš na papiru, digitalno bojano",
+        "name": "Venedikt Jerofejev"
       }
     },
     {
@@ -308,7 +309,8 @@
         "A glass cell closes around an eye and the globe – the transparent houses of the One State, where every citizen is always watched."
       ],
       "hr": {
-        "caption": "2017., tuš na papiru, digitalno bojano"
+        "caption": "2017., tuš na papiru, digitalno bojano",
+        "name": "Jevgenij Zamjatin"
       }
     },
     {
@@ -339,7 +341,7 @@
     },
     {
       "slug": "simon-bolivar",
-      "name": "Simon Bolivar",
+      "name": "Simón Bolívar",
       "caption": "2018, Ink on paper; Digitally colored",
       "image": "simon-bolivar-portrait-illustration-vedran-stimac.png",
       "text": [
