@@ -6,9 +6,9 @@
     btn.setAttribute('aria-expanded', open);
   });
 
-  // Početna na mobitelu: video sporije (pola brzine)
+  // Početna: video sporije (pola brzine), na računalu i mobitelu
   var hv = document.querySelector('.hero-video video');
-  if (hv && window.matchMedia('(max-width: 860px)').matches) {
+  if (hv) {
     var slow = function () { hv.playbackRate = 0.5; };
     slow(); hv.addEventListener('loadedmetadata', slow); hv.addEventListener('play', slow);
   }
