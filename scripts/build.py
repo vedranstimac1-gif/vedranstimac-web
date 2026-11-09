@@ -31,7 +31,7 @@ PATHS = {
     "about":         {"en": "/about",         "hr": "/hr/o-meni"},
     "work":          {"en": "/work",          "hr": "/hr/autorski-rad"},
     "illustrations": {"en": "/illustrations", "hr": "/hr/ilustracije"},
-    "street-art":    {"en": "/street-art",    "hr": "/hr/murali"},
+    "street-art":    {"en": "/street-art",    "hr": "/hr/street-art"},
     "paintings":     {"en": "/paintings",     "hr": "/hr/slike"},
     "contact":       {"en": "/contact",       "hr": "/hr/kontakt"},
     "commissions":   {"en": "/commissions",   "hr": "/hr/rad-po-narudzbi"},
@@ -73,10 +73,10 @@ T = {
         "commissions": "RAD PO NARUDŽBI", "c-ill": "ILUSTRACIJE", "c-mur": "MURALI",
         "c-ill_h": "ILUSTRACIJE PO NARUDŽBI", "c-mur_h": "MURALI PO NARUDŽBI",
         "back_c-ill": "← Ilustracije po narudžbi", "back_c-mur": "← Murali po narudžbi", "client": "Naručitelj",
-        "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "MURALI",
+        "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "STREET ART",
         "contact_h": "IMATE PROJEKT<br>NA UMU?", "studio": "atelijer",
         "series": "Portretna ilustracija · Room of Portraits", "all_ill": "Sve ilustracije",
-        "back_murals": "← Murali",
+        "back_murals": "← Street art",
         "photo": "fotografija", "of": "od", "portrait_of": "Portretna ilustracija – {n}, autor Vedran Štimac (PoliteBastART)",
         "mural_alt": "{n}, {c} – mural, Vedran Štimac", "me_alt": "Vedran Štimac", "me_mural_alt": "Vedran slika mural",
         "locale": "hr_HR",
@@ -96,6 +96,10 @@ def L(item, field, lang):
     if lang == "hr" and field in item.get("hr", {}):
         return item["hr"][field]
     return item[field]
+
+def capshow(cap, lang):
+    """Prikaz mjesta i godine: na hrvatskom 'Pula, Hrvatska, 2025.'"""
+    return re.sub(r"\s*\((\d{4})\)\s*$", r", \1.", cap) if lang == "hr" else cap
 
 def place_year(caption):
     """'Pula, Croatia (2025)' -> ('Pula', 'Croatia', '2025')"""
@@ -249,6 +253,8 @@ def gallery(items, kind, lang):
     out = []
     for it in items:
         name, caption = L(it, "name", lang), L(it, "caption", lang)
+        if "image" not in it:
+            caption = capshow(caption, lang)
         if "image" in it:   # ilustracija
             src = web(it["image"])
             alt = t["portrait_of"].format(n=name)
@@ -264,7 +270,7 @@ def gallery(items, kind, lang):
 
 def mural_page(m, lang):
     t = T[lang]
-    name, cap, text = L(m, "name", lang), L(m, "caption", lang), L(m, "text", lang)
+    name, cap, text = L(m, "name", lang), capshow(L(m, "caption", lang), lang), L(m, "text", lang)
     n = len(m["images"])
     photos = "".join(
         f'<a href="{orig(w)}" class="lb" data-caption="{e(name)} — {e(cap)}">'
@@ -457,8 +463,7 @@ for lang in LANGS:
     # MURALI
     SA = C["street_art"]
     build("street-art", lang,
-          "Murali i street art – Pula, Zagreb i svijet | Vedran Štimac" if hr else
-          "Murals & Street Art in Croatia and Abroad | Vedran Štimac",
+          "Street art – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="banner">
   <video autoplay muted loop playsinline preload="auto" poster="/media/street-art-poster.jpg">
