@@ -1414,6 +1414,22 @@
       }
     },
     {
+      "slug": "nemanja-band-merch",
+      "name": "Nemanja",
+      "client": "Band Nemanja",
+      "kind": "Band merch – T-shirt and tote bag",
+      "year": "2022",
+      "images": [
+        "nemanja-band-merch-illustration-vedran-stimac-1.jpg",
+        "nemanja-band-merch-illustration-vedran-stimac-2.jpg",
+        "nemanja-band-merch-illustration-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "merch benda – majica i platnena torba",
+        "client": "Bend Nemanja"
+      }
+    },
+    {
       "slug": "godisnji-banket-bratovstine-grobara-book-cover",
       "name": "Mathias Énard – Godišnji banket bratovštine grobara",
       "client": "Fraktura",
