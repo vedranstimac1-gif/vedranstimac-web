@@ -106,6 +106,103 @@
   ],
   "illustrations": [
     {
+      "slug": "pablo-neruda",
+      "name": "Pablo Neruda",
+      "caption": "2025, Digital Illustration",
+      "image": "pablo-neruda-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2025., digitalna ilustracija"
+      }
+    },
+    {
+      "slug": "diego-rivera",
+      "name": "Diego Rivera",
+      "caption": "2025, Digital Illustration",
+      "image": "diego-rivera-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2025., digitalna ilustracija"
+      }
+    },
+    {
+      "slug": "nada-dimic",
+      "name": "Nada Dimić",
+      "caption": "2025, Digital Illustration",
+      "image": "nada-dimic-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2025., digitalna ilustracija"
+      },
+      "extra": [
+        "nada-dimic-portrait-illustration-vedran-stimac-2.jpg"
+      ]
+    },
+    {
+      "slug": "jack-kerouac",
+      "name": "Jack Kerouac",
+      "caption": "2024, Digital Illustration",
+      "image": "jack-kerouac-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2024., digitalna ilustracija"
+      },
+      "extra": [
+        "jack-kerouac-portrait-illustration-vedran-stimac-2.jpg"
+      ]
+    },
+    {
+      "slug": "labinska-republika",
+      "name": "Labinska republika",
+      "caption": "2024, Digital Illustration",
+      "image": "labinska-republika-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2024., digitalna ilustracija"
+      },
+      "extra": [
+        "labinska-republika-portrait-illustration-vedran-stimac-2.jpg"
+      ]
+    },
+    {
+      "slug": "jean-paul-sartre",
+      "name": "Jean-Paul Sartre",
+      "caption": "2023, Digital Illustration",
+      "image": "jean-paul-sartre-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2023., digitalna ilustracija"
+      }
+    },
+    {
+      "slug": "rene-magritte",
+      "name": "René Magritte",
+      "caption": "2023, Digital Illustration",
+      "image": "rene-magritte-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2023., digitalna ilustracija"
+      }
+    },
+    {
+      "slug": "stanley-kubrick",
+      "name": "Stanley Kubrick",
+      "caption": "2022, Ink on paper; Digitally colored",
+      "image": "stanley-kubrick-portrait-illustration-vedran-stimac.jpg",
+      "etsy": null,
+      "text": [],
+      "hr": {
+        "caption": "2022., tuš na papiru, digitalno bojano"
+      }
+    },
+    {
       "slug": "louise-michel",
       "name": "Louise Michel",
       "caption": "2021, Ink on paper; Digitally colored",

@@ -255,10 +255,14 @@ def ill_page(it, prev, nxt, lang):
     text = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if (S.get("show_illustration_text") and lang == "en") else ""
     buy = (f'<p class="buy"><a class="btn" href="{it["etsy"]}" target="_blank" rel="noopener">{t["buy"]}</a></p>'
            if it.get("etsy") else f'<p class="buy-note">{t["buy_note"].format(shop=S["shop"])}</p>')
+    extra = "".join(
+        f'<a href="{orig(w)}" class="lb" data-caption="{e(it["name"])} — {e(cap)}">'
+        f'<img src="{web(w)}" alt="{e(t["portrait_of"].format(n=it["name"]))} ({i})" loading="lazy"></a>'
+        for i, w in enumerate(it.get("extra", []), 2))
     return f"""
 <section class="mural illus">
   <div class="mural-photos n1"><a href="{orig(it['image'])}" class="lb" data-caption="{e(it['name'])} — {e(cap)}">
-    <img src="{web(it['image'])}" alt="{e(t['portrait_of'].format(n=it['name']))}"></a></div>
+    <img src="{web(it['image'])}" alt="{e(t['portrait_of'].format(n=it['name']))}"></a>{extra}</div>
   <div class="mural-text">
     <h1>{e(it['name'])}</h1>
     <p class="series">{t['series']}</p>
@@ -347,7 +351,7 @@ for lang in LANGS:
         art = {"@type": "VisualArtwork", "name": f"Portrait of {it['name']}", "artform": "Illustration",
                "artMedium": it["caption"][6:], "dateCreated": year, "url": DOMAIN + P(it["slug"], lang),
                "creator": {"@id": DOMAIN + "/#vedran"}, "about": {"@type": "Person", "name": it["name"]},
-               "image": DOMAIN + web(it["image"])}
+               "image": [DOMAIN + web(w) for w in [it["image"]] + it.get("extra", [])]}
         if S.get("show_illustration_text") and not hr:
             art["description"] = " ".join(it["text"])
         if it.get("etsy"):
