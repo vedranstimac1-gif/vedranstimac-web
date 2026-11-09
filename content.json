@@ -1414,6 +1414,25 @@
       }
     },
     {
+      "slug": "hrvatski-znamenitasi-book-illustrations",
+      "name": "Hrvatski znamenitaši",
+      "client": "Mozaik knjiga",
+      "kind": "Book illustrations – cover and interior",
+      "year": "2023",
+      "images": [
+        "hrvatski-znamenitasi-book-illustrations-vedran-stimac-1.jpg",
+        "hrvatski-znamenitasi-book-illustrations-vedran-stimac-2.jpg",
+        "hrvatski-znamenitasi-book-illustrations-vedran-stimac-3.jpg",
+        "hrvatski-znamenitasi-book-illustrations-vedran-stimac-4.jpg",
+        "hrvatski-znamenitasi-book-illustrations-vedran-stimac-5.jpg",
+        "hrvatski-znamenitasi-book-illustrations-vedran-stimac-6.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracije knjige – naslovnica i unutrašnjost",
+        "client": "Mozaik knjiga"
+      }
+    },
+    {
       "slug": "nemanja-band-merch",
       "name": "Nemanja",
       "client": "Band Nemanja",
