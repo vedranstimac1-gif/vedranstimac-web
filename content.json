@@ -1414,6 +1414,21 @@
       }
     },
     {
+      "slug": "ckz-amargi",
+      "name": "Amargi",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2023",
+      "images": [
+        "ckz-amargi-cover-vedran-stimac-1.jpg",
+        "ckz-amargi-cover-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "hrvatski-znamenitasi-book-illustrations",
       "name": "Hrvatski znamenitaši",
       "client": "Mozaik knjiga",
