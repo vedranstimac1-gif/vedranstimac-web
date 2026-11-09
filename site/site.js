@@ -6,6 +6,25 @@
     btn.setAttribute('aria-expanded', open);
   });
 
+  // Galerije: rasporedi radove u stupce tako da se redoslijed čita s lijeva na desno
+  Array.prototype.forEach.call(document.querySelectorAll('.gallery'), function (g) {
+    var items = Array.prototype.slice.call(g.querySelectorAll(':scope > .item, :scope > .gcol > .item'));
+    var min = g.classList.contains('murals') ? 280 : 230, max = g.classList.contains('murals') ? 3 : 4, gap = 24, last = 0;
+    function layout() {
+      var w = g.clientWidth, n = Math.max(1, Math.min(max, Math.floor((w + gap) / (min + gap))));
+      if (n === last) return;
+      last = n;
+      var cols = [];
+      for (var c = 0; c < n; c++) { var d = document.createElement('div'); d.className = 'gcol'; cols.push(d); }
+      items.forEach(function (it, i) { cols[i % n].appendChild(it); });
+      g.innerHTML = '';
+      cols.forEach(function (d) { g.appendChild(d); });
+      g.classList.add('masonry');
+    }
+    layout();
+    var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(layout, 150); });
+  });
+
   var links = Array.prototype.slice.call(document.querySelectorAll('a.lb'));
   if (!links.length) return;
   var box = document.createElement('div');

@@ -62,9 +62,13 @@ nav a:hover, nav a[aria-current="page"], nav a.current { text-decoration: underl
 
 /* Galleries */
 .work { padding: 0 var(--gutter) 60px; max-width: 1240px; margin: 0 auto; }
-.gallery { column-gap: 24px; }
-.gallery.portraits { columns: 4 230px; }
-.gallery.murals { columns: 3 280px; margin-top: 48px; }
+/* Galerija: redoslijed ide s lijeva na desno, red po red.
+   Bez JS-a: obična mreža. S JS-om (site.js): stupci "masonry" s rasporedom 1-2-3-4 po redovima. */
+.gallery { display: grid; gap: 0 24px; align-items: start; }
+.gallery.portraits { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.gallery.murals { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin-top: 48px; }
+.gallery.masonry { display: flex; gap: 24px; align-items: flex-start; }
+.gallery.masonry .gcol { flex: 1 1 0; min-width: 0; }
 .item { break-inside: avoid; margin: 0 0 28px; }
 .item a { display: block; cursor: zoom-in; }
 .item img { width: 100%; height: auto; }
