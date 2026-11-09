@@ -1428,6 +1428,21 @@
       }
     },
     {
+      "slug": "ckz-zgodovina-med-politiko-in-kritiko",
+      "name": "Zgodovina med politiko in kritiko",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2022",
+      "images": [
+        "ckz-zgodovina-med-politiko-in-kritiko-cover-vedran-stimac-1.jpg",
+        "ckz-zgodovina-med-politiko-in-kritiko-cover-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "pulska-filmska-tvornica-posters",
       "name": "Pulska filmska tvornica",
       "client": "Pulska filmska tvornica",
