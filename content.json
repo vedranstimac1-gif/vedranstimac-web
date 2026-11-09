@@ -1428,6 +1428,23 @@
       }
     },
     {
+      "slug": "pulska-filmska-tvornica-posters",
+      "name": "Pulska filmska tvornica",
+      "client": "Pulska filmska tvornica",
+      "kind": "Posters",
+      "year": "2022",
+      "images": [
+        "pulska-filmska-tvornica-posters-vedran-stimac-1.jpg",
+        "pulska-filmska-tvornica-posters-vedran-stimac-2.jpg",
+        "pulska-filmska-tvornica-posters-vedran-stimac-3.jpg",
+        "pulska-filmska-tvornica-posters-vedran-stimac-4.jpg"
+      ],
+      "hr": {
+        "kind": "plakati",
+        "client": "Pulska filmska tvornica"
+      }
+    },
+    {
       "slug": "tartuffe-hnk-varazdin-poster",
       "name": "Tartuffe Tartuffe Tartuffe",
       "client": "Bruketa&Žinić",
