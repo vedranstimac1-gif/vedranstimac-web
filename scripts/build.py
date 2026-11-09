@@ -550,8 +550,13 @@ for lang in LANGS:
           "Murali po narudžbi – škole, muzeji, tvrtke | Vedran Štimac" if hr else
           "Commission Murals – Schools, Museums, Businesses | Vedran Štimac",
           f"""
+<section class="banner">
+  <video autoplay muted loop playsinline preload="auto" poster="/media/commission-murals-poster.jpg">
+    <source src="/media/commission-murals.mp4" type="video/mp4">
+  </video>
+  <h1>{t['c-mur_h']}</h1>
+</section>
 <section class="work">
-  <h1 class="page-title">{t['c-mur_h']}</h1>
   {cgallery(CMUR, 'murals', lang)}
 </section>""",
           ("Murali po narudžbi Vedrana Štimca: Pomorski i povijesni muzej Istre, osnovne škole u Puli, Pazinu i Ogulinu, Retail park Rovinj, Jarun, Općina Medulin." if hr else
