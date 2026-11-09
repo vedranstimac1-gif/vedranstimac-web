@@ -502,7 +502,7 @@ for lang in LANGS:
     works = []
     for w in PT["items"]:
         tech = w["tech_hr"] if hr else w["tech"]
-        sub = "" if not w.get("name_en") else f' <span class="tr">({e(w["name_en"])})</span>'
+        sub = "" if (hr or not w.get("name_en")) else f' <span class="tr">({e(w["name_en"])})</span>'
         size = w.get("size", "")
         cap = f"{w['name']}, {w['year']}{'.' if hr else ''}, {tech}" + (f", {size}" if size else "")
         works.append(f"""
@@ -512,20 +512,20 @@ for lang in LANGS:
       <figcaption><strong>{e(w['name'])}</strong>{sub}<span>{w['year']}{'.' if hr else ''}, {e(tech)}{', ' + size if size else ''}</span></figcaption>
     </figure>""")
     build("paintings", lang,
-          "Vikendom rekreativno – slike | Vedran Štimac" if hr else "Vikendom rekreativno – Paintings | Vedran Štimac",
+          "Vikendom rekreativno – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="paintings">
   <div class="paint-text">
-    <h1>{e(PT['title'])}{f' <span class="tr">({e(PT["title_en"])})</span>' if PT.get("title_en") else ''}</h1>
+    <h1>{e(PT['title'])}{f' <span class="tr">({e(PT["title_en"])})</span>' if (PT.get("title_en") and not hr) else ''}</h1>
     <p class="meta">{e(PT['meta_hr'] if hr else PT['meta_en'])}</p>
     {''.join(f'<p>{e(p)}</p>' for p in (PT['text_hr'] if hr else PT['text_en']))}
   </div>
   <div class="paint-works">{''.join(works)}
   </div>
 </section>""",
-          ("„Vikendom rekreativno“ – ciklus slika Vedrana Štimca (2026.): vikend kao pukotina u svakodnevici, kroz magični realizam i naivni izričaj. Ulje na platnu."
+          ("Vikendom rekreativno – ciklus slika Vedrana Štimca (PoliteBastART), 2026.: vikend kao pukotina u svakodnevici, kroz magični realizam i naivni izričaj."
            if hr else
-           "“Vikendom rekreativno” – a 2026 series of paintings by Vedran Štimac: the weekend as a crack in everyday life, through magical realism and a naive idiom. Oil on canvas."),
+           "Vikendom rekreativno – a 2026 series of paintings by Vedran Štimac (PoliteBastART): the weekend as a crack in everyday life, through magical realism and a naive idiom."),
           image=web(PT["items"][0]["image"]))
 
     # PO NARUDŽBI
