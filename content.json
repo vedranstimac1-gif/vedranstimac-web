@@ -1428,6 +1428,21 @@
       }
     },
     {
+      "slug": "lice-ulice-cover-2022",
+      "name": "Lice ulice",
+      "client": "Lice ulice",
+      "kind": "Magazine cover",
+      "year": "2022",
+      "images": [
+        "lice-ulice-cover-2022-vedran-stimac-1.jpg",
+        "lice-ulice-cover-2022-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "Lice ulice"
+      }
+    },
+    {
       "slug": "ckz-zgodovina-med-politiko-in-kritiko",
       "name": "Zgodovina med politiko in kritiko",
       "client": "ČKZ",
