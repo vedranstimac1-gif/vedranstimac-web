@@ -1428,6 +1428,20 @@
       }
     },
     {
+      "slug": "zivio-8-mart-mozemo-pula",
+      "name": "Živio 8. Mart",
+      "client": "Možemo! Pula",
+      "kind": "Illustration",
+      "year": "2021",
+      "images": [
+        "zivio-8-mart-mozemo-pula-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija",
+        "client": "Možemo! Pula"
+      }
+    },
+    {
       "slug": "ckz-okoljski-boji",
       "name": "Okoljski boji",
       "client": "ČKZ",
