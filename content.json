@@ -1207,21 +1207,6 @@
       }
     },
     {
-      "slug": "the-atlantic-cult-of-maga",
-      "name": "The End Will Come for the Cult of MAGA",
-      "client": "The Atlantic",
-      "kind": "Editorial illustration",
-      "year": "2023",
-      "images": [
-        "the-atlantic-cult-of-maga-illustration-vedran-stimac-1.jpg",
-        "the-atlantic-cult-of-maga-illustration-vedran-stimac-2.jpg"
-      ],
-      "hr": {
-        "kind": "ilustracija za članak",
-        "client": "The Atlantic"
-      }
-    },
-    {
       "slug": "ckz-the-balkan-corridor",
       "name": "The Balkan Corridor – 10 Years After",
       "client": "ČKZ",
@@ -1327,40 +1312,6 @@
       }
     },
     {
-      "slug": "nokturni-u-d-molu-book-cover",
-      "name": "Toni Juričić – Nokturni u D-molu",
-      "client": "Fraktura",
-      "kind": "Book cover",
-      "year": "",
-      "images": [
-        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-1.jpg",
-        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-2.jpg",
-        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-3.jpg"
-      ],
-      "hr": {
-        "kind": "naslovnica knjige",
-        "client": "Fraktura"
-      }
-    },
-    {
-      "slug": "le-monde-diplomatique-illustrations",
-      "name": "Le Monde diplomatique",
-      "client": "Le Monde diplomatique",
-      "kind": "Editorial illustrations",
-      "year": "2017",
-      "images": [
-        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-1.jpg",
-        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-2.jpg",
-        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-3.jpg",
-        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-4.jpg",
-        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-5.jpg"
-      ],
-      "hr": {
-        "kind": "ilustracije za članke",
-        "client": "Le Monde diplomatique"
-      }
-    },
-    {
       "slug": "ckz-feminizem-umetnost-literatura",
       "name": "Feminizem – Umetnost – Literatura",
       "client": "ČKZ",
@@ -1403,20 +1354,6 @@
       }
     },
     {
-      "slug": "the-atlantic-thoreau",
-      "name": "Thoreau",
-      "client": "The Atlantic",
-      "kind": "Editorial illustration",
-      "year": "2023",
-      "images": [
-        "the-atlantic-thoreau-illustration-vedran-stimac.jpg"
-      ],
-      "hr": {
-        "kind": "ilustracija za članak",
-        "client": "The Atlantic"
-      }
-    },
-    {
       "slug": "ckz-kino001",
       "name": "Kino001",
       "client": "ČKZ",
@@ -1428,6 +1365,50 @@
       "hr": {
         "kind": "naslovnica časopisa",
         "client": "ČKZ"
+      }
+    },
+    {
+      "slug": "art-park-beer-label",
+      "name": "Art Park beer",
+      "client": "Pivovara Medvedgrad",
+      "kind": "Beer label",
+      "year": "2024",
+      "images": [
+        "art-park-beer-label-illustration-vedran-stimac-2.jpg",
+        "art-park-beer-label-illustration-vedran-stimac-1.jpg"
+      ],
+      "hr": {
+        "kind": "etiketa piva",
+        "client": "Pivovara Medvedgrad"
+      }
+    },
+    {
+      "slug": "the-atlantic-cult-of-maga",
+      "name": "The End Will Come for the Cult of MAGA",
+      "client": "The Atlantic",
+      "kind": "Editorial illustration",
+      "year": "2023",
+      "images": [
+        "the-atlantic-cult-of-maga-illustration-vedran-stimac-1.jpg",
+        "the-atlantic-cult-of-maga-illustration-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija za članak",
+        "client": "The Atlantic"
+      }
+    },
+    {
+      "slug": "the-atlantic-thoreau",
+      "name": "Thoreau",
+      "client": "The Atlantic",
+      "kind": "Editorial illustration",
+      "year": "2023",
+      "images": [
+        "the-atlantic-thoreau-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija za članak",
+        "client": "The Atlantic"
       }
     },
     {
@@ -1457,35 +1438,6 @@
       "hr": {
         "kind": "plakat festivala",
         "client": "Turistička zajednica grada Pule"
-      }
-    },
-    {
-      "slug": "shakespeareov-dante-book-cover",
-      "name": "Monaldi & Sorti – Shakespeareov Dante",
-      "client": "Fraktura",
-      "kind": "Book cover",
-      "year": "",
-      "images": [
-        "shakespeareov-dante-book-cover-illustration-vedran-stimac.jpg"
-      ],
-      "hr": {
-        "kind": "naslovnica knjige",
-        "client": "Fraktura"
-      }
-    },
-    {
-      "slug": "art-park-beer-label",
-      "name": "Art Park beer",
-      "client": "Pivovara Medvedgrad",
-      "kind": "Beer label",
-      "year": "2024",
-      "images": [
-        "art-park-beer-label-illustration-vedran-stimac-2.jpg",
-        "art-park-beer-label-illustration-vedran-stimac-1.jpg"
-      ],
-      "hr": {
-        "kind": "etiketa piva",
-        "client": "Pivovara Medvedgrad"
       }
     },
     {
@@ -1759,6 +1711,24 @@
       }
     },
     {
+      "slug": "le-monde-diplomatique-illustrations",
+      "name": "Le Monde diplomatique",
+      "client": "Le Monde diplomatique",
+      "kind": "Editorial illustrations",
+      "year": "2017",
+      "images": [
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-1.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-2.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-3.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-4.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-5.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracije za članke",
+        "client": "Le Monde diplomatique"
+      }
+    },
+    {
       "slug": "le-monde-diplomatique-2017",
       "name": "Le Monde diplomatique",
       "client": "Le Monde diplomatique",
@@ -1854,6 +1824,36 @@
       "hr": {
         "kind": "ilustracija",
         "client": "DJ DUPLO"
+      }
+    },
+    {
+      "slug": "nokturni-u-d-molu-book-cover",
+      "name": "Toni Juričić – Nokturni u D-molu",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "",
+      "images": [
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-1.jpg",
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-2.jpg",
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
+      }
+    },
+    {
+      "slug": "shakespeareov-dante-book-cover",
+      "name": "Monaldi & Sorti – Shakespeareov Dante",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "",
+      "images": [
+        "shakespeareov-dante-book-cover-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
       }
     }
   ],
