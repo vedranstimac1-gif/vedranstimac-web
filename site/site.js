@@ -6,6 +6,13 @@
     btn.setAttribute('aria-expanded', open);
   });
 
+  // Početna na mobitelu: video sporije (pola brzine)
+  var hv = document.querySelector('.hero-video video');
+  if (hv && window.matchMedia('(max-width: 860px)').matches) {
+    var slow = function () { hv.playbackRate = 0.5; };
+    slow(); hv.addEventListener('loadedmetadata', slow); hv.addEventListener('play', slow);
+  }
+
   // Galerije: rasporedi radove u stupce tako da se redoslijed čita s lijeva na desno
   Array.prototype.forEach.call(document.querySelectorAll('.gallery'), function (g) {
     var items = Array.prototype.slice.call(g.querySelectorAll(':scope > .item, :scope > .gcol > .item'));
