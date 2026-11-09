@@ -15,6 +15,7 @@ S = C["site"]
 M = C["media"]
 DOMAIN = "https://www.vedranstimac.com"
 HR_PUBLIC = bool(S.get("hr_public"))
+COMM_PUBLIC = bool(S.get("commissions_public"))  # narudžbe: skrivene (bez izbornika, noindex) dok nije true
 
 def ver(f):
     """Kratki otisak datoteke – kad se CSS/JS promijeni, preglednik ga ponovo učita."""
@@ -154,6 +155,12 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
         return f'<li><a href="{P(k, lang)}"{cur}>{t[k]}</a></li>'
     work_cur = ' class="current"' if key in ("work", "illustrations", "street-art", "paintings") or key in MURALS or key in ILLS else ""
     comm_cur = ' class="current"' if key in ("commissions", "c-ill", "c-mur") or key in COMM else ""
+    comm_menu = (f'''<li class="has-sub"><a href="{P('commissions', lang)}"{comm_cur}>{t['commissions']}</a>
+        <ul class="sub">
+          {nav("c-ill")}
+          {nav("c-mur")}
+        </ul>
+      </li>''' if COMM_PUBLIC else "")
 
     other = "hr" if lang == "en" else "en"
     if HR_PUBLIC:
@@ -165,6 +172,8 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     else:
         alt, switch = "", ""
         robots = '\n<meta name="robots" content="noindex, nofollow">' if lang == "hr" else ""
+    if not COMM_PUBLIC and (key in ("commissions", "c-ill", "c-mur") or key in COMM):
+        robots = '\n<meta name="robots" content="noindex, nofollow">'
 
     return f"""<!doctype html>
 <html lang="{lang}">
@@ -213,12 +222,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
           {nav("illustrations")}
         </ul>
       </li>
-      <li class="has-sub"><a href="{P('commissions', lang)}"{comm_cur}>{t['commissions']}</a>
-        <ul class="sub">
-          {nav("c-ill")}
-          {nav("c-mur")}
-        </ul>
-      </li>
+      {comm_menu}
       {nav("contact")}
       {switch}
     </ul>
@@ -592,8 +596,8 @@ open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write(page("404", "e
 </section>""", "Page not found."))
 
 # SITEMAP
-keys = (["home", "about", "work", "illustrations", "street-art", "paintings", "commissions", "c-ill", "c-mur", "contact"]
-        + sorted(MURALS) + sorted(ILLS) + sorted(COMM))
+keys = (["home", "about", "work", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
+        + (["commissions", "c-ill", "c-mur"] + sorted(COMM) if COMM_PUBLIC else []))
 urls = [P(k, "en") for k in keys] + ([P(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
