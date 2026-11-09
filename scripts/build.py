@@ -473,7 +473,7 @@ for lang in LANGS:
                "locationCreated": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": city, "addressCountry": country}},
                "image": [DOMAIN + web(w) for w in m["images"]], "description": " ".join(text)}
         build(m["slug"], lang, f"{name} – {city}, {year} | Vedran Štimac", mural_page(m, lang),
-              short(f"{name}, {'autor' if hr else 'by'} Vedran Štimac, {city} {year}. " + text[0]),
+              short(f"{name}, {'autor' if hr else 'by'} Vedran Štimac, {city} {year}. " + (text[0] if text else "")),
               image=web(m["images"][0]), ld=[art])
 
     # RADOVI – popis velikim slovima
