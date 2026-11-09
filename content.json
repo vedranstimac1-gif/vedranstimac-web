@@ -1428,6 +1428,21 @@
       }
     },
     {
+      "slug": "tartuffe-hnk-varazdin-poster",
+      "name": "Tartuffe Tartuffe Tartuffe",
+      "client": "Bruketa&Žinić",
+      "kind": "Theatre poster",
+      "year": "2021",
+      "images": [
+        "tartuffe-hnk-varazdin-poster-illustration-vedran-stimac-1.jpg",
+        "tartuffe-hnk-varazdin-poster-illustration-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "kazališni plakat",
+        "client": "Bruketa&Žinić"
+      }
+    },
+    {
       "slug": "noema-magazine-illustration",
       "name": "Noema Magazine",
       "client": "Noema Magazine",
