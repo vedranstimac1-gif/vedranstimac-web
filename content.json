@@ -1223,6 +1223,22 @@
       }
     },
     {
+      "slug": "ckz-eroticna-umetnost",
+      "name": "Erotična umetnost in utelešenost komunikacijskih praksi",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2024",
+      "images": [
+        "ckz-eroticna-umetnost-cover-vedran-stimac-1.jpg",
+        "ckz-eroticna-umetnost-cover-vedran-stimac-2.jpg",
+        "ckz-eroticna-umetnost-cover-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "ckz-utelesenost-komunikacijskih-praks",
       "name": "Utelešenost komunikacijskih praks",
       "client": "ČKZ",
