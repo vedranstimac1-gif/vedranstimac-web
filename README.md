@@ -22,4 +22,4 @@ Portfolio stranica Vedrana Štimca (PoliteBastART). Kopija stare Wix stranice, s
 
 ## URL-ovi (isti kao na Wixu)
 
-`/`, `/about`, `/illustrations`, `/street-art`, `/contact`; Shop vodi na Etsy.
+`/`, `/about`, `/illustrations`, `/street-art`, `/contact`.

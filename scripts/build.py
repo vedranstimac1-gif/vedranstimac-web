@@ -45,24 +45,22 @@ def P(key, lang):
 T = {
     "en": {
         "tagline": S["tagline"], "home": "HOME", "about": "ABOUT", "work": "WORK",
-        "illustrations": "ILLUSTRATIONS", "street-art": "STREET ART", "paintings": "PAINTINGS", "contact": "CONTACT", "shop": "SHOP",
+        "illustrations": "ILLUSTRATIONS", "street-art": "STREET ART", "paintings": "PAINTINGS", "contact": "CONTACT",
         "menu": "Menu", "about_h": "ABOUT", "exh_h": "EXHIBITIONS", "ill_h": "ILLUSTRATIONS", "street_h": "STREET ART",
         "contact_h": "HAVE A PROJECT<br>IN MIND?", "studio": "studio",
         "series": "Portrait illustration · Room of Portraits", "all_ill": "All illustrations",
-        "back_murals": "← Street art", "buy": "Buy print on Etsy",
-        "buy_note": 'Prints of other portraits are available in the <a href="{shop}" target="_blank" rel="noopener">Etsy shop</a>.',
+        "back_murals": "← Street art",
         "photo": "photo", "of": "of", "portrait_of": "Portrait illustration of {n} by Vedran Štimac (PoliteBastART)",
         "mural_alt": "{n}, {c} – mural by Vedran Štimac", "me_alt": "Picture of Vedran", "me_mural_alt": "Vedran painting a mural",
         "locale": "en_US",
     },
     "hr": {
         "tagline": "Ilustracije i murali Vedrana Štimca", "home": "POČETNA", "about": "O MENI", "work": "RADOVI",
-        "illustrations": "ILUSTRACIJE", "street-art": "MURALI", "paintings": "SLIKE", "contact": "KONTAKT", "shop": "SHOP",
+        "illustrations": "ILUSTRACIJE", "street-art": "MURALI", "paintings": "SLIKE", "contact": "KONTAKT",
         "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "MURALI",
         "contact_h": "IMATE PROJEKT<br>NA UMU?", "studio": "atelijer",
         "series": "Portretna ilustracija · Room of Portraits", "all_ill": "Sve ilustracije",
-        "back_murals": "← Murali", "buy": "Kupite print na Etsyju",
-        "buy_note": 'Printovi ostalih portreta dostupni su u <a href="{shop}" target="_blank" rel="noopener">Etsy trgovini</a>.',
+        "back_murals": "← Murali",
         "photo": "fotografija", "of": "od", "portrait_of": "Portretna ilustracija – {n}, autor Vedran Štimac (PoliteBastART)",
         "mural_alt": "{n}, {c} – mural, Vedran Štimac", "me_alt": "Vedran Štimac", "me_mural_alt": "Vedran slika mural",
         "locale": "hr_HR",
@@ -120,7 +118,7 @@ PERSON = {
     "birthPlace": {"@type": "Place", "name": "Pula, Croatia"},
     "homeLocation": {"@type": "Place", "name": "Zagreb, Croatia"},
     "knowsAbout": ["Illustration", "Murals", "Street art", "Portrait illustration", "Screen printing"],
-    "sameAs": [S["social"]["instagram"], S["social"]["behance"], S["social"]["facebook"], S["shop"]],
+    "sameAs": [S["social"]["instagram"], S["social"]["behance"], S["social"]["facebook"]],
 }
 
 # ---------- okvir stranice ----------
@@ -202,7 +200,6 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
         </ul>
       </li>
       {nav("contact")}
-      <li><a href="{S['shop']}" target="_blank" rel="noopener">{t['shop']}</a></li>
       {switch}
     </ul>
   </nav>
@@ -262,8 +259,7 @@ def ill_page(it, prev, nxt, lang):
     t = T[lang]
     cap = L(it, "caption", lang)
     text = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if (S.get("show_illustration_text") and lang == "en") else ""
-    buy = (f'<p class="buy"><a class="btn" href="{it["etsy"]}" target="_blank" rel="noopener">{t["buy"]}</a></p>'
-           if it.get("etsy") else f'<p class="buy-note">{t["buy_note"].format(shop=S["shop"])}</p>')
+    buy = ""
     extra = "".join(
         f'<a href="{orig(w)}" class="lb" data-caption="{e(it["name"])} — {e(cap)}">'
         f'<img src="{web(w)}" alt="{e(t["portrait_of"].format(n=it["name"]))} ({i})" loading="lazy"></a>'
@@ -307,9 +303,9 @@ for lang in LANGS:
     <source src="/media/home.mp4" type="video/mp4">
   </video>
 </section>""",
-          ("Portretne ilustracije i murali Vedrana Štimca (PoliteBastART), ilustratora i muralista iz Pule sa sjedištem u Zagrebu. Printovi dostupni na Etsyju."
+          ("Portretne ilustracije i murali Vedrana Štimca (PoliteBastART), ilustratora i muralista iz Pule sa sjedištem u Zagrebu."
            if hr else
-           "Portrait illustrations and murals by Vedran Štimac (PoliteBastART), illustrator and street artist from Pula, based in Zagreb. Prints available on Etsy."),
+           "Portrait illustrations and murals by Vedran Štimac (PoliteBastART), illustrator and street artist from Pula, based in Zagreb."),
           cls="home")
 
     # O MENI
@@ -363,8 +359,6 @@ for lang in LANGS:
                "image": [DOMAIN + web(w) for w in [it["image"]] + it.get("extra", [])]}
         if S.get("show_illustration_text") and not hr:
             art["description"] = " ".join(it["text"])
-        if it.get("etsy"):
-            art["offers"] = {"@type": "Offer", "url": it["etsy"], "availability": "https://schema.org/InStock"}
         if hr:
             title = f"{it['name']} – portretna ilustracija | Vedran Štimac"
             desc = f"Portretna ilustracija – {it['name']}, autor Vedran Štimac (PoliteBastART), {cap}. Iz serije Room of Portraits."
