@@ -220,3 +220,4 @@ nav .lang a:hover { background: var(--ink); color: #fff; text-decoration: none; 
   .paintings { grid-template-columns: 1fr; gap: 36px; }
   .paint-text { position: static; max-height: none; overflow: visible; }
 }
+.paint-text h1 .tr { display: block; font-weight: 400; font-size: 18px; color: var(--muted); margin-top: 2px; }

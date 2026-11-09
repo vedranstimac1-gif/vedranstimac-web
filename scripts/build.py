@@ -425,7 +425,7 @@ for lang in LANGS:
           f"""
 <section class="paintings">
   <div class="paint-text">
-    <h1>{e(PT['title'])}</h1>
+    <h1>{e(PT['title'])}{f' <span class="tr">({e(PT["title_en"])})</span>' if PT.get("title_en") else ''}</h1>
     <p class="meta">{e(PT['meta_hr'] if hr else PT['meta_en'])}</p>
     {''.join(f'<p>{e(p)}</p>' for p in (PT['text_hr'] if hr else PT['text_en']))}
   </div>

@@ -1046,8 +1046,8 @@
   ],
   "paintings": {
     "title": "Vikendom rekreativno",
-    "meta_en": "Series of paintings, 2026 · Exhibition at Galerija Makina, Pula, June 2026",
-    "meta_hr": "Ciklus slika, 2026. · Izložba u Galeriji Makina, Pula, lipanj 2026.",
+    "meta_en": "Series of paintings, 2026",
+    "meta_hr": "Ciklus slika, 2026.",
     "text_hr": [
       "Vikend u suvremenoj svakodnevnici gotovo redovno promatram kao svojevrstan rascjep u kontinuitetu života. Pridajemo mu gotovo mitski značaj: doživljavamo ga kao privremenu autonomnu zonu, obećanje odmaka od rutine i mogućnost predaha. U svijetu u kojem je teško zamisliti budućnost onkraj postojećih struktura, osjećaj mogućnosti premješta se u kratke pukotine svakodnevnice, u trenutke kada se javlja slutnja da možemo zastati.",
       "Tijelo je kroz tjedan određeno funkcijom utjelovljenom u radu i vremenu koje prodajemo za nadnicu. Vikendom taj odnos prividno popušta. Tijelo se privremeno izmiče svojoj radnoj ulozi i ponovno pokušava osjetiti vlastitu prisutnost, najčešće kroz melankoliju predaha.",
@@ -1125,6 +1125,7 @@
         "image": "u-spezu-do-trsta-vikendom-rekreativno-vedran-stimac.jpg",
         "size": "120 × 80 cm"
       }
-    ]
+    ],
+    "title_en": "Weekend Recreation"
   }
 }
