@@ -221,3 +221,14 @@ nav .lang a:hover { background: var(--ink); color: #fff; text-decoration: none; 
   .paint-text { position: static; max-height: none; overflow: visible; }
 }
 .paint-text h1 .tr { display: block; font-weight: 400; font-size: 18px; color: var(--muted); margin-top: 2px; }
+
+/* WORK – tri kartice */
+.work-index { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter) 60px; }
+.work-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.work-card { display: block; text-decoration: none; color: var(--ink); }
+.work-img { display: block; overflow: hidden; aspect-ratio: 4 / 5; background: #eee; }
+.work-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease, opacity .2s; }
+.work-card:hover .work-img img { transform: scale(1.03); opacity: .9; }
+.work-label { display: block; margin-top: 14px; text-align: center; font: 700 20px var(--mono); letter-spacing: 1px; }
+.work-card:hover .work-label { text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 860px) { .work-cards { grid-template-columns: 1fr; gap: 32px; } .work-img { aspect-ratio: 4 / 3; } }

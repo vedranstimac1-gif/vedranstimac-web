@@ -27,6 +27,7 @@ LANGS = ("en", "hr")
 PATHS = {
     "home":          {"en": "/",              "hr": "/hr/"},
     "about":         {"en": "/about",         "hr": "/hr/o-meni"},
+    "work":          {"en": "/work",          "hr": "/hr/radovi"},
     "illustrations": {"en": "/illustrations", "hr": "/hr/ilustracije"},
     "street-art":    {"en": "/street-art",    "hr": "/hr/murali"},
     "paintings":     {"en": "/paintings",     "hr": "/hr/slike"},
@@ -140,7 +141,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     def nav(k):
         cur = ' aria-current="page"' if key == k else ""
         return f'<li><a href="{P(k, lang)}"{cur}>{t[k]}</a></li>'
-    work_cur = ' class="current"' if key in ("illustrations", "street-art", "paintings") or key in MURALS or key in ILLS else ""
+    work_cur = ' class="current"' if key in ("work", "illustrations", "street-art", "paintings") or key in MURALS or key in ILLS else ""
 
     other = "hr" if lang == "en" else "en"
     if HR_PUBLIC:
@@ -193,11 +194,11 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     <ul>
       {nav("home")}
       {nav("about")}
-      <li class="has-sub"><a href="{P('illustrations', lang)}"{work_cur}>{t['work']}</a>
+      <li class="has-sub"><a href="{P('work', lang)}"{work_cur}>{t['work']}</a>
         <ul class="sub">
-          {nav("illustrations")}
-          {nav("street-art")}
           {nav("paintings")}
+          {nav("street-art")}
+          {nav("illustrations")}
         </ul>
       </li>
       {nav("contact")}
@@ -406,6 +407,23 @@ for lang in LANGS:
               short(f"{name}, {'autor' if hr else 'by'} Vedran Štimac, {city} {year}. " + text[0]),
               image=web(m["images"][0]), ld=[art])
 
+    # RADOVI – tri kartice
+    tiles = [("paintings", web(C["paintings"]["items"][-1]["image"])),
+             ("street-art", web(next(m for m in C["street_art"] if m["slug"] == "vladimir-nazor")["images"][0])),
+             ("illustrations", web(C["illustrations"][0]["image"]))]
+    cards = "".join(
+        f'<a class="work-card" href="{P(k, lang)}"><span class="work-img"><img src="{img}" alt="{t[k].title()}" loading="lazy"></span>'
+        f'<span class="work-label">{t[k]}</span></a>' for k, img in tiles)
+    build("work", lang,
+          "Radovi – slike, murali i ilustracije | Vedran Štimac" if hr else "Work – Paintings, Street Art & Illustrations | Vedran Štimac",
+          f"""
+<section class="work-index">
+  <h1 class="page-title">{t['work']}</h1>
+  <div class="work-cards">{cards}</div>
+</section>""",
+          ("Radovi Vedrana Štimca (PoliteBastART): slike, murali i ilustracije." if hr else
+           "Work by Vedran Štimac (PoliteBastART): paintings, murals and street art, and portrait illustrations."))
+
     # SLIKE (Vikendom rekreativno)
     PT = C["paintings"]
     works = []
@@ -460,7 +478,7 @@ open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write(page("404", "e
 </section>""", "Page not found."))
 
 # SITEMAP
-keys = ["home", "about", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
+keys = ["home", "about", "work", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
 urls = [P(k, "en") for k in keys] + ([P(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
