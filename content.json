@@ -1017,5 +1017,82 @@
         ]
       ]
     ]
-  ]
+  ],
+  "paintings": {
+    "title": "Vikendom rekreativno",
+    "meta_en": "Series of paintings, 2026 · Exhibition at Galerija Makina, Pula, June 2026",
+    "meta_hr": "Ciklus slika, 2026. · Izložba u Galeriji Makina, Pula, lipanj 2026.",
+    "text_hr": [
+      "Vikend u suvremenoj svakodnevnici gotovo redovno promatram kao svojevrstan rascjep u kontinuitetu života. Pridajemo mu gotovo mitski značaj: doživljavamo ga kao privremenu autonomnu zonu, obećanje odmaka od rutine i mogućnost predaha. U svijetu u kojem je teško zamisliti budućnost onkraj postojećih struktura, osjećaj mogućnosti premješta se u kratke pukotine svakodnevice, u trenutke kada se javlja slutnja da možemo zastati.",
+      "Tijelo je kroz tjedan određeno funkcijom utjelovljenom u radu i vremenu koje prodajemo za nadnicu. Vikendom taj odnos prividno popušta. Tijelo se privremeno izmiče svojoj radnoj ulozi i ponovno pokušava osjetiti vlastitu prisutnost, najčešće kroz melankoliju predaha.",
+      "U svojim radovima, nadahnut Hegedušićem i Trumbetašom s jedne strane te Riverom i latinoameričkim socijalnim slikarstvom s druge, kroz prizmu magičnog realizma spojenog s naivnim izričajem postavljam likove i scene unutar vikend-svakodnevice koja djeluje istovremeno poznato i blago izmješteno.",
+      "Moji protagonisti nisu romantizirani heroji radničke klase niti nositelji dociranja o socijalnoj nepravdi, nego obični ljudi zatečeni u trenutku pokušaja da ponovno osjete sebe. Stilski ne djeluju kao akademski ideali; njihova anatomija nije ružna, nego poštena. To su teška i nezgrapno naslikana tijela koja nose tragove svakodnevice.",
+      "Magični realizam ovdje nije prisutan samo kao estetski ukras, nego kao konceptualni alat. Omogućuje mi prikaz vikenda kao blago pomaknutog stanja stvarnosti, vremenske heterotopije u kojoj svakodnevica ostaje prepoznatljiva, ali se otvara prostor emotivnog otklona. To je prostor u kojem sanjamo cigarete dugačke deset metara, u kojem sekunde udaraju srčano, a melankolija sitnih sati vraća nas u polusvijet između sna i navike.",
+      "U tom pomaku banalne situacije dobivaju mitsku težinu. Vikend se pojavljuje kao vrijeme u kojem se svakodnevne geste pune očekivanjem da će život barem na trenutak postati gušći i stvarniji."
+    ],
+    "text_en": [
+      "In contemporary everyday life I almost always see the weekend as a kind of rupture in the continuity of life. We give it an almost mythical meaning: we experience it as a temporary autonomous zone, a promise of distance from routine and a chance to catch our breath. In a world where it is hard to imagine a future beyond existing structures, the sense of possibility moves into the short cracks of the everyday – into moments when we sense that we might be able to pause.",
+      "During the week the body is defined by its function, embodied in work and in the time we sell for a wage. At the weekend this relationship seems to loosen. The body temporarily slips out of its working role and tries once again to feel its own presence, most often through the melancholy of rest.",
+      "Inspired by Hegedušić and Trumbetaš on one side, and by Rivera and Latin American social painting on the other, I place my figures and scenes, through the lens of magical realism combined with a naive idiom, within a weekend everyday that feels at once familiar and slightly displaced.",
+      "My protagonists are neither romanticised working-class heroes nor vehicles for lectures about social injustice, but ordinary people caught in the moment of trying to feel themselves again. Stylistically they are not academic ideals; their anatomy is not ugly but honest. These are heavy, clumsily painted bodies that carry the traces of everyday life.",
+      "Magical realism here is not merely an aesthetic ornament but a conceptual tool. It lets me show the weekend as a slightly shifted state of reality, a temporal heterotopia in which the everyday remains recognisable while a space of emotional detachment opens up. It is a space where we dream of ten-metre-long cigarettes, where seconds beat like a heart, and where the melancholy of the small hours returns us to a half-world between sleep and habit.",
+      "In this shift, banal situations acquire mythical weight. The weekend appears as a time when everyday gestures are filled with the expectation that life, at least for a moment, will become denser and more real."
+    ],
+    "items": [
+      {
+        "slug": "vecer-u-kleti",
+        "name": "Večer u Kleti",
+        "name_en": "Evening at Klet",
+        "year": "2026",
+        "tech": "Acrylic on OSB board",
+        "tech_hr": "akril na OSB ploči",
+        "image": "vecer-u-kleti-vikendom-rekreativno-vedran-stimac.jpg"
+      },
+      {
+        "slug": "mjesec-cemo-nekako-prezaliti",
+        "name": "Mjesec ćemo nekako prežaliti",
+        "name_en": "We'll get over the Moon somehow",
+        "year": "2026",
+        "tech": "Oil on canvas",
+        "tech_hr": "ulje na platnu",
+        "image": "mjesec-cemo-nekako-prezaliti-vikendom-rekreativno-vedran-stimac.jpg"
+      },
+      {
+        "slug": "kindness-is-such-a-strange-feeling",
+        "name": "Kindness is such a strange feeling",
+        "name_en": null,
+        "year": "2026",
+        "tech": "Oil on canvas",
+        "tech_hr": "ulje na platnu",
+        "image": "kindness-is-such-a-strange-feeling-vikendom-rekreativno-vedran-stimac.jpg"
+      },
+      {
+        "slug": "nikad-vise",
+        "name": "Nikad više",
+        "name_en": "Never more",
+        "year": "2026",
+        "tech": "Oil on canvas",
+        "tech_hr": "ulje na platnu",
+        "image": "nikad-vise-vikendom-rekreativno-vedran-stimac.jpg"
+      },
+      {
+        "slug": "prekovremeni",
+        "name": "Prekovremeni",
+        "name_en": "Overtime",
+        "year": "2026",
+        "tech": "Oil on board",
+        "tech_hr": "ulje na ploči",
+        "image": "prekovremeni-vikendom-rekreativno-vedran-stimac.jpg"
+      },
+      {
+        "slug": "u-spezu-do-trsta",
+        "name": "U špežu do Trsta",
+        "name_en": "Shopping trip to Trieste",
+        "year": "2026",
+        "tech": "Oil on canvas",
+        "tech_hr": "ulje na platnu",
+        "image": "u-spezu-do-trsta-vikendom-rekreativno-vedran-stimac.jpg"
+      }
+    ]
+  }
 }

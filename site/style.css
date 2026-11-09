@@ -198,3 +198,25 @@ nav a:hover, nav a[aria-current="page"], nav a.current { text-decoration: underl
 /* Prekidač jezika EN | HR */
 nav .lang a { border: 1px solid var(--ink); padding: 2px 8px; }
 nav .lang a:hover { background: var(--ink); color: #fff; text-decoration: none; }
+
+/* Slike – Vikendom rekreativno: tekst lijevo, slike desno */
+.paintings {
+  max-width: 1240px; margin: 0 auto; padding: 24px var(--gutter) 60px;
+  display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start;
+}
+.paint-text { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; padding-right: 8px; }
+.paint-text h1 { font: 700 26px/1.25 var(--mono); margin: 0 0 6px; }
+.paint-text .meta { font: 12px/1.5 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin: 0 0 24px; }
+.paint-text p { margin: 0 0 16px; }
+.paint-works { display: flex; flex-direction: column; gap: 56px; }
+.painting { margin: 0; }
+.painting a { display: block; cursor: zoom-in; }
+.painting img { width: 100%; height: auto; }
+.painting figcaption { margin-top: 12px; font-size: 13px; line-height: 1.5; }
+.painting figcaption strong { display: inline; }
+.painting figcaption .tr { color: var(--muted); font-style: italic; }
+.painting figcaption > span:last-child { display: block; color: var(--muted); }
+@media (max-width: 860px) {
+  .paintings { grid-template-columns: 1fr; gap: 36px; }
+  .paint-text { position: static; max-height: none; overflow: visible; }
+}

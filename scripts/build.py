@@ -23,6 +23,7 @@ PATHS = {
     "about":         {"en": "/about",         "hr": "/hr/o-meni"},
     "illustrations": {"en": "/illustrations", "hr": "/hr/ilustracije"},
     "street-art":    {"en": "/street-art",    "hr": "/hr/murali"},
+    "paintings":     {"en": "/paintings",     "hr": "/hr/slike"},
     "contact":       {"en": "/contact",       "hr": "/hr/kontakt"},
 }
 for x in C["street_art"] + C["illustrations"]:
@@ -37,7 +38,7 @@ def P(key, lang):
 T = {
     "en": {
         "tagline": S["tagline"], "home": "HOME", "about": "ABOUT", "work": "WORK",
-        "illustrations": "ILLUSTRATIONS", "street-art": "STREET ART", "contact": "CONTACT", "shop": "SHOP",
+        "illustrations": "ILLUSTRATIONS", "street-art": "STREET ART", "paintings": "PAINTINGS", "contact": "CONTACT", "shop": "SHOP",
         "menu": "Menu", "about_h": "ABOUT", "exh_h": "EXHIBITIONS", "ill_h": "ILLUSTRATIONS", "street_h": "STREET ART",
         "contact_h": "HAVE A PROJECT<br>IN MIND?", "studio": "studio",
         "series": "Portrait illustration · Room of Portraits", "all_ill": "All illustrations",
@@ -49,7 +50,7 @@ T = {
     },
     "hr": {
         "tagline": "Ilustracije i murali Vedrana Štimca", "home": "POČETNA", "about": "O MENI", "work": "RADOVI",
-        "illustrations": "ILUSTRACIJE", "street-art": "MURALI", "contact": "KONTAKT", "shop": "SHOP",
+        "illustrations": "ILUSTRACIJE", "street-art": "MURALI", "paintings": "SLIKE", "contact": "KONTAKT", "shop": "SHOP",
         "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "MURALI",
         "contact_h": "IMATE PROJEKT<br>NA UMU?", "studio": "atelijer",
         "series": "Portretna ilustracija · Room of Portraits", "all_ill": "Sve ilustracije",
@@ -133,7 +134,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     def nav(k):
         cur = ' aria-current="page"' if key == k else ""
         return f'<li><a href="{P(k, lang)}"{cur}>{t[k]}</a></li>'
-    work_cur = ' class="current"' if key in ("illustrations", "street-art") or key in MURALS or key in ILLS else ""
+    work_cur = ' class="current"' if key in ("illustrations", "street-art", "paintings") or key in MURALS or key in ILLS else ""
 
     other = "hr" if lang == "en" else "en"
     if HR_PUBLIC:
@@ -190,6 +191,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
         <ul class="sub">
           {nav("illustrations")}
           {nav("street-art")}
+          {nav("paintings")}
         </ul>
       </li>
       {nav("contact")}
@@ -398,6 +400,36 @@ for lang in LANGS:
               short(f"{name}, {'autor' if hr else 'by'} Vedran Štimac, {city} {year}. " + text[0]),
               image=web(m["images"][0]), ld=[art])
 
+    # SLIKE (Vikendom rekreativno)
+    PT = C["paintings"]
+    works = []
+    for w in PT["items"]:
+        tech = w["tech_hr"] if hr else w["tech"]
+        sub = "" if hr or not w.get("name_en") else f' <span class="tr">({e(w["name_en"])})</span>'
+        cap = f"{w['name']}, {w['year']}{'.' if hr else ''}, {tech}"
+        works.append(f"""
+    <figure class="painting">
+      <a href="{orig(w['image'])}" class="lb" data-caption="{e(cap)}">
+        <img src="{web(w['image'])}" alt="{e(w['name'])} – {'slika, ' if hr else 'painting by '}Vedran Štimac" loading="lazy" decoding="async"></a>
+      <figcaption><strong>{e(w['name'])}</strong>{sub}<span>{w['year']}{'.' if hr else ''}, {e(tech)}</span></figcaption>
+    </figure>""")
+    build("paintings", lang,
+          "Vikendom rekreativno – slike | Vedran Štimac" if hr else "Vikendom rekreativno – Paintings | Vedran Štimac",
+          f"""
+<section class="paintings">
+  <div class="paint-text">
+    <h1>{e(PT['title'])}</h1>
+    <p class="meta">{e(PT['meta_hr'] if hr else PT['meta_en'])}</p>
+    {''.join(f'<p>{e(p)}</p>' for p in (PT['text_hr'] if hr else PT['text_en']))}
+  </div>
+  <div class="paint-works">{''.join(works)}
+  </div>
+</section>""",
+          ("„Vikendom rekreativno“ – ciklus slika Vedrana Štimca (2026.): vikend kao pukotina u svakodnevici, kroz magični realizam i naivni izričaj. Ulje na platnu."
+           if hr else
+           "“Vikendom rekreativno” – a 2026 series of paintings by Vedran Štimac: the weekend as a crack in everyday life, through magical realism and a naive idiom. Oil on canvas."),
+          image=web(PT["items"][0]["image"]))
+
     # KONTAKT
     build("contact", lang,
           "Kontakt – narudžba murala ili ilustracije | Vedran Štimac" if hr else
@@ -421,7 +453,7 @@ open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write(page("404", "e
 </section>""", "Page not found."))
 
 # SITEMAP
-keys = ["home", "about", "illustrations", "street-art", "contact"] + sorted(MURALS) + sorted(ILLS)
+keys = ["home", "about", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
 urls = [P(k, "en") for k in keys] + ([P(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
