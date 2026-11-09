@@ -1428,6 +1428,20 @@
       }
     },
     {
+      "slug": "noema-magazine-illustration",
+      "name": "Noema Magazine",
+      "client": "Noema Magazine",
+      "kind": "Editorial illustration",
+      "year": "2021",
+      "images": [
+        "noema-magazine-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija za članak",
+        "client": "Noema Magazine"
+      }
+    },
+    {
       "slug": "zivio-8-mart-mozemo-pula",
       "name": "Živio 8. Mart",
       "client": "Možemo! Pula",
