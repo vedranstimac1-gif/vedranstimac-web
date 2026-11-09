@@ -405,13 +405,14 @@ for lang in LANGS:
     works = []
     for w in PT["items"]:
         tech = w["tech_hr"] if hr else w["tech"]
-        sub = "" if hr or not w.get("name_en") else f' <span class="tr">({e(w["name_en"])})</span>'
-        cap = f"{w['name']}, {w['year']}{'.' if hr else ''}, {tech}"
+        sub = "" if not w.get("name_en") else f' <span class="tr">({e(w["name_en"])})</span>'
+        size = w.get("size", "")
+        cap = f"{w['name']}, {w['year']}{'.' if hr else ''}, {tech}" + (f", {size}" if size else "")
         works.append(f"""
     <figure class="painting">
       <a href="{orig(w['image'])}" class="lb" data-caption="{e(cap)}">
         <img src="{web(w['image'])}" alt="{e(w['name'])} – {'slika, ' if hr else 'painting by '}Vedran Štimac" loading="lazy" decoding="async"></a>
-      <figcaption><strong>{e(w['name'])}</strong>{sub}<span>{w['year']}{'.' if hr else ''}, {e(tech)}</span></figcaption>
+      <figcaption><strong>{e(w['name'])}</strong>{sub}<span>{w['year']}{'.' if hr else ''}, {e(tech)}{', ' + size if size else ''}</span></figcaption>
     </figure>""")
     build("paintings", lang,
           "Vikendom rekreativno – slike | Vedran Štimac" if hr else "Vikendom rekreativno – Paintings | Vedran Štimac",
