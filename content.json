@@ -1222,6 +1222,21 @@
       }
     },
     {
+      "slug": "ckz-marksizem-in-vojna",
+      "name": "Marksizem in vojna",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2025",
+      "images": [
+        "ckz-marksizem-in-vojna-cover-vedran-stimac-1.jpg",
+        "ckz-marksizem-in-vojna-cover-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "bloomsday-2025-poster",
       "name": "Bloomsday 2025",
       "client": "Tourist Board of the City of Pula",
