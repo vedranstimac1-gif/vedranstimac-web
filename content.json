@@ -1456,6 +1456,20 @@
       }
     },
     {
+      "slug": "vizkultura-poster",
+      "name": "Vizkultura",
+      "client": "Vizkultura",
+      "kind": "Poster",
+      "year": "2017",
+      "images": [
+        "vizkultura-poster-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "plakat",
+        "client": "Vizkultura"
+      }
+    },
+    {
       "slug": "motovun-film-festival-poster-2016",
       "name": "Gdje ste bili 2016?",
       "client": "Motovun Film Festival",
