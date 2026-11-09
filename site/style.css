@@ -226,5 +226,6 @@ nav .lang a:hover { background: var(--ink); color: #fff; text-decoration: none; 
 .work-index { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); min-height: calc(100vh - 160px); display: flex; align-items: center; justify-content: center; }
 .work-list { list-style: none; margin: 0; padding: 40px 0; text-align: center; }
 .work-list li + li { margin-top: clamp(16px, 3vw, 32px); }
-.work-list a { font: 700 clamp(36px, 7vw, 88px)/1.1 var(--mono); letter-spacing: 2px; text-decoration: none; color: var(--ink); }
-.work-list a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 10px; }
+.work-list a { font: 700 clamp(36px, 7vw, 88px)/1.1 var(--mono); letter-spacing: 2px; color: var(--ink);
+  text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 10px; }
+.work-list a:hover { opacity: .6; }
