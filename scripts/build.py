@@ -543,8 +543,8 @@ for lang in LANGS:
           "Commission Murals – Schools, Museums, Businesses | Vedran Štimac",
           f"""
 <section class="banner">
-  <video autoplay muted loop playsinline preload="auto" poster="/media/commission-murals-poster.jpg">
-    <source src="/media/commission-murals.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="auto" poster="/media/commission-murals-poster.jpg?v={ver('media/commission-murals-poster.jpg')}">
+    <source src="/media/commission-murals.mp4?v={ver('media/commission-murals.mp4')}" type="video/mp4">
   </video>
   <h1>{t['c-mur_h']}</h1>
 </section>
