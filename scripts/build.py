@@ -593,17 +593,16 @@ for lang in LANGS:
 
     # KONTAKT
     build("contact", lang,
-          "Kontakt – narudžba murala ili ilustracije | Vedran Štimac" if hr else
-          "Contact – Commission a Mural or Illustration | Vedran Štimac",
+          "Kontakt – Vedran Štimac (PoliteBastART)" if hr else "Contact – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="contact">
   <h1>{t['contact_h']}</h1>
   <p>e-mail: <a href="mailto:{S['email']}">{S['email']}</a></p>
   <p>{t['studio']}: {S['studio']}</p>
 </section>""",
-          ("Naručite mural, portret ili ilustraciju od Vedrana Štimca (PoliteBastART). E-mail vedran.stimac1@gmail.com, atelijer Ilica 73, Zagreb."
+          ("Imate li projekt na umu? Javite se – murali, ilustracije i slike po narudžbi. Vedran Štimac (PoliteBastART), atelijer Ilica 73, Zagreb."
            if hr else
-           "Commission a mural, portrait or illustration from Vedran Štimac (PoliteBastART). E-mail vedran.stimac1@gmail.com, studio at Ilica 73, Zagreb."))
+           "Have a project in mind? Get in touch – commissioned murals, illustrations and paintings. Vedran Štimac (PoliteBastART), studio at Ilica 73, Zagreb."))
 
 # 404 (zajednička)
 PATHS["404"] = {"en": "/404", "hr": "/404"}
