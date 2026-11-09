@@ -15,7 +15,8 @@ S = C["site"]
 M = C["media"]
 DOMAIN = "https://www.vedranstimac.com"
 HR_PUBLIC = bool(S.get("hr_public"))
-COMM_PUBLIC = bool(S.get("commissions_public"))  # narudžbe: skrivene (bez izbornika, noindex) dok nije true
+COMM_PUBLIC = bool(S.get("commissions_public"))
+CILL_PUBLIC = COMM_PUBLIC and bool(S.get("commission_ill_public", True))  # ilustracije po narudžbi: skrivene dok nisu gotove  # narudžbe: skrivene (bez izbornika, noindex) dok nije true
 
 def ver(f):
     """Kratki otisak datoteke – kad se CSS/JS promijeni, preglednik ga ponovo učita."""
@@ -45,6 +46,7 @@ for x in C["street_art"] + C["illustrations"] + CPROJ:
 MURALS = {m["slug"] for m in C["street_art"]}
 ILLS = {i["slug"] for i in C["illustrations"]}
 COMM = {x["slug"] for x in CPROJ}
+CILLS = {x["slug"] for x in CILL}
 
 def P(key, lang):
     return PATHS[key][lang]
@@ -157,7 +159,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     comm_cur = ' class="current"' if key in ("commissions", "c-ill", "c-mur") or key in COMM else ""
     comm_menu = (f'''<li class="has-sub"><a href="{P('commissions', lang)}"{comm_cur}>{t['commissions']}</a>
         <ul class="sub">
-          {nav("c-ill")}
+          {nav("c-ill") if CILL_PUBLIC else ""}
           {nav("c-mur")}
         </ul>
       </li>''' if COMM_PUBLIC else "")
@@ -172,7 +174,8 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     else:
         alt, switch = "", ""
         robots = '\n<meta name="robots" content="noindex, nofollow">' if lang == "hr" else ""
-    if not COMM_PUBLIC and (key in ("commissions", "c-ill", "c-mur") or key in COMM):
+    if (not COMM_PUBLIC and (key in ("commissions", "c-ill", "c-mur") or key in COMM)) or \
+       (not CILL_PUBLIC and (key == "c-ill" or key in CILLS)):
         robots = '\n<meta name="robots" content="noindex, nofollow">'
 
     return f"""<!doctype html>
@@ -517,7 +520,7 @@ for lang in LANGS:
           image=web(PT["items"][0]["image"]))
 
     # PO NARUDŽBI
-    clist = "".join(f'<li><a href="{P(k, lang)}">{t[k + "_h"]}</a></li>' for k in ("c-ill", "c-mur"))
+    clist = "".join(f'<li><a href="{P(k, lang)}">{t[k + "_h"]}</a></li>' for k in (("c-ill", "c-mur") if CILL_PUBLIC else ("c-mur",)))
     build("commissions", lang,
           "Po narudžbi – ilustracije i murali | Vedran Štimac" if hr else "Commissions – Illustrations & Murals | Vedran Štimac",
           f"""
@@ -596,7 +599,8 @@ open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write(page("404", "e
 
 # SITEMAP
 keys = (["home", "about", "work", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
-        + (["commissions", "c-ill", "c-mur"] + sorted(COMM) if COMM_PUBLIC else []))
+        + (["commissions", "c-mur"] + sorted(COMM - CILLS) if COMM_PUBLIC else [])
+        + (["c-ill"] + sorted(CILLS) if CILL_PUBLIC else []))
 urls = [P(k, "en") for k in keys] + ([P(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
