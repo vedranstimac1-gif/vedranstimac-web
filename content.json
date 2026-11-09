@@ -1387,21 +1387,6 @@
       }
     },
     {
-      "slug": "ckz-prakticna-filozofija",
-      "name": "Praktična filozofija",
-      "client": "ČKZ",
-      "kind": "Magazine cover",
-      "year": "",
-      "images": [
-        "ckz-prakticna-filozofija-illustration-vedran-stimac.jpg",
-        "ckz-prakticna-filozofija-cover-spread-vedran-stimac.jpg"
-      ],
-      "hr": {
-        "kind": "naslovnica časopisa",
-        "client": "ČKZ"
-      }
-    },
-    {
       "slug": "shakespeareov-dante-book-cover",
       "name": "Monaldi & Sorti – Shakespeareov Dante",
       "client": "Fraktura",
@@ -1453,6 +1438,21 @@
       "images": [
         "ckz-la-xira-por-la-vida-cover-vedran-stimac-1.jpg",
         "ckz-la-xira-por-la-vida-cover-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
+      "slug": "ckz-prakticna-filozofija",
+      "name": "Praktična filozofija",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2023",
+      "images": [
+        "ckz-prakticna-filozofija-illustration-vedran-stimac.jpg",
+        "ckz-prakticna-filozofija-cover-spread-vedran-stimac.jpg"
       ],
       "hr": {
         "kind": "naslovnica časopisa",
