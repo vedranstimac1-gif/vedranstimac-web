@@ -1150,7 +1150,7 @@
     {
       "slug": "monte-libric-2026-poster",
       "name": "Monte Librić 2026",
-      "client": "Circolo Pula",
+      "client": "Monte Librić – Children's Literature Festival",
       "kind": "Festival poster",
       "year": "2026",
       "images": [
@@ -1160,7 +1160,7 @@
       ],
       "hr": {
         "kind": "plakat festivala",
-        "client": "Circolo Pula"
+        "client": "Monte Librić – festival dječje književnosti"
       }
     },
     {
@@ -1337,20 +1337,6 @@
       "hr": {
         "kind": "plakat festivala",
         "client": "Turistička zajednica grada Pule"
-      }
-    },
-    {
-      "slug": "reste-la-book-cover",
-      "name": "Reste là",
-      "client": "",
-      "kind": "Book cover",
-      "year": "2024",
-      "images": [
-        "reste-la-book-cover-illustration-vedran-stimac.jpg"
-      ],
-      "hr": {
-        "kind": "naslovnica knjige",
-        "client": ""
       }
     },
     {
@@ -1598,6 +1584,36 @@
       }
     },
     {
+      "slug": "nokturni-u-d-molu-book-cover",
+      "name": "Toni Juričić – Nokturni u D-molu",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "2022",
+      "images": [
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-1.jpg",
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-2.jpg",
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
+      }
+    },
+    {
+      "slug": "shakespeareov-dante-book-cover",
+      "name": "Monaldi & Sorti – Shakespeareov Dante",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "2022",
+      "images": [
+        "shakespeareov-dante-book-cover-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
+      }
+    },
+    {
       "slug": "tartuffe-hnk-varazdin-poster",
       "name": "Tartuffe Tartuffe Tartuffe",
       "client": "Bruketa&Žinić",
@@ -1824,36 +1840,6 @@
       "hr": {
         "kind": "ilustracija",
         "client": "DJ DUPLO"
-      }
-    },
-    {
-      "slug": "nokturni-u-d-molu-book-cover",
-      "name": "Toni Juričić – Nokturni u D-molu",
-      "client": "Fraktura",
-      "kind": "Book cover",
-      "year": "",
-      "images": [
-        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-1.jpg",
-        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-2.jpg",
-        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-3.jpg"
-      ],
-      "hr": {
-        "kind": "naslovnica knjige",
-        "client": "Fraktura"
-      }
-    },
-    {
-      "slug": "shakespeareov-dante-book-cover",
-      "name": "Monaldi & Sorti – Shakespeareov Dante",
-      "client": "Fraktura",
-      "kind": "Book cover",
-      "year": "",
-      "images": [
-        "shakespeareov-dante-book-cover-illustration-vedran-stimac.jpg"
-      ],
-      "hr": {
-        "kind": "naslovnica knjige",
-        "client": "Fraktura"
       }
     }
   ],
