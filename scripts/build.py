@@ -29,12 +29,12 @@ LANGS = ("en", "hr")
 PATHS = {
     "home":          {"en": "/",              "hr": "/hr/"},
     "about":         {"en": "/about",         "hr": "/hr/o-meni"},
-    "work":          {"en": "/work",          "hr": "/hr/radovi"},
+    "work":          {"en": "/work",          "hr": "/hr/autorski-rad"},
     "illustrations": {"en": "/illustrations", "hr": "/hr/ilustracije"},
     "street-art":    {"en": "/street-art",    "hr": "/hr/murali"},
     "paintings":     {"en": "/paintings",     "hr": "/hr/slike"},
     "contact":       {"en": "/contact",       "hr": "/hr/kontakt"},
-    "commissions":   {"en": "/commissions",   "hr": "/hr/po-narudzbi"},
+    "commissions":   {"en": "/commissions",   "hr": "/hr/rad-po-narudzbi"},
     "c-ill":         {"en": "/commission-illustrations", "hr": "/hr/ilustracije-po-narudzbi"},
     "c-mur":         {"en": "/commission-murals",        "hr": "/hr/murali-po-narudzbi"},
 }
@@ -488,14 +488,14 @@ for lang in LANGS:
     # RADOVI – popis velikim slovima
     cards = "".join(f'<li><a href="{P(k, lang)}">{t[k]}</a></li>' for k in ("paintings", "street-art", "illustrations"))
     build("work", lang,
-          "Radovi – slike, murali i ilustracije | Vedran Štimac" if hr else "Work – Paintings, Street Art & Illustrations | Vedran Štimac",
+          "Autorski rad – Vedran Štimac (PoliteBastART)" if hr else "Work – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="work-index">
   <h1 class="sr-only">{t['work']}</h1>
   <ul class="work-list">{cards}</ul>
 </section>""",
-          ("Radovi Vedrana Štimca (PoliteBastART): slike, murali i ilustracije." if hr else
-           "Work by Vedran Štimac (PoliteBastART): paintings, murals and street art, and portrait illustrations."))
+          ("Autorski rad Vedrana Štimca (PoliteBastART): slike, street art i ilustracije." if hr else
+           "Work by Vedran Štimac (PoliteBastART): paintings, street art and illustrations."))
 
     # SLIKE (Vikendom rekreativno)
     PT = C["paintings"]
@@ -531,14 +531,14 @@ for lang in LANGS:
     # PO NARUDŽBI
     clist = "".join(f'<li><a href="{P(k, lang)}">{t[k + "_h"]}</a></li>' for k in (("c-ill", "c-mur") if CILL_PUBLIC else ("c-mur",)))
     build("commissions", lang,
-          "Po narudžbi – ilustracije i murali | Vedran Štimac" if hr else "Commissions – Illustrations & Murals | Vedran Štimac",
+          "Rad po narudžbi – Vedran Štimac (PoliteBastART)" if hr else "Commissions – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="work-index">
   <h1 class="sr-only">{t['commissions']}</h1>
   <ul class="work-list">{clist}</ul>
 </section>""",
-          ("Ilustracije i murali po narudžbi Vedrana Štimca (PoliteBastART): naslovnice, plakati, ilustracije za časopise i murali za škole, muzeje i tvrtke." if hr else
-           "Commissioned illustrations and murals by Vedran Štimac (PoliteBastART): book and magazine covers, posters, editorial illustration, and murals for schools, museums and businesses."))
+          ("Ilustracije i murali po narudžbi Vedrana Štimca (PoliteBastART): naslovnice, plakati, ilustracije za tisak te oslikavanje unutarnjih i vanjskih zidnih površina autorskim radom." if hr else
+           "Commissioned illustrations and murals by Vedran Štimac (PoliteBastART): covers, posters, editorial illustration, and original murals for interior and exterior walls."))
     build("c-ill", lang,
           "Ilustracije po narudžbi – naslovnice, plakati, časopisi | Vedran Štimac" if hr else
           "Commission Illustrations – Covers, Posters, Editorial | Vedran Štimac",
