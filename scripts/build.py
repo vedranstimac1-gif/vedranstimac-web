@@ -399,12 +399,12 @@ for lang in LANGS:
         for tt, place in items:
             ex.append(f"<p>{e(tt)}<br>{e(place)}</p>")
     build("about", lang,
-          "O meni – Vedran Štimac, ilustrator i muralist" if hr else "About Vedran Štimac – Illustrator & Street Artist",
+          "O meni – Vedran Štimac (PoliteBastART)" if hr else "About – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="about">
   <div class="about-text">
     <h1>{t['about_h']}</h1>
-    {''.join(f'<p>{e(p)}</p>' for p in (C['about_hr'] if hr else C['about']))}
+    {''.join('<p>' + re.sub(r'\[\[(.+?)\]\]', lambda mm: f'<a href="{P("commissions", lang)}">{mm.group(1)}</a>', e(p)) + '</p>' for p in (C['about_hr'] if hr else C['about']))}
   </div>
   <div class="about-photo"><img src="{web(M['about_portrait'])}" alt="{t['me_alt']}"></div>
   <div class="about-photo wide"><img src="{web(M['about_mural'])}" alt="{t['me_mural_alt']}" loading="lazy"></div>
@@ -413,9 +413,9 @@ for lang in LANGS:
     {''.join(ex)}
   </div>
 </section>""",
-          ("Vedran Štimac (PoliteBastART) – ilustrator, muralist i sitotiskar iz Pule. Društveno angažirani portreti na papiru i na zidovima, izložbe diljem regije."
+          ("Vedran Štimac (PoliteBastART) – slikar, muralist i ilustrator iz Pule."
            if hr else
-           "Vedran Štimac (PoliteBastART) is an illustrator, muralist and screen printer from Pula, Croatia. Socially engaged portraits on paper and on walls; exhibitions across the region."),
+           "Vedran Štimac (PoliteBastART) – painter, muralist and illustrator from Pula."),
           image=web(M["about_portrait"]),
           ld=[{"@type": "ProfilePage", "url": DOMAIN + P("about", lang), "mainEntity": {"@id": DOMAIN + "/#vedran"}}])
 
