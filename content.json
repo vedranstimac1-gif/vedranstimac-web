@@ -1178,6 +1178,21 @@
       }
     },
     {
+      "slug": "hudu-barbershop-t-shirt",
+      "name": "Hudu",
+      "client": "Hudu Barbershop",
+      "kind": "T-shirt design",
+      "year": "2026",
+      "images": [
+        "hudu-barbershop-t-shirt-illustration-vedran-stimac-1.jpg",
+        "hudu-barbershop-t-shirt-illustration-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "dizajn majice",
+        "client": "Hudu Barbershop"
+      }
+    },
+    {
       "slug": "the-atlantic-cult-of-maga",
       "name": "The End Will Come for the Cult of MAGA",
       "client": "The Atlantic",
