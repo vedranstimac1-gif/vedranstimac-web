@@ -1428,6 +1428,20 @@
       }
     },
     {
+      "slug": "motovun-film-festival-poster-2016",
+      "name": "Gdje ste bili 2016?",
+      "client": "Motovun Film Festival",
+      "kind": "Poster",
+      "year": "2016",
+      "images": [
+        "motovun-film-festival-poster-2016-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "plakat",
+        "client": "Motovun Film Festival"
+      }
+    },
+    {
       "slug": "dj-duplo-illustration",
       "name": "DJ DUPLO",
       "client": "DJ DUPLO",
