@@ -1442,6 +1442,20 @@
       }
     },
     {
+      "slug": "wunschbaum-tulsi-leaves-cover",
+      "name": "Tulsi Leaves",
+      "client": "WunschBaum",
+      "kind": "Album cover",
+      "year": "2017",
+      "images": [
+        "wunschbaum-tulsi-leaves-cover-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "omot albuma",
+        "client": "WunschBaum"
+      }
+    },
+    {
       "slug": "motovun-film-festival-poster-2016",
       "name": "Gdje ste bili 2016?",
       "client": "Motovun Film Festival",
