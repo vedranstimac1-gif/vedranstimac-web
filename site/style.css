@@ -185,6 +185,7 @@ nav a:hover, nav a[aria-current="page"], nav a.current { text-decoration: underl
 /* Stranica ilustracije */
 .illus .mural-photos { grid-template-columns: 1fr; }
 .illus .mural-photos img { aspect-ratio: auto; height: auto; }
+.illus .mural-photos.n3 a:first-child img { aspect-ratio: auto; }
 .illus .series { font: 12px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin: -10px 0 18px; }
 .btn {
   display: inline-block; background: var(--ink); color: #fff; text-decoration: none;

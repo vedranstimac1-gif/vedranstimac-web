@@ -32,11 +32,18 @@ PATHS = {
     "street-art":    {"en": "/street-art",    "hr": "/hr/murali"},
     "paintings":     {"en": "/paintings",     "hr": "/hr/slike"},
     "contact":       {"en": "/contact",       "hr": "/hr/kontakt"},
+    "commissions":   {"en": "/commissions",   "hr": "/hr/po-narudzbi"},
+    "c-ill":         {"en": "/commission-illustrations", "hr": "/hr/ilustracije-po-narudzbi"},
+    "c-mur":         {"en": "/commission-murals",        "hr": "/hr/murali-po-narudzbi"},
 }
-for x in C["street_art"] + C["illustrations"]:
+CILL = C.get("commission_illustrations", [])
+CMUR = C.get("commission_murals", [])
+CPROJ = CILL + [m for m in CMUR if "slug" in m]
+for x in C["street_art"] + C["illustrations"] + CPROJ:
     PATHS[x["slug"]] = {"en": "/" + x["slug"], "hr": "/hr/" + x["slug"]}
 MURALS = {m["slug"] for m in C["street_art"]}
 ILLS = {i["slug"] for i in C["illustrations"]}
+COMM = {x["slug"] for x in CPROJ}
 
 def P(key, lang):
     return PATHS[key][lang]
@@ -46,6 +53,9 @@ T = {
     "en": {
         "tagline": S["tagline"], "home": "HOME", "about": "ABOUT", "work": "WORK",
         "illustrations": "ILLUSTRATIONS", "street-art": "STREET ART", "paintings": "PAINTINGS", "contact": "CONTACT",
+        "commissions": "COMMISSIONS", "c-ill": "ILLUSTRATIONS", "c-mur": "MURALS",
+        "c-ill_h": "COMMISSION ILLUSTRATIONS", "c-mur_h": "COMMISSION MURALS",
+        "back_c-ill": "← Commission illustrations", "back_c-mur": "← Commission murals", "client": "Client",
         "menu": "Menu", "about_h": "ABOUT", "exh_h": "EXHIBITIONS", "ill_h": "ILLUSTRATIONS", "street_h": "STREET ART",
         "contact_h": "HAVE A PROJECT<br>IN MIND?", "studio": "studio",
         "series": "Portrait illustration · Room of Portraits", "all_ill": "All illustrations",
@@ -57,6 +67,9 @@ T = {
     "hr": {
         "tagline": "Ilustracije i murali Vedrana Štimca", "home": "POČETNA", "about": "O MENI", "work": "RADOVI",
         "illustrations": "ILUSTRACIJE", "street-art": "MURALI", "paintings": "SLIKE", "contact": "KONTAKT",
+        "commissions": "PO NARUDŽBI", "c-ill": "ILUSTRACIJE", "c-mur": "MURALI",
+        "c-ill_h": "ILUSTRACIJE PO NARUDŽBI", "c-mur_h": "MURALI PO NARUDŽBI",
+        "back_c-ill": "← Ilustracije po narudžbi", "back_c-mur": "← Murali po narudžbi", "client": "Naručitelj",
         "menu": "Izbornik", "about_h": "O MENI", "exh_h": "IZLOŽBE", "ill_h": "ILUSTRACIJE", "street_h": "MURALI",
         "contact_h": "IMATE PROJEKT<br>NA UMU?", "studio": "atelijer",
         "series": "Portretna ilustracija · Room of Portraits", "all_ill": "Sve ilustracije",
@@ -140,6 +153,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
         cur = ' aria-current="page"' if key == k else ""
         return f'<li><a href="{P(k, lang)}"{cur}>{t[k]}</a></li>'
     work_cur = ' class="current"' if key in ("work", "illustrations", "street-art", "paintings") or key in MURALS or key in ILLS else ""
+    comm_cur = ' class="current"' if key in ("commissions", "c-ill", "c-mur") or key in COMM else ""
 
     other = "hr" if lang == "en" else "en"
     if HR_PUBLIC:
@@ -197,6 +211,12 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
           {nav("paintings")}
           {nav("street-art")}
           {nav("illustrations")}
+        </ul>
+      </li>
+      <li class="has-sub"><a href="{P('commissions', lang)}"{comm_cur}>{t['commissions']}</a>
+        <ul class="sub">
+          {nav("c-ill")}
+          {nav("c-mur")}
         </ul>
       </li>
       {nav("contact")}
@@ -275,6 +295,62 @@ def ill_page(it, prev, nxt, lang):
     <p class="place">{e(cap)}</p>
     {buy}
     <p class="back"><a href="{P(prev['slug'], lang)}">← {e(prev['name'])}</a> &nbsp;·&nbsp; <a href="{P('illustrations', lang)}">{t['all_ill']}</a> &nbsp;·&nbsp; <a href="{P(nxt['slug'], lang)}">{e(nxt['name'])} →</a></p>
+  </div>
+</section>"""
+
+def cmeta(x, lang):
+    """Opis narudžbe: 'Naručitelj · vrsta · godina'."""
+    hr = lang == "hr"
+    parts = []
+    if "kind" in x:
+        parts.append(L(x, "kind", lang) if hr else x["kind"])
+    if "kind" not in x:  # mural: 'Mjesto (godina)', kao kod ostalih murala
+        where = L(x, "place", lang) or L(x, "client", lang)
+        return f"{where} ({x['year']})" if x.get("year") else where
+    if x.get("year"):
+        parts.append(x["year"] + ("." if hr else ""))
+    return ", ".join(parts)
+
+def cgallery(items, kind, lang):
+    out = []
+    for x in items:
+        if "ref" in x:  # mural koji već postoji među muralima
+            m = next(s for s in C["street_art"] if s["slug"] == x["ref"])
+            name, cap = L(m, "name", lang), L(m, "caption", lang)
+            src = web(m.get("thumb") or m["images"][0])
+            slug = m["slug"]
+        else:
+            name, cap = L(x, "name", lang), cmeta(x, lang)
+            client = L(x, "client", lang)
+            if client and client != name and kind == "portraits":
+                cap = client + " · " + cap
+            src, slug = web(x["images"][0]), x["slug"]
+        out.append(
+            f'<figure class="item"><a href="{P(slug, lang)}">'
+            f'<img src="{src}" alt="{e(name)} – {e(cap)}, Vedran Štimac" loading="lazy" decoding="async"></a>'
+            f'<figcaption><strong>{e(name)}</strong><span>{e(cap)}</span></figcaption></figure>')
+    return f'<div class="gallery {kind}">' + "\n".join(out) + "</div>"
+
+def cproj_page(x, back, lang):
+    t = T[lang]
+    name, client, meta = L(x, "name", lang), L(x, "client", lang), cmeta(x, lang)
+    n = len(x["images"])
+    label = f"{name} — {client + ', ' if client and client != name else ''}{meta}"
+    photos = "".join(
+        f'<a href="{orig(w)}" class="lb" data-caption="{e(label)}">'
+        f'<img src="{web(w)}" alt="{e(name)}, Vedran Štimac – {i}/{n}" loading="lazy" decoding="async"></a>'
+        for i, w in enumerate(x["images"], 1))
+    paras = "".join(f"<p>{e(p)}</p>" for p in L(x, "text", lang)) if x.get("text") else ""
+    cl = f'<p class="series">{t["client"]}: {e(client)}</p>' if client and client != name else ""
+    return f"""
+<section class="mural illus">
+  <div class="mural-photos n{n}">{photos}</div>
+  <div class="mural-text">
+    <h1>{e(name)}</h1>
+    {cl}
+    {paras}
+    <p class="place">{e(meta)}</p>
+    <p class="back"><a href="{P(back, lang)}">{t['back_' + back]}</a></p>
   </div>
 </section>"""
 
@@ -444,6 +520,55 @@ for lang in LANGS:
            "“Vikendom rekreativno” – a 2026 series of paintings by Vedran Štimac: the weekend as a crack in everyday life, through magical realism and a naive idiom. Oil on canvas."),
           image=web(PT["items"][0]["image"]))
 
+    # PO NARUDŽBI
+    clist = "".join(f'<li><a href="{P(k, lang)}">{t[k + "_h"]}</a></li>' for k in ("c-ill", "c-mur"))
+    build("commissions", lang,
+          "Po narudžbi – ilustracije i murali | Vedran Štimac" if hr else "Commissions – Illustrations & Murals | Vedran Štimac",
+          f"""
+<section class="work-index">
+  <h1 class="sr-only">{t['commissions']}</h1>
+  <ul class="work-list">{clist}</ul>
+</section>""",
+          ("Ilustracije i murali po narudžbi Vedrana Štimca (PoliteBastART): naslovnice, plakati, ilustracije za časopise i murali za škole, muzeje i tvrtke." if hr else
+           "Commissioned illustrations and murals by Vedran Štimac (PoliteBastART): book and magazine covers, posters, editorial illustration, and murals for schools, museums and businesses."))
+    build("c-ill", lang,
+          "Ilustracije po narudžbi – naslovnice, plakati, časopisi | Vedran Štimac" if hr else
+          "Commission Illustrations – Covers, Posters, Editorial | Vedran Štimac",
+          f"""
+<section class="work">
+  <h1 class="page-title">{t['c-ill_h']}</h1>
+  {cgallery(CILL, 'portraits', lang)}
+</section>""",
+          ("Ilustracije po narudžbi Vedrana Štimca: The Atlantic, Le Monde diplomatique, Fraktura, ČKZ, Bloomsday Pula, Monte Librić i drugi." if hr else
+           "Commissioned illustrations by Vedran Štimac for The Atlantic, Le Monde diplomatique, Fraktura, ČKZ, Bloomsday Pula, Monte Librić and others."),
+          image=web(CILL[0]["images"][0]))
+    build("c-mur", lang,
+          "Murali po narudžbi – škole, muzeji, tvrtke | Vedran Štimac" if hr else
+          "Commission Murals – Schools, Museums, Businesses | Vedran Štimac",
+          f"""
+<section class="work">
+  <h1 class="page-title">{t['c-mur_h']}</h1>
+  {cgallery(CMUR, 'murals', lang)}
+</section>""",
+          ("Murali po narudžbi Vedrana Štimca: Pomorski i povijesni muzej Istre, osnovne škole u Puli, Pazinu i Ogulinu, Retail park Rovinj, Jarun, Općina Medulin." if hr else
+           "Commissioned murals by Vedran Štimac for the Historical and Maritime Museum of Istria, schools in Pula, Pazin and Ogulin, Retail Park Rovinj, Jarun and the Municipality of Medulin."),
+          image=web(CMUR[0]["images"][0]))
+    for back, items, form in (("c-ill", CILL, "Illustration"), ("c-mur", [m for m in CMUR if "slug" in m], "Mural")):
+        for x in items:
+            name, client, meta = L(x, "name", lang), L(x, "client", lang), cmeta(x, lang)
+            art = {"@type": "VisualArtwork", "name": x["name"], "artform": form, "url": DOMAIN + P(x["slug"], lang),
+                   "creator": {"@id": DOMAIN + "/#vedran"}, "image": [DOMAIN + web(w) for w in x["images"]]}
+            if x.get("year"):
+                art["dateCreated"] = x["year"]
+            if client:
+                art["sourceOrganization"] = {"@type": "Organization", "name": client}
+            who = f" {'za' if hr else 'for'} {client}" if client and client != name else ""
+            desc = f"{name} – {meta}{who}. {'Autor' if hr else 'By'} Vedran Štimac (PoliteBastART)."
+            if x.get("text"):
+                desc = short(desc + " " + L(x, "text", lang)[0])
+            build(x["slug"], lang, f"{name} – {meta} | Vedran Štimac", cproj_page(x, back, lang), desc,
+                  image=web(x["images"][0]), ld=[art])
+
     # KONTAKT
     build("contact", lang,
           "Kontakt – narudžba murala ili ilustracije | Vedran Štimac" if hr else
@@ -467,7 +592,8 @@ open(os.path.join(SITE, "404.html"), "w", encoding="utf-8").write(page("404", "e
 </section>""", "Page not found."))
 
 # SITEMAP
-keys = ["home", "about", "work", "illustrations", "street-art", "paintings", "contact"] + sorted(MURALS) + sorted(ILLS)
+keys = (["home", "about", "work", "illustrations", "street-art", "paintings", "commissions", "c-ill", "c-mur", "contact"]
+        + sorted(MURALS) + sorted(ILLS) + sorted(COMM))
 urls = [P(k, "en") for k in keys] + ([P(k, "hr") for k in keys] if HR_PUBLIC else [])
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

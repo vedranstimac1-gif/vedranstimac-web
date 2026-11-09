@@ -1096,5 +1096,465 @@
       }
     ],
     "title_en": "Recreationally, on Weekends"
-  }
+  },
+  "commission_illustrations": [
+    {
+      "slug": "monte-libric-2026-poster",
+      "name": "Monte Librić 2026",
+      "client": "Circolo Pula",
+      "kind": "Festival poster",
+      "year": "2026",
+      "images": [
+        "monte-libric-2026-poster-illustration-vedran-stimac-1.jpg",
+        "monte-libric-2026-poster-illustration-vedran-stimac-2.jpg",
+        "monte-libric-2026-poster-illustration-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "plakat festivala",
+        "client": "Circolo Pula"
+      }
+    },
+    {
+      "slug": "the-atlantic-cult-of-maga",
+      "name": "The End Will Come for the Cult of MAGA",
+      "client": "The Atlantic",
+      "kind": "Editorial illustration",
+      "year": "2023",
+      "images": [
+        "the-atlantic-cult-of-maga-illustration-vedran-stimac-1.jpg",
+        "the-atlantic-cult-of-maga-illustration-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija za članak",
+        "client": "The Atlantic"
+      }
+    },
+    {
+      "slug": "bloomsday-2025-poster",
+      "name": "Bloomsday 2025",
+      "client": "Bloomsday Pula",
+      "kind": "Festival poster",
+      "year": "2025",
+      "images": [
+        "bloomsday-2025-poster-illustration-vedran-stimac-1.jpg",
+        "bloomsday-2025-poster-illustration-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "plakat festivala",
+        "client": "Bloomsday Pula"
+      }
+    },
+    {
+      "slug": "nocni-mars-8-mart-poster",
+      "name": "8. mart – Feminizam i gotovo.",
+      "client": "Noćni marš",
+      "kind": "Poster",
+      "year": "2024",
+      "images": [
+        "nocni-mars-8-mart-poster-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "plakat",
+        "client": "Noćni marš"
+      }
+    },
+    {
+      "slug": "eva-santa-del-pueblo-skateboard",
+      "name": "Eva Santa del Pueblo",
+      "client": "Private commission",
+      "kind": "Hand-painted skateboard, fileteado porteño",
+      "year": "2025",
+      "images": [
+        "eva-santa-del-pueblo-skateboard-illustration-vedran-stimac-1.jpg",
+        "eva-santa-del-pueblo-skateboard-illustration-vedran-stimac-2.jpg",
+        "eva-santa-del-pueblo-skateboard-illustration-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "ručno oslikana skejt daska, fileteado porteño",
+        "client": "privatna narudžba"
+      }
+    },
+    {
+      "slug": "ckz-utelesenost-komunikacijskih-praks",
+      "name": "Utelešenost komunikacijskih praks",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2024",
+      "images": [
+        "ckz-utelesenost-komunikacijskih-praks-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
+      "slug": "nokturni-u-d-molu-book-cover",
+      "name": "Toni Juričić – Nokturni u D-molu",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "",
+      "images": [
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-1.jpg",
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-2.jpg",
+        "nokturni-u-d-molu-book-cover-illustration-vedran-stimac-3.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
+      }
+    },
+    {
+      "slug": "le-monde-diplomatique-illustrations",
+      "name": "Le Monde diplomatique",
+      "client": "Le Monde diplomatique",
+      "kind": "Editorial illustrations",
+      "year": "",
+      "images": [
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-1.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-2.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-3.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-4.jpg",
+        "le-monde-diplomatique-illustrations-illustration-vedran-stimac-5.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracije za članke",
+        "client": "Le Monde diplomatique"
+      }
+    },
+    {
+      "slug": "ckz-feminizem-umetnost-literatura",
+      "name": "Feminizem – Umetnost – Literatura",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2024",
+      "images": [
+        "ckz-feminizem-umetnost-literatura-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
+      "slug": "bloomsday-2024-poster",
+      "name": "Bloomsday 2024",
+      "client": "Bloomsday Pula",
+      "kind": "Festival poster",
+      "year": "2024",
+      "images": [
+        "bloomsday-2024-poster-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "plakat festivala",
+        "client": "Bloomsday Pula"
+      }
+    },
+    {
+      "slug": "reste-la-book-cover",
+      "name": "Reste là",
+      "client": "",
+      "kind": "Book cover",
+      "year": "2024",
+      "images": [
+        "reste-la-book-cover-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": ""
+      }
+    },
+    {
+      "slug": "the-atlantic-thoreau",
+      "name": "Thoreau",
+      "client": "The Atlantic",
+      "kind": "Editorial illustration",
+      "year": "",
+      "images": [
+        "the-atlantic-thoreau-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija za članak",
+        "client": "The Atlantic"
+      }
+    },
+    {
+      "slug": "ckz-kino001",
+      "name": "Kino001",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2024",
+      "images": [
+        "ckz-kino001-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
+      "slug": "godisnji-banket-bratovstine-grobara-book-cover",
+      "name": "Mathias Énard – Godišnji banket bratovštine grobara",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "",
+      "images": [
+        "godisnji-banket-bratovstine-grobara-book-cover-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
+      }
+    },
+    {
+      "slug": "clear-kayak-t-shirt",
+      "name": "Clear Kayak",
+      "client": "Clear Kayak Tours",
+      "kind": "T-shirt design",
+      "year": "2023",
+      "images": [
+        "clear-kayak-t-shirt-illustration-vedran-stimac-1.jpg",
+        "clear-kayak-t-shirt-illustration-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "dizajn majice",
+        "client": "Clear Kayak Tours"
+      }
+    },
+    {
+      "slug": "bloomsday-2023-poster",
+      "name": "Bloomsday 2023",
+      "client": "Bloomsday Pula",
+      "kind": "Festival poster",
+      "year": "2023",
+      "images": [
+        "bloomsday-2023-poster-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "plakat festivala",
+        "client": "Bloomsday Pula"
+      }
+    },
+    {
+      "slug": "ckz-prakticna-filozofija",
+      "name": "Praktična filozofija",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "",
+      "images": [
+        "ckz-prakticna-filozofija-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
+      "slug": "shakespeareov-dante-book-cover",
+      "name": "Monaldi & Sorti – Shakespeareov Dante",
+      "client": "Fraktura",
+      "kind": "Book cover",
+      "year": "",
+      "images": [
+        "shakespeareov-dante-book-cover-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica knjige",
+        "client": "Fraktura"
+      }
+    },
+    {
+      "slug": "art-park-beer-label",
+      "name": "Art Park beer",
+      "client": "Art Park Pula",
+      "kind": "Beer label",
+      "year": "",
+      "images": [
+        "art-park-beer-label-illustration-vedran-stimac-1.jpg",
+        "art-park-beer-label-illustration-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "etiketa piva",
+        "client": "Art Park Pula"
+      }
+    }
+  ],
+  "commission_murals": [
+    {
+      "slug": "antoine-de-ville-pula",
+      "name": "Antoine De Ville",
+      "client": "Pomorski i povijesni muzej Istre (Historical and Maritime Museum of Istria)",
+      "place": "Pula, Croatia",
+      "year": "2026",
+      "text": [
+        "A large-format piece inspired by Antoine De Ville, the French military engineer who drew the plans for the Venetian fortress on the hill above Pula, the Kaštel, home of the Historical and Maritime Museum of Istria."
+      ],
+      "hr": {
+        "name": "Antoine De Ville",
+        "client": "Pomorski i povijesni muzej Istre",
+        "place": "Pula, Hrvatska",
+        "text": [
+          "Rad velikog formata inspiriran Antoineom De Villeom, francuskim vojnim inženjerom koji je nacrtao planove mletačke tvrđave na brežuljku iznad Pule, Kaštela, u kojem je danas Pomorski i povijesni muzej Istre."
+        ]
+      },
+      "images": [
+        "antoine-de-ville-pula-mural-vedran-stimac-1.jpg",
+        "antoine-de-ville-pula-mural-vedran-stimac-2.jpg",
+        "antoine-de-ville-pula-mural-vedran-stimac-3.jpg",
+        "antoine-de-ville-pula-mural-vedran-stimac-4.jpg"
+      ]
+    },
+    {
+      "slug": "super-klet-bar-counter",
+      "name": "Super Klet bar counter",
+      "client": "Studio-galerija Super Klet",
+      "place": "Zagreb, Croatia",
+      "year": "2025",
+      "text": [
+        "A new bar counter painted in the fileteado porteño style, the ornamental lettering tradition of Buenos Aires."
+      ],
+      "hr": {
+        "name": "Šank Super Klet",
+        "client": "Studio-galerija Super Klet",
+        "place": "Zagreb, Hrvatska",
+        "text": [
+          "Novi šank oslikan u stilu fileteado porteño, ornamentalnog oslikavanja i natpisa iz Buenos Airesa."
+        ]
+      },
+      "images": [
+        "super-klet-bar-counter-mural-vedran-stimac-1.jpg",
+        "super-klet-bar-counter-mural-vedran-stimac-2.jpg",
+        "super-klet-bar-counter-mural-vedran-stimac-3.jpg",
+        "super-klet-bar-counter-mural-vedran-stimac-4.jpg",
+        "super-klet-bar-counter-mural-vedran-stimac-5.jpg",
+        "super-klet-bar-counter-mural-vedran-stimac-6.jpg"
+      ]
+    },
+    {
+      "ref": "imagine-the-better-world"
+    },
+    {
+      "ref": "vladimir-nazor"
+    },
+    {
+      "slug": "ivana-brlic-mazuranic-ogulin",
+      "name": "Ivana Brlić-Mažuranić",
+      "client": "OŠ Ivane Brlić-Mažuranić, Ogulin",
+      "place": "Ogulin, Croatia",
+      "year": "2025",
+      "text": [
+        "A mural on the Ivana Brlić-Mažuranić Elementary School in Ogulin, the writer's hometown, with motifs from her Croatian Tales of Long Ago. The mural is dedicated to the children of Palestine."
+      ],
+      "hr": {
+        "name": "Ivana Brlić-Mažuranić",
+        "client": "OŠ Ivane Brlić-Mažuranić, Ogulin",
+        "place": "Ogulin, Hrvatska",
+        "text": [
+          "Mural na Osnovnoj školi Ivane Brlić-Mažuranić u Ogulinu, rodnom gradu spisateljice, s motivima iz Priča iz davnine. Mural je posvećen djeci Palestine."
+        ]
+      },
+      "images": [
+        "ivana-brlic-mazuranic-ogulin-mural-vedran-stimac-1.jpg",
+        "ivana-brlic-mazuranic-ogulin-mural-vedran-stimac-2.jpg",
+        "ivana-brlic-mazuranic-ogulin-mural-vedran-stimac-3.jpg",
+        "ivana-brlic-mazuranic-ogulin-mural-vedran-stimac-4.jpg"
+      ]
+    },
+    {
+      "slug": "container-mural-workshop-medulin",
+      "name": "Container mural workshop",
+      "client": "Općina Medulin (Municipality of Medulin)",
+      "place": "Medulin, Croatia",
+      "year": "2024",
+      "text": [
+        "Murals painted on containers as part of a mural-painting workshop."
+      ],
+      "hr": {
+        "name": "Radionica oslikavanja murala na kontejnerima",
+        "client": "Općina Medulin",
+        "place": "Medulin, Hrvatska",
+        "text": [
+          "Murali na kontejnerima, oslikani u sklopu radionice oslikavanja murala."
+        ]
+      },
+      "images": [
+        "container-mural-workshop-medulin-mural-vedran-stimac-1.jpg",
+        "container-mural-workshop-medulin-mural-vedran-stimac-2.jpg"
+      ]
+    },
+    {
+      "slug": "jarun-six-structures",
+      "name": "Six structures on Jarun",
+      "client": "",
+      "place": "Zagreb, Croatia",
+      "year": "2023",
+      "text": [
+        "Together with fellow artists, we painted six structures on Lake Jarun in Zagreb."
+      ],
+      "hr": {
+        "name": "Šest objekata na Jarunu",
+        "client": "",
+        "place": "Zagreb, Hrvatska",
+        "text": [
+          "S kolegama umjetnicima oslikali smo šest objekata na jezeru Jarun u Zagrebu."
+        ]
+      },
+      "images": [
+        "jarun-six-structures-mural-vedran-stimac-1.jpg",
+        "jarun-six-structures-mural-vedran-stimac-2.jpg",
+        "jarun-six-structures-mural-vedran-stimac-3.jpg"
+      ]
+    },
+    {
+      "slug": "retail-park-rovinj",
+      "name": "Retail Park Rovinj",
+      "client": "Retail Park Rovinj",
+      "place": "Rovinj, Croatia",
+      "year": "2023",
+      "text": [
+        "Around 1,500 m² of murals for the Retail Park in Rovinj, painted together with Boris Bare and Remić."
+      ],
+      "hr": {
+        "name": "Retail park Rovinj",
+        "client": "Retail park Rovinj",
+        "place": "Rovinj, Hrvatska",
+        "text": [
+          "Oko 1.500 m² murala za Retail park u Rovinju, oslikanih zajedno s Borisom Bareom i Remićem."
+        ]
+      },
+      "images": [
+        "retail-park-rovinj-mural-vedran-stimac-1.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-2.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-3.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-4.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-5.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-6.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-7.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-8.jpg",
+        "retail-park-rovinj-mural-vedran-stimac-9.jpg"
+      ]
+    },
+    {
+      "slug": "nikola-tesla-mural-atrium-bar",
+      "name": "Nikola Tesla",
+      "client": "Atrium bar",
+      "place": "",
+      "year": "2022",
+      "text": [
+        "An indoor mural of Nikola Tesla for Atrium bar."
+      ],
+      "hr": {
+        "name": "Nikola Tesla",
+        "client": "Atrium bar",
+        "place": "",
+        "text": [
+          "Unutarnji mural Nikole Tesle za Atrium bar."
+        ]
+      },
+      "images": [
+        "nikola-tesla-mural-atrium-bar-mural-vedran-stimac-1.jpg",
+        "nikola-tesla-mural-atrium-bar-mural-vedran-stimac-2.jpg"
+      ]
+    }
+  ]
 }
