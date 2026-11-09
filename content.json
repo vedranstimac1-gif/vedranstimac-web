@@ -1193,6 +1193,20 @@
       }
     },
     {
+      "slug": "ckz-ilustracija-v-sodobnoj-slovenskoj-kulturi",
+      "name": "Ilustracija v sodobnoj slovenskoj kulturi",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2026",
+      "images": [
+        "ckz-ilustracija-v-sodobnoj-slovenskoj-kulturi-cover-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "the-atlantic-cult-of-maga",
       "name": "The End Will Come for the Cult of MAGA",
       "client": "The Atlantic",
