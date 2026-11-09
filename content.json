@@ -1428,6 +1428,20 @@
       }
     },
     {
+      "slug": "dj-borka-ment-festival",
+      "name": "dj Borka",
+      "client": "MENT Festival Ljubljana",
+      "kind": "Illustration",
+      "year": "2018",
+      "images": [
+        "dj-borka-ment-festival-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "ilustracija",
+        "client": "MENT Festival Ljubljana"
+      }
+    },
+    {
       "slug": "le-monde-diplomatique-2017",
       "name": "Le Monde diplomatique",
       "client": "Le Monde diplomatique",
