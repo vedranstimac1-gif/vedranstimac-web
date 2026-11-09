@@ -1193,6 +1193,21 @@
       }
     },
     {
+      "slug": "ckz-balkan-migration-route-revisited",
+      "name": "Balkan Migration Route Revisited",
+      "client": "ČKZ",
+      "kind": "Magazine cover",
+      "year": "2025",
+      "images": [
+        "ckz-balkan-migration-route-revisited-cover-vedran-stimac-1.jpg",
+        "ckz-balkan-migration-route-revisited-cover-vedran-stimac-2.jpg"
+      ],
+      "hr": {
+        "kind": "naslovnica časopisa",
+        "client": "ČKZ"
+      }
+    },
+    {
       "slug": "bloomsday-2025-poster",
       "name": "Bloomsday 2025",
       "client": "Bloomsday Pula",
