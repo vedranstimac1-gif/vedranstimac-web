@@ -172,8 +172,10 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     if HR_PUBLIC:
         alt = "".join(f'\n<link rel="alternate" hreflang="{l}" href="{DOMAIN}{P(key, l)}">' for l in LANGS)
         alt += f'\n<link rel="alternate" hreflang="x-default" href="{DOMAIN}{P(key, "en")}">'
-        switch = (f'<li class="lang"><a href="{P(key, other)}" hreflang="{other}" lang="{other}">'
-                  f'{other.upper()}</a></li>')
+        def lk(l, label):
+            cur = ' class="on" aria-current="true"' if l == lang else ""
+            return f'<a href="{P(key, l)}" hreflang="{l}" lang="{l}"{cur}>{label}</a>'
+        switch = f'<li class="lang">{lk("hr", "HR")}<span>/</span>{lk("en", "ENG")}</li>'
         robots = ""
     else:
         alt, switch = "", ""
@@ -370,6 +372,14 @@ def cproj_page(x, back, lang):
   </div>
 </section>"""
 
+def home_lang(lang):
+    if not HR_PUBLIC:
+        return ""
+    def lk(l, label):
+        cur = ' class="on" aria-current="true"' if l == lang else ""
+        return f'<a href="{P("home", l)}" hreflang="{l}" lang="{l}"{cur}>{label}</a>'
+    return f'\n<p class="home-lang">{lk("hr", "HR")}<span>/</span>{lk("en", "ENG")}</p>'
+
 def write(path, html):
     rel = path.strip("/")
     f = os.path.join(SITE, rel, "index.html") if rel else os.path.join(SITE, "index.html")
@@ -393,7 +403,7 @@ for lang in LANGS:
   <video autoplay muted loop playsinline preload="auto" poster="/media/home-poster.jpg">
     <source src="/media/home.mp4" type="video/mp4">
   </video>
-</section>""",
+</section>{home_lang(lang)}""",
           ("Slike, murali i ilustracije Vedrana Štimca (PoliteBastART), Pula / Zagreb."
            if hr else
            "Paintings, murals and illustrations by Vedran Štimac (PoliteBastART), Pula / Zagreb."),
