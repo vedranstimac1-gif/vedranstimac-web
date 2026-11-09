@@ -309,7 +309,7 @@ def cmeta(x, lang):
     """Opis narudžbe: samo 'Naručitelj, godina' (bez mjesta)."""
     hr = lang == "hr"
     client = L(x, "client", lang) if x.get("client") else ""
-    if "name" in x and client == L(x, "name", lang):  # naziv = naručitelj: ne ponavljaj
+    if "kind" in x and client == L(x, "name", lang):  # ilustracija: naziv = naručitelj, ne ponavljaj
         client = ""
     parts = [p for p in (client,
                          (x["year"] + ("." if hr else "")) if x.get("year") else "") if p]
