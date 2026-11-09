@@ -1484,6 +1484,20 @@
       }
     },
     {
+      "slug": "drugi-izlaz-poster",
+      "name": "Drugi izlaz",
+      "client": "Kazalište Dr. Inat",
+      "kind": "Theatre poster",
+      "year": "2017",
+      "images": [
+        "drugi-izlaz-poster-illustration-vedran-stimac.jpg"
+      ],
+      "hr": {
+        "kind": "kazališni plakat",
+        "client": "Kazalište Dr. Inat"
+      }
+    },
+    {
       "slug": "motovun-film-festival-poster-2016",
       "name": "Gdje ste bili 2016?",
       "client": "Motovun Film Festival",
