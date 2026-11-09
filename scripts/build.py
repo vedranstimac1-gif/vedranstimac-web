@@ -407,19 +407,14 @@ for lang in LANGS:
               short(f"{name}, {'autor' if hr else 'by'} Vedran Štimac, {city} {year}. " + text[0]),
               image=web(m["images"][0]), ld=[art])
 
-    # RADOVI – tri kartice
-    tiles = [("paintings", web(C["paintings"]["items"][-1]["image"])),
-             ("street-art", web(next(m for m in C["street_art"] if m["slug"] == "vladimir-nazor")["images"][0])),
-             ("illustrations", web(C["illustrations"][0]["image"]))]
-    cards = "".join(
-        f'<a class="work-card" href="{P(k, lang)}"><span class="work-img"><img src="{img}" alt="{t[k].title()}" loading="lazy"></span>'
-        f'<span class="work-label">{t[k]}</span></a>' for k, img in tiles)
+    # RADOVI – popis velikim slovima
+    cards = "".join(f'<li><a href="{P(k, lang)}">{t[k]}</a></li>' for k in ("paintings", "street-art", "illustrations"))
     build("work", lang,
           "Radovi – slike, murali i ilustracije | Vedran Štimac" if hr else "Work – Paintings, Street Art & Illustrations | Vedran Štimac",
           f"""
 <section class="work-index">
-  <h1 class="page-title">{t['work']}</h1>
-  <div class="work-cards">{cards}</div>
+  <h1 class="sr-only">{t['work']}</h1>
+  <ul class="work-list">{cards}</ul>
 </section>""",
           ("Radovi Vedrana Štimca (PoliteBastART): slike, murali i ilustracije." if hr else
            "Work by Vedran Štimac (PoliteBastART): paintings, murals and street art, and portrait illustrations."))
