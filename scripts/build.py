@@ -356,7 +356,7 @@ def cproj_page(x, back, lang):
         f'<img src="{web(w)}" alt="{e(name)}, Vedran Štimac – {i}/{n}" loading="lazy" decoding="async"></a>'
         for i, w in enumerate(x["images"], 1))
     paras = "".join(f"<p>{e(p)}</p>" for p in L(x, "text", lang)) if x.get("text") else ""
-    kind = f'<p class="series">{e(L(x, "kind", lang))}</p>' if x.get("kind") else ""
+    kind = f'<p class="series">{e(L(x, "kind", lang)[:1].upper() + L(x, "kind", lang)[1:])}</p>' if x.get("kind") else ""
     place = f'<p class="place">{e(meta)}</p>' if meta else ""
     return f"""
 <section class="mural illus">
@@ -546,19 +546,19 @@ for lang in LANGS:
           ("Ilustracije i murali po narudžbi Vedrana Štimca (PoliteBastART): naslovnice, plakati, ilustracije za tisak te oslikavanje unutarnjih i vanjskih zidnih površina autorskim radom." if hr else
            "Commissioned illustrations and murals by Vedran Štimac (PoliteBastART): covers, posters, editorial illustration, and original murals for interior and exterior walls."))
     build("c-ill", lang,
-          "Ilustracije po narudžbi – naslovnice, plakati, časopisi | Vedran Štimac" if hr else
-          "Commission Illustrations – Covers, Posters, Editorial | Vedran Štimac",
+          "Ilustracije po narudžbi – Vedran Štimac (PoliteBastART)" if hr else
+          "Commission Illustrations – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="work">
   <h1 class="page-title">{t['c-ill_h']}</h1>
   {cgallery(CILL, 'portraits', lang)}
 </section>""",
-          ("Ilustracije po narudžbi Vedrana Štimca: The Atlantic, Le Monde diplomatique, Fraktura, ČKZ, Bloomsday Pula, Monte Librić i drugi." if hr else
-           "Commissioned illustrations by Vedran Štimac for The Atlantic, Le Monde diplomatique, Fraktura, ČKZ, Bloomsday Pula, Monte Librić and others."),
+          ("Ilustracije po narudžbi Vedrana Štimca (PoliteBastART): naslovnice, plakati, ilustracije za tisak i dizajn za proizvode." if hr else
+           "Commissioned illustrations by Vedran Štimac (PoliteBastART): covers, posters, editorial illustration and product design."),
           image=web(CILL[0]["images"][0]))
     build("c-mur", lang,
-          "Murali po narudžbi – škole, muzeji, tvrtke | Vedran Štimac" if hr else
-          "Commission Murals – Schools, Museums, Businesses | Vedran Štimac",
+          "Murali po narudžbi – Vedran Štimac (PoliteBastART)" if hr else
+          "Commission Murals – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="banner">
   <video autoplay muted loop playsinline preload="auto" poster="/media/commission-murals-poster.jpg?v={ver('media/commission-murals-poster.jpg')}">
@@ -569,8 +569,8 @@ for lang in LANGS:
 <section class="work">
   {cgallery(CMUR, 'murals', lang)}
 </section>""",
-          ("Murali po narudžbi Vedrana Štimca: Pomorski i povijesni muzej Istre, osnovne škole, Max City, Retail park Rovinj, Općina Marčana, Općina Medulin, Brist Olive Oil." if hr else
-           "Commissioned murals by Vedran Štimac for the Historical and Maritime Museum of Istria, elementary schools, Max City, Retail Park Rovinj, the municipalities of Marčana and Medulin, and Brist Olive Oil."),
+          ("Murali po narudžbi Vedrana Štimca (PoliteBastART): oslikavanje unutarnjih i vanjskih zidnih površina autorskim radom." if hr else
+           "Commissioned murals by Vedran Štimac (PoliteBastART): original murals for interior and exterior walls."),
           image=web(CMUR[0]["images"][0]))
     for back, items, form in (("c-ill", CILL, "Illustration"), ("c-mur", [m for m in CMUR if "slug" in m], "Mural")):
         for x in items:
@@ -587,7 +587,8 @@ for lang in LANGS:
             desc = f"{name} – {what}{who}{yr}. {'Autor' if hr else 'By'} Vedran Štimac (PoliteBastART)."
             if x.get("text"):
                 desc = short(desc + " " + L(x, "text", lang)[0])
-            build(x["slug"], lang, f"{name}{' – ' + meta if meta else ''} | Vedran Štimac", cproj_page(x, back, lang), desc,
+            yr = f", {x['year']}{'.' if hr else ''}" if x.get("year") else ""
+            build(x["slug"], lang, f"{name} – {what}{yr} | Vedran Štimac (PoliteBastART)", cproj_page(x, back, lang), desc,
                   image=web(x["images"][0]), ld=[art])
 
     # KONTAKT
