@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Dnevnik</title>
+<link rel="manifest" href="/dnevnik/manifest.json">
+<link rel="apple-touch-icon" href="/dnevnik/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/dnevnik/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dnevnik">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#eef1f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11161d" media="(prefers-color-scheme: dark)">
+<style>
+/* Jedan uski stupac kao aplikacija: dan na vrhu, tri kartice, mjesečni kalendar ispod. */
+:root {
+  --bg: #eef1f4; --surface: #ffffff; --ink: #18202b; --muted: #5f6b7a; --line: #d6dce4; --chip: #e4e9ef;
+  --trening: #e0572f; --posao: #2f6fd6; --prehrana: #2b9a5c; --pola: #d9a21b; --warn: #b54708;
+  --display: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
+  --body: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11161d; --surface: #1a212b; --ink: #e8edf3; --muted: #95a1b0; --line: #2c3644; --chip: #252e3a;
+    --trening: #f07650; --posao: #5f95ec; --prehrana: #48b878; --pola: #e5b43c; --warn: #f5a35c; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.45 var(--body);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-tap-highlight-color: transparent;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+[hidden] { display: none !important; }
+.app { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+
+header.day {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  padding-block: 12px 8px; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; gap: 8px;
+}
+.navbtn {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer; display: grid; place-items: center; padding: 0;
+}
+.navbtn:disabled { opacity: .3; cursor: default; }
+.daytitle { text-align: center; min-width: 0; }
+.daytitle h1 { font-family: var(--display); font-weight: 700; font-size: 28px; margin: 0; line-height: 1.1; }
+.daytitle .sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
+button.link { border: 0; background: none; color: var(--posao); font: 600 14px var(--body); cursor: pointer; padding: 2px 6px; }
+
+.card { background: var(--surface); border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--line); }
+.cardhead { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cardhead h2 { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 0; display: flex; align-items: center; gap: 10px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex: none; display: inline-block; }
+.t .dot { background: var(--trening); } .p .dot { background: var(--posao); } .h .dot { background: var(--prehrana); }
+
+.sw { position: relative; width: 60px; height: 36px; flex: none; }
+.sw input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; z-index: 1; width: 100%; height: 100%; }
+.sw span { position: absolute; inset: 0; border-radius: 999px; background: var(--chip); transition: background .2s; }
+.sw span::after { content: ""; position: absolute; top: 3px; left: 3px; width: 30px; height: 30px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: transform .2s; }
+.sw input:checked + span::after { transform: translateX(24px); }
+.t .sw input:checked + span { background: var(--trening); }
+.p .sw input:checked + span { background: var(--posao); }
+.sw input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.pick { display: flex; flex-direction: column; gap: 8px; }
+.pick .q { font-size: 13px; color: var(--muted); font-weight: 600; letter-spacing: .02em; }
+.chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.chip {
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 12px;
+  padding: 12px 10px; font: 600 15px var(--body); cursor: pointer; text-align: left; display: flex; align-items: center; gap: 8px; min-width: 0;
+}
+.chip::before { content: ""; width: 18px; height: 18px; flex: none; border-radius: 5px; border: 2px solid var(--line); }
+.t .chip[aria-pressed="true"] { background: var(--trening); border-color: var(--trening); color: #fff; }
+.p .chip[aria-pressed="true"] { background: var(--posao); border-color: var(--posao); color: #fff; }
+.chip[aria-pressed="true"]::before { border-color: #fff; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3 3 7-7' fill='none' stroke='%2318202b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat; }
+.chip:focus-visible, .seg button:focus-visible, .navbtn:focus-visible, .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; background: var(--chip); border-radius: 14px; padding: 4px; }
+.seg button { border: 0; border-radius: 10px; background: transparent; color: var(--ink); padding: 11px 4px; font: 600 15px var(--body); cursor: pointer; }
+.seg button[aria-pressed="true"][data-v="da"] { background: var(--prehrana); color: #fff; }
+.seg button[aria-pressed="true"][data-v="djelomicno"] { background: var(--pola); color: #1d1600; }
+.seg button[aria-pressed="true"][data-v="ne"] { background: var(--muted); color: var(--surface); }
+
+textarea, input.text {
+  width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
+  font: 16px/1.4 var(--body); padding: 10px 12px;
+}
+textarea { min-height: 64px; resize: vertical; }
+label.small { font-size: 13px; color: var(--muted); font-weight: 600; }
+.status { font-size: 13px; color: var(--muted); text-align: center; min-height: 18px; }
+.status.err { color: var(--warn); }
+
+.btn { border: 0; border-radius: 12px; padding: 12px 16px; font: 600 15px var(--body); cursor: pointer; background: var(--ink); color: var(--bg); }
+.btn.ghost { background: var(--chip); color: var(--ink); }
+.notif { flex-direction: row; align-items: center; gap: 12px; flex-wrap: wrap; }
+.notif p { margin: 0; flex: 1 1 200px; font-size: 14px; color: var(--muted); }
+.notif p b { color: var(--ink); }
+
+.month h2 { font-family: var(--display); font-weight: 600; font-size: 20px; margin: 0; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { background: var(--bg); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.stat b { font-family: var(--display); font-size: 24px; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.grid .wd { font-size: 11px; color: var(--muted); text-align: center; text-transform: uppercase; letter-spacing: .06em; padding-bottom: 2px; }
+.cell {
+  aspect-ratio: 1; max-width: 100%; border: 1.5px solid transparent; border-radius: 10px; background: var(--bg); color: var(--ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; padding: 0;
+  font: 500 13px var(--body); font-variant-numeric: tabular-nums;
+}
+.cell.empty { visibility: hidden; }
+.cell:disabled { opacity: .35; cursor: default; }
+.cell.sel { border-color: var(--ink); }
+.cell.today span:first-child { font-weight: 800; }
+.cell .ds { display: flex; gap: 3px; height: 6px; }
+.cell .ds i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+.cell .ds i.t { background: var(--trening); } .cell .ds i.p { background: var(--posao); }
+.cell .ds i.h { background: var(--prehrana); } .cell .ds i.hp { background: var(--pola); }
+.monthnav { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.monthnav button { border: 0; background: none; color: var(--ink); font-size: 22px; width: 40px; height: 40px; cursor: pointer; border-radius: 50%; }
+.monthnav button:disabled { opacity: .3; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--muted); }
+.legend span { display: flex; align-items: center; gap: 5px; }
+
+.login { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; gap: 14px; max-width: 360px; margin: 0 auto; }
+.login img { width: 72px; height: 72px; border-radius: 16px; }
+.login h1 { font-family: var(--display); font-size: 30px; margin: 0; }
+.login p { margin: 0; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<form class="login" id="login" hidden>
+  <img src="/dnevnik/apple-touch-icon.png" alt="">
+  <h1>Dnevnik</h1>
+  <p>Upiši šifru koju je ispisala instalacija na serveru. Treba samo jednom.</p>
+  <input class="text" id="keyInput" type="password" autocomplete="current-password" placeholder="šifra" required>
+  <button class="btn" type="submit">Otvori</button>
+  <div class="status err" id="loginErr"></div>
+</form>
+
+<div class="app" id="app" hidden>
+  <header class="day">
+    <button class="navbtn" id="prev" aria-label="Prethodni dan">‹</button>
+    <div class="daytitle">
+      <h1 id="dayName">Danas</h1>
+      <div class="sub"><span id="dayDate"></span> <button class="link" id="toToday" hidden>→ danas</button></div>
+    </div>
+    <button class="navbtn" id="next" aria-label="Sljedeći dan">›</button>
+  </header>
+
+  <section class="card t">
+    <div class="cardhead">
+      <h2><span class="dot"></span>Trening</h2>
+      <label class="sw"><input type="checkbox" id="tDone" aria-label="Trening odrađen"><span></span></label>
+    </div>
+    <div class="pick" id="tPick" hidden>
+      <div class="q">Koji trening?</div>
+      <div class="chips" id="tChips"></div>
+    </div>
+  </section>
+
+  <section class="card p">
+    <div class="cardhead">
+      <h2><span class="dot"></span>Posao</h2>
+      <label class="sw"><input type="checkbox" id="pDone" aria-label="Posao odrađen"><span></span></label>
+    </div>
+    <div class="pick" id="pPick" hidden>
+      <div class="q">Koji posao?</div>
+      <div class="chips" id="pChips"></div>
+    </div>
+  </section>
+
+  <section class="card h">
+    <div class="cardhead"><h2><span class="dot"></span>Prehrana pažena?</h2></div>
+    <div class="seg" id="hSeg">
+      <button data-v="da" aria-pressed="false">Da</button>
+      <button data-v="djelomicno" aria-pressed="false">Djelomično</button>
+      <button data-v="ne" aria-pressed="false">Ne</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <label class="small" for="note">Bilješka (neobavezno)</label>
+    <textarea id="note" placeholder="npr. 5 serija swingova, završio skicu…"></textarea>
+  </section>
+
+  <div class="status" id="status" aria-live="polite"></div>
+
+  <section class="card notif" id="notifCard" hidden>
+    <p id="notifText"></p>
+    <button class="btn" id="notifBtn" hidden>Uključi podsjetnike</button>
+    <button class="btn ghost" id="testBtn" hidden>Probni</button>
+  </section>
+
+  <section class="card month">
+    <div class="monthnav">
+      <button id="mPrev" aria-label="Prethodni mjesec">‹</button>
+      <h2 id="mTitle"></h2>
+      <button id="mNext" aria-label="Sljedeći mjesec">›</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="sT">0</b><span><i class="dot" style="background:var(--trening)"></i>treninga</span></div>
+      <div class="stat"><b id="sP">0</b><span><i class="dot" style="background:var(--posao)"></i>radnih dana</span></div>
+      <div class="stat"><b id="sH">0</b><span><i class="dot" style="background:var(--prehrana)"></i>pažena prehrana</span></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--trening)"></i>trening</span>
+      <span><i class="dot" style="background:var(--posao)"></i>posao</span>
+      <span><i class="dot" style="background:var(--prehrana)"></i>prehrana da</span>
+      <span><i class="dot" style="background:var(--pola)"></i>djelomično</span>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  const API = "/dnevnik/api";
+  const TRENING = ["Girja – cijelo tijelo", "Girja – noge", "Street workout", "Teretana", "Bicikl", "Bodyweight"];
+  const POSAO = ["Slikanje", "Produkcija"];
+  const DANI = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+  const MJESECI = ["Siječanj", "Veljača", "Ožujak", "Travanj", "Svibanj", "Lipanj", "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"];
+  const MJ_GEN = ["siječnja", "veljače", "ožujka", "travnja", "svibnja", "lipnja", "srpnja", "kolovoza", "rujna", "listopada", "studenoga", "prosinca"];
+  const LS_KEY = "dnevnik-kljuc", LS_DATA = "dnevnik-podaci", LS_PENDING = "dnevnik-neposlano";
+
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, "0");
+  const key = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const fromKey = k => { const [y, m, d] = k.split("-").map(Number); return new Date(y, m - 1, d); };
+  const todayKey = () => key(new Date());
+  const addDays = (k, n) => { const d = fromKey(k); d.setDate(d.getDate() + n); return key(d); };
+  const ls = {
+    get(k, f) { try { const v = localStorage.getItem(k); return v == null ? f : JSON.parse(v); } catch (e) { return f; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+    del(k) { try { localStorage.removeItem(k); } catch (e) {} },
+  };
+
+  let kljuc = ls.get(LS_KEY, null);
+  const data = ls.get(LS_DATA, {});
+  const pending = new Set(ls.get(LS_PENDING, []));
+  let cur = todayKey(), viewMonth = cur.slice(0, 7);
+  const status = $("status");
+
+  async function api(path, opts = {}) {
+    const res = await fetch(API + path, Object.assign({}, opts, {
+      headers: Object.assign({ "Content-Type": "application/json", "X-Kljuc": kljuc || "" }, opts.headers || {}),
+      cache: "no-store",
+    }));
+    let body = {}; try { body = await res.json(); } catch (e) {}
+    if (!res.ok) { const err = new Error(body.greska || ("HTTP " + res.status)); err.status = res.status; throw err; }
+    return body;
+  }
+
+  const blank = k => ({ datum: k, trening: { done: false, vrste: [] }, posao: { done: false, vrste: [] }, prehrana: null, biljeska: "" });
+  const entry = k => data[k] ? JSON.parse(JSON.stringify(data[k])) : blank(k);
+
+  // ---------- spremanje ----------
+  let syncTimer;
+  function commit(e, delay) {
+    data[e.datum] = e; pending.add(e.datum);
+    ls.set(LS_DATA, data); ls.set(LS_PENDING, [...pending]);
+    render();
+    clearTimeout(syncTimer); syncTimer = setTimeout(sync, delay == null ? 400 : delay);
+    status.className = "status"; status.textContent = "Spremam…";
+  }
+  async function sync() {
+    if (!pending.size) return;
+    for (const k of [...pending]) {
+      try {
+        await api("/days/" + k, { method: "PUT", body: JSON.stringify(data[k]) });
+        pending.delete(k);
+      } catch (err) {
+        ls.set(LS_PENDING, [...pending]);
+        if (err.status === 401) return logout("Šifra više ne vrijedi. Upiši je ponovno.");
+        status.className = "status err";
+        status.textContent = "Nema veze sa serverom – spremljeno na mobitelu, poslat će se čim bude interneta.";
+        return;
+      }
+    }
+    ls.set(LS_PENDING, [...pending]);
+    status.className = "status"; status.textContent = "Spremljeno";
+  }
+  async function pull() {
+    try {
+      const r = await api("/days");
+      Object.keys(r.days || {}).forEach(k => { if (!pending.has(k)) data[k] = r.days[k]; });
+      ls.set(LS_DATA, data);
+      render();
+      sync();
+      return true;
+    } catch (err) {
+      if (err.status === 401) { logout("Kriva šifra."); return false; }
+      return true; // bez interneta: radi s onim što je na mobitelu
+    }
+  }
+
+  // ---------- prikaz ----------
+  function buildChips(el, list, group) {
+    list.forEach(name => {
+      const b = document.createElement("button");
+      b.className = "chip"; b.textContent = name; b.dataset.name = name; b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", () => {
+        const e = entry(cur), arr = e[group].vrste, i = arr.indexOf(name);
+        if (i >= 0) arr.splice(i, 1); else arr.push(name);
+        commit(e);
+      });
+      el.appendChild(b);
+    });
+  }
+  buildChips($("tChips"), TRENING, "trening");
+  buildChips($("pChips"), POSAO, "posao");
+
+  $("tDone").addEventListener("change", ev => { const e = entry(cur); e.trening.done = ev.target.checked; if (!e.trening.done) e.trening.vrste = []; commit(e); });
+  $("pDone").addEventListener("change", ev => { const e = entry(cur); e.posao.done = ev.target.checked; if (!e.posao.done) e.posao.vrste = []; commit(e); });
+  $("hSeg").querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    const e = entry(cur); e.prehrana = e.prehrana === b.dataset.v ? null : b.dataset.v; commit(e);
+  }));
+  $("note").addEventListener("input", ev => { const e = entry(cur); e.biljeska = ev.target.value; commit(e, 900); });
+
+  function render() {
+    const e = entry(cur), d = fromKey(cur), t = todayKey();
+    const diff = Math.round((fromKey(t) - d) / 864e5);
+    const dan = DANI[d.getDay()];
+    $("dayName").textContent = diff === 0 ? "Danas" : diff === 1 ? "Jučer" : dan[0].toUpperCase() + dan.slice(1);
+    $("dayDate").textContent = (diff <= 1 ? dan + ", " : "") + d.getDate() + ". " + MJ_GEN[d.getMonth()];
+    $("toToday").hidden = diff === 0;
+    $("next").disabled = diff <= 0;
+    $("tDone").checked = !!e.trening.done;
+    $("pDone").checked = !!e.posao.done;
+    $("tPick").hidden = !e.trening.done;
+    $("pPick").hidden = !e.posao.done;
+    document.querySelectorAll("#tChips .chip").forEach(c => c.setAttribute("aria-pressed", e.trening.vrste.includes(c.dataset.name)));
+    document.querySelectorAll("#pChips .chip").forEach(c => c.setAttribute("aria-pressed", e.posao.vrste.includes(c.dataset.name)));
+    $("hSeg").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", e.prehrana === b.dataset.v));
+    if (document.activeElement !== $("note")) $("note").value = e.biljeska || "";
+    renderMonth();
+  }
+
+  function renderMonth() {
+    const [y, m] = viewMonth.split("-").map(Number);
+    const t = todayKey();
+    $("mTitle").textContent = MJESECI[m - 1] + " " + y + ".";
+    $("mNext").disabled = viewMonth >= t.slice(0, 7);
+    const g = $("grid"); g.textContent = "";
+    ["Po", "Ut", "Sr", "Če", "Pe", "Su", "Ne"].forEach(w => { const s = document.createElement("div"); s.className = "wd"; s.textContent = w; g.appendChild(s); });
+    const offset = (new Date(y, m - 1, 1).getDay() + 6) % 7;
+    const days = new Date(y, m, 0).getDate();
+    let sT = 0, sP = 0, sH = 0;
+    for (let i = 0; i < offset; i++) { const s = document.createElement("div"); s.className = "cell empty"; g.appendChild(s); }
+    for (let dd = 1; dd <= days; dd++) {
+      const k = y + "-" + pad(m) + "-" + pad(dd), e = data[k];
+      const b = document.createElement("button");
+      b.className = "cell" + (k === cur ? " sel" : "") + (k === t ? " today" : "");
+      b.disabled = k > t;
+      const num = document.createElement("span"); num.textContent = dd;
+      const ds = document.createElement("span"); ds.className = "ds";
+      const it = document.createElement("i"), ip = document.createElement("i"), ih = document.createElement("i");
+      if (e && e.trening && e.trening.done) { it.className = "t"; sT++; }
+      if (e && e.posao && e.posao.done) { ip.className = "p"; sP++; }
+      if (e && e.prehrana === "da") { ih.className = "h"; sH++; } else if (e && e.prehrana === "djelomicno") ih.className = "hp";
+      ds.append(it, ip, ih); b.append(num, ds);
+      b.setAttribute("aria-label", dd + ". " + MJ_GEN[m - 1]);
+      b.addEventListener("click", () => { cur = k; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+      g.appendChild(b);
+    }
+    $("sT").textContent = sT; $("sP").textContent = sP; $("sH").textContent = sH;
+  }
+
+  function shiftMonth(n) { const [y, m] = viewMonth.split("-").map(Number); const d = new Date(y, m - 1 + n, 1); viewMonth = d.getFullYear() + "-" + pad(d.getMonth() + 1); renderMonth(); }
+  $("mPrev").addEventListener("click", () => shiftMonth(-1));
+  $("mNext").addEventListener("click", () => shiftMonth(1));
+  function go(k) { cur = k; viewMonth = k.slice(0, 7); render(); }
+  $("prev").addEventListener("click", () => go(addDays(cur, -1)));
+  $("next").addEventListener("click", () => { if (cur < todayKey()) go(addDays(cur, 1)); });
+  $("toToday").addEventListener("click", () => go(todayKey()));
+
+  // Kad se aplikacija ponovno otvori (npr. sutradan), skoči na današnji dan i osvježi.
+  let lastSeenDay = todayKey();
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden || !kljuc) return;
+    if (todayKey() !== lastSeenDay) { lastSeenDay = todayKey(); go(lastSeenDay); }
+    pull();
+  });
+  window.addEventListener("online", sync);
+
+  // ---------- podsjetnici ----------
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const pushOk = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+  let swReg = null;
+
+  async function setupNotif() {
+    const card = $("notifCard"), text = $("notifText"), btn = $("notifBtn"), test = $("testBtn");
+    card.hidden = false; btn.hidden = true; test.hidden = true;
+    if (!standalone) {
+      text.innerHTML = "<b>Podsjetnici</b> rade kad je Dnevnik dodan na početni zaslon: u Safariju dodirni Dijeli → Dodaj na početni zaslon, pa otvori aplikaciju s ikone.";
+      return;
+    }
+    if (pushOk && !swReg) { card.hidden = true; return; } // čeka service worker
+    if (!pushOk) { text.innerHTML = "<b>Podsjetnici</b> nisu podržani na ovom uređaju (treba iOS 16.4 ili noviji)."; return; }
+    if (Notification.permission === "denied") {
+      text.innerHTML = "<b>Obavijesti su isključene.</b> Uključi ih u Postavke → Obavijesti → Dnevnik.";
+      return;
+    }
+    if (Notification.permission === "granted") {
+      try { await subscribe(); } catch (e) {}
+      text.innerHTML = "<b>Podsjetnici su uključeni.</b> Ako dan nije upisan, javim se u 21:00 i u 23:00.";
+      test.hidden = false;
+      return;
+    }
+    text.innerHTML = "<b>Podsjetnik do ponoći:</b> ako zaboraviš upisati dan, stigne ti obavijest.";
+    btn.hidden = false;
+  }
+
+  async function subscribe() {
+    const { publicKey } = await api("/vapid");
+    const appKey = Uint8Array.from(atob(publicKey.replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
+    let sub = await swReg.pushManager.getSubscription();
+    if (!sub) sub = await swReg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: appKey });
+    await api("/subscribe", { method: "POST", body: JSON.stringify({ subscription: sub.toJSON() }) });
+  }
+
+  $("notifBtn").addEventListener("click", async () => {
+    try {
+      const p = await Notification.requestPermission();
+      if (p === "granted") await subscribe();
+    } catch (e) {
+      status.className = "status err"; status.textContent = "Podsjetnike nije uspjelo uključiti: " + e.message;
+    }
+    setupNotif();
+  });
+  $("testBtn").addEventListener("click", async () => {
+    try { await api("/test", { method: "POST" }); status.className = "status"; status.textContent = "Probna obavijest poslana."; }
+    catch (e) { status.className = "status err"; status.textContent = "Probna obavijest nije poslana: " + e.message; }
+  });
+
+  // ---------- prijava ----------
+  function logout(msg) {
+    kljuc = null; ls.del(LS_KEY);
+    $("app").hidden = true; $("login").hidden = false; $("loginErr").textContent = msg || "";
+  }
+  $("login").addEventListener("submit", async ev => {
+    ev.preventDefault();
+    kljuc = $("keyInput").value.trim();
+    $("loginErr").textContent = "";
+    try {
+      await api("/days");
+      ls.set(LS_KEY, kljuc);
+      start();
+    } catch (e) {
+      kljuc = null;
+      $("loginErr").textContent = e.status === 401 ? "Kriva šifra." : (e.message || "Server nije dostupan.");
+    }
+  });
+
+  async function start() {
+    $("login").hidden = true; $("app").hidden = false;
+    render();
+    if (await pull()) setupNotif();
+  }
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/dnevnik/sw.js", { scope: "/dnevnik/" })
+      .then(() => navigator.serviceWorker.ready)
+      .then(r => { swReg = r; if (kljuc) setupNotif(); })
+      .catch(() => {});
+  }
+  if (kljuc) start(); else logout();
+})();
+</script>
+</body>
+</html>
