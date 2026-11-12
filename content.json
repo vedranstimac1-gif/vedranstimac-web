@@ -2118,5 +2118,41 @@
       "alfred-hitchcock",
       "nikola-tesla"
     ]
+  },
+  "mural_service_hr": {
+    "public": false,
+    "title": "Oslikavanje zidova i murali po narudžbi",
+    "intro": [
+      "Oslikavam vanjske i unutarnje zidne površine autorskim muralima: pročelja zgrada, interijere restorana, hotela i ureda, školske zidove, šankove i javne prostore. Svaki mural nastaje kao autorski rad, prilagođen prostoru i naručitelju.",
+      "Radim u Zagrebu, Puli i Istri te diljem Hrvatske. Iza mene su murali od nekoliko kvadrata do više od 1.500 m², za tvrtke, ugostitelje, muzeje, općine i škole."
+    ],
+    "steps_h": "Kako izgleda suradnja",
+    "steps": [
+      "Pošaljete fotografiju zida, dimenzije i ideju.",
+      "Dogovorimo temu, a vi dobijete procjenu cijene.",
+      "Izradim 2–3 skice, a odabranu zajedno doradimo.",
+      "Potpišemo ugovor i dogovorimo termin.",
+      "Slijedi oslikavanje, za orijentaciju oko 10 dana na 500 m²."
+    ],
+    "faq_h": "Česta pitanja",
+    "faq": [
+      [
+        "Koliko košta mural?",
+        "Cijena ovisi o površini, podlozi, složenosti motiva i pristupu zidu (skela, dizalica). Kad dobijem fotografiju i dimenzije, šaljem procjenu."
+      ],
+      [
+        "Koliko traje izrada?",
+        "Manji murali u interijeru nekoliko dana, veća pročelja dva do tri tjedna."
+      ],
+      [
+        "Koliko mural traje?",
+        "Koristim boje namijenjene vanjskim i unutarnjim zidnim površinama, pa mural na pročelju traje godinama."
+      ],
+      [
+        "Radite li izvan Zagreba i Istre?",
+        "Da, diljem Hrvatske."
+      ]
+    ],
+    "cta": "Imate li zid na umu? Javite se."
   }
 }
