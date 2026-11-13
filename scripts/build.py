@@ -45,7 +45,6 @@ SHOP = C.get("shop", {"products": [], "sizes": []})
 SHOP_PUBLIC = bool(SHOP.get("public"))
 SHOPP = [next(i for i in C["illustrations"] if i["slug"] == sl) for sl in SHOP["products"]]
 PATHS["shop"] = {"en": "/shop", "hr": "/hr/trgovina"}
-PATHS["c-mur-preview"] = {"en": "/commission-murals-preview", "hr": "/hr/murali-po-narudzbi-pregled"}
 MS = C.get("mural_service_hr")
 PATHS["cart"] = {"en": "/shop/cart", "hr": "/hr/trgovina/kosarica"}
 for it in SHOPP:
@@ -199,7 +198,7 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
     else:
         alt, switch = "", ""
         robots = '\n<meta name="robots" content="noindex, nofollow">' if lang == "hr" else ""
-    if key == "c-mur-preview" or (not SHOP_PUBLIC and (key in ("shop", "cart") or key.startswith("shop:"))) or \
+    if (not SHOP_PUBLIC and (key in ("shop", "cart") or key.startswith("shop:"))) or \
        (not COMM_PUBLIC and (key in ("commissions", "c-ill", "c-mur") or key in COMM)) or \
        (not CILL_PUBLIC and (key == "c-ill" or key in CILLS)):
         robots = '\n<meta name="robots" content="noindex, nofollow">'
@@ -400,6 +399,23 @@ def home_lang(lang):
         return f'<a href="{P("home", l)}" hreflang="{l}" lang="{l}"{cur}>{label}</a>'
     return f'\n<p class="home-lang">{lk("hr", "HR")}<span>/</span>{lk("en", "ENG")}</p>'
 
+def service_html(lang):
+    """Tekst usluge oslikavanja zidova (samo HR), ispod galerije murala po narudžbi."""
+    if lang != "hr" or not MS:
+        return ""
+    email = S.get("email", "")
+    return f"""
+<section class="service">
+  <h2>{e(MS['title'])}</h2>
+  {''.join(f'<p>{e(p)}</p>' for p in MS['intro'])}
+  <h3>{e(MS['steps_h'])}</h3>
+  <ol>{''.join(f'<li>{e(x)}</li>' for x in MS['steps'])}</ol>
+  <h3>{e(MS['faq_h'])}</h3>
+  <dl>{''.join(f'<dt>{e(q)}</dt><dd>{e(a)}</dd>' for q, a in MS['faq'])}</dl>
+  <p class="cta">{e(MS['cta'])}</p>
+  <p class="cta-mail"><a href="mailto:{email}">{email}</a></p>
+</section>"""
+
 def write(path, html):
     rel = path.strip("/")
     f = os.path.join(SITE, rel, "index.html") if rel else os.path.join(SITE, "index.html")
@@ -599,35 +615,10 @@ for lang in LANGS:
 </section>
 <section class="work">
   {cgallery(CMUR, 'murals', lang)}
-</section>""",
+</section>{service_html(lang)}""",
           ("Murali po narudžbi Vedrana Štimca (PoliteBastART): oslikavanje unutarnjih i vanjskih zidnih površina autorskim radom." if hr else
            "Commissioned murals by Vedran Štimac (PoliteBastART): original murals for interior and exterior walls."),
           image=web(CMUR[0]["images"][0]))
-    if hr and MS:
-        email = S.get("email", "")
-        svc = f"""
-<section class="service">
-  <h2>{e(MS['title'])}</h2>
-  {''.join(f'<p>{e(p)}</p>' for p in MS['intro'])}
-  <h3>{e(MS['steps_h'])}</h3>
-  <ol>{''.join(f'<li>{e(x)}</li>' for x in MS['steps'])}</ol>
-  <h3>{e(MS['faq_h'])}</h3>
-  <dl>{''.join(f'<dt>{e(q)}</dt><dd>{e(a)}</dd>' for q, a in MS['faq'])}</dl>
-  <p class="cta">{e(MS['cta'])}</p>
-  <p class="cta-mail"><a href="mailto:{email}">{email}</a></p>
-</section>"""
-        mur_body = f"""
-<section class="banner">
-  <video autoplay muted loop playsinline preload="auto" poster="/media/commission-murals-poster.jpg?v={ver('media/commission-murals-poster.jpg')}">
-    <source src="/media/commission-murals.mp4?v={ver('media/commission-murals.mp4')}" type="video/mp4">
-  </video>
-  <h1>{t['c-mur_h']}</h1>
-</section>
-<section class="work">
-  {cgallery(CMUR, 'murals', lang)}
-</section>"""
-        build("c-mur-preview", lang, "Murali po narudžbi (pregled) – Vedran Štimac (PoliteBastART)", mur_body + svc,
-              "Pregled", image=web(CMUR[0]["images"][0]))
     for back, items, form in (("c-ill", CILL, "Illustration"), ("c-mur", [m for m in CMUR if "slug" in m], "Mural")):
         for x in items:
             name, client, meta = L(x, "name", lang), L(x, "client", lang), cmeta(x, lang)
