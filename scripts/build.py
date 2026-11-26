@@ -318,7 +318,8 @@ def ill_page(it, prev, nxt, lang):
     t = T[lang]
     cap = L(it, "caption", lang)
     nm, pn, nn = L(it, "name", lang), L(prev, "name", lang), L(nxt, "name", lang)
-    text = "".join(f"<p>{e(p)}</p>" for p in it["text"]) if (S.get("show_illustration_text") and lang == "en") else ""
+    show = S.get("show_illustration_text") and (lang == "en" or S.get("hr_illustration_text"))
+    text = "".join(f"<p>{e(p)}</p>" for p in L(it, "text", lang)) if show else ""
     buy = ""
     extra = "".join(
         f'<a href="{orig(w)}" class="lb" data-caption="{e(nm)} — {e(cap)}">'
@@ -499,11 +500,13 @@ for lang in LANGS:
                "artMedium": it["caption"][6:], "dateCreated": year, "url": DOMAIN + P(it["slug"], lang),
                "creator": {"@id": DOMAIN + "/#vedran"}, "about": {"@type": "Person", "name": it["name"]},
                "image": [DOMAIN + web(w) for w in [it["image"]] + it.get("extra", [])]}
-        if S.get("show_illustration_text") and not hr:
-            art["description"] = " ".join(it["text"])
+        hr_txt = S.get("hr_illustration_text") and it.get("hr", {}).get("text")
+        if S.get("show_illustration_text") and (not hr or hr_txt):
+            art["description"] = " ".join(L(it, "text", lang))
         if hr:
             title = f"{nm} – ilustracija | Vedran Štimac (PoliteBastART)"
-            desc = f"{nm} – ilustracija, autor Vedran Štimac (PoliteBastART), {cap}. Iz serije Room of Portraits."
+            desc = (short(f"{nm} – ilustracija, autor Vedran Štimac (PoliteBastART), {cap}. " + it["hr"]["text"][0]) if hr_txt else
+                    f"{nm} – ilustracija, autor Vedran Štimac (PoliteBastART), {cap}. Iz serije Room of Portraits.")
         else:
             kind_en = "Illustration" if it.get("not_portrait") else "Portrait Illustration"
             title = f"{nm} – {kind_en} | Vedran Štimac (PoliteBastART)"
