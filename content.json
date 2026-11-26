@@ -17,7 +17,9 @@
     "hr_public": true,
     "commissions_public": true,
     "commission_ill_public": true,
-    "show_illustration_text": true
+    "show_illustration_text": true,
+    "umami_id": "a9e46809-e30e-434e-a743-33ccd574142a",
+    "umami_host": "stats.artparkpula.com"
   },
   "media": {
     "og": "068c28_0ffe17edfcc4408da70cd3e668ac666e~mv2.gif",
