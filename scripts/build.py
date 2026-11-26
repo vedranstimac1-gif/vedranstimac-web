@@ -136,11 +136,15 @@ ICONS = {
 }
 
 def analytics():
-    """Cloudflare Web Analytics (bez kolačića). Token: content.json -> site.cf_analytics_token."""
+    """Cloudflare Web Analytics + Umami (oboje bez kolačića). content.json -> site.cf_analytics_token, site.umami_id."""
+    out = ""
+    u = S.get("umami_id")
+    if u:
+        out += f'\n<script defer src="https://stats.vedranstimac.com/script.js" data-website-id="{e(u)}"></script>'
     t = S.get("cf_analytics_token")
     if not t:
-        return ""
-    return ("\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" "
+        return out
+    return out + ("\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" "
             f"data-cf-beacon='{{\"token\": \"{e(t)}\"}}'></script>")
 
 PERSON = {
