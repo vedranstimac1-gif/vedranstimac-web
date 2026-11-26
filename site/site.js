@@ -89,6 +89,28 @@
     render();
   }
 
+
+  // Umami: stvarno vrijeme na stranici (samo dok je stranica vidljiva), šalje se kad posjetitelj ode
+  (function () {
+    var visible = document.visibilityState === 'visible', since = Date.now(), acc = 0;
+    function range(s) {
+      return s < 10 ? '5–10 s' : s < 30 ? '10–30 s' : s < 60 ? '30–60 s' : s < 180 ? '1–3 min' : s < 600 ? '3–10 min' : '10+ min';
+    }
+    function flush() {
+      if (visible) { acc += Date.now() - since; since = Date.now(); }
+      var s = Math.round(acc / 1000);
+      if (s >= 5 && window.umami && typeof window.umami.track === 'function') {
+        try { window.umami.track('time-on-page', { seconds: s, range: range(s), page: location.pathname }); } catch (e) {}
+        acc = 0;
+      }
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') { flush(); visible = false; }
+      else { visible = true; since = Date.now(); }
+    });
+    window.addEventListener('pagehide', flush);
+  })();
+
   var links = Array.prototype.slice.call(document.querySelectorAll('a.lb'));
   if (!links.length) return;
   var box = document.createElement('div');
