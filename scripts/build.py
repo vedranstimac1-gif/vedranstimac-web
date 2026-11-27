@@ -5,7 +5,9 @@ Sadržaj se mijenja u content.json, zatim: python3 scripts/build.py
 Hrvatska verzija je skrivena (noindex, bez prekidača jezika, nije u sitemapu)
 dok se u content.json ne postavi site.hr_public = true.
 """
-import json, os, re
+import json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import images
 from html import escape as e
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -153,14 +155,14 @@ PERSON = {
     "@id": DOMAIN + "/#vedran",
     "name": "Vedran Štimac",
     "alternateName": "PoliteBastART",
-    "jobTitle": "Illustrator and muralist",
-    "description": "Croatian illustrator, muralist and street artist from Pula, based in Zagreb.",
+    "jobTitle": ["Painter", "Muralist", "Illustrator"],
+    "description": "Croatian painter, muralist and illustrator from Pula, based in Zagreb – portrait illustrations, murals, street art and paintings.",
     "url": DOMAIN + "/",
     "image": DOMAIN + web(M["about_portrait"]),
     "email": "mailto:" + S["email"],
     "birthPlace": {"@type": "Place", "name": "Pula, Croatia"},
     "homeLocation": {"@type": "Place", "name": "Zagreb, Croatia"},
-    "knowsAbout": ["Illustration", "Murals", "Street art", "Portrait illustration", "Screen printing"],
+    "knowsAbout": ["Illustration", "Murals", "Street art", "Portrait illustration", "Painting", "Mural painting"],
     "sameAs": [S["social"]["instagram"], S["social"]["behance"], S["social"]["facebook"]],
 }
 
@@ -231,10 +233,13 @@ def page(key, lang, title, body, desc, cls="", image=None, ld=None):
 <script type="application/ld+json">{ldjson}</script>
 <meta name="google-site-verification" content="{S['google_site_verification']}">
 <meta name="p:domain_verify" content="{S['pinterest_verify']}">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<link rel="preload" href="/fonts/roboto-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/roboto-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css?v={V_CSS}">
 </head>
 <body class="{cls}">
@@ -422,11 +427,13 @@ def service_html(lang):
   <p class="cta-mail"><a href="mailto:{email}">{email}</a></p>
 </section>"""
 
+DIMS = images.prepare()
+
 def write(path, html):
     rel = path.strip("/")
     f = os.path.join(SITE, rel, "index.html") if rel else os.path.join(SITE, "index.html")
     os.makedirs(os.path.dirname(f), exist_ok=True)
-    open(f, "w", encoding="utf-8").write(html)
+    open(f, "w", encoding="utf-8").write(images.enhance(html, DIMS))
 
 def build(key, lang, *a, **k):
     write(P(key, lang), page(key, lang, *a, **k))
@@ -442,8 +449,8 @@ for lang in LANGS:
           f"""
 <h1 class="sr-only">{"Vedran Štimac (PoliteBastART) – ilustrator i muralist iz Pule" if hr else "Vedran Štimac (PoliteBastART) – illustrator and muralist from Pula, Croatia"}</h1>
 <section class="hero-video">
-  <video autoplay muted loop playsinline preload="auto" poster="/media/home-poster.jpg">
-    <source src="/media/home.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="auto" poster="/media/home-poster.jpg?v={ver('media/home-poster.jpg')}">
+    <source src="/media/home.mp4?v={ver('media/home.mp4')}" type="video/mp4">
   </video>
 </section>{home_lang(lang)}""",
           ("Slike, murali i ilustracije Vedrana Štimca (PoliteBastART), Pula / Zagreb."
@@ -522,8 +529,8 @@ for lang in LANGS:
           "Street art – Vedran Štimac (PoliteBastART)",
           f"""
 <section class="banner">
-  <video autoplay muted loop playsinline preload="auto" poster="/media/street-art-poster.jpg">
-    <source src="/media/street-art.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="auto" poster="/media/street-art-poster.jpg?v={ver('media/street-art-poster.jpg')}">
+    <source src="/media/street-art.mp4?v={ver('media/street-art.mp4')}" type="video/mp4">
   </video>
   <h1>{t['street_h']}</h1>
 </section>
